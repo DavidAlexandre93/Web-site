@@ -16,7 +16,7 @@ export const Footer = () => {
                     <p>{t("rightsReserved")}, © 2022 David Alexandre Fernandes.</p>
                     <div className="socials">
                         <Link
-                            href={"https://www.linkedin.com/in/davidalexandre/"}
+                            href={"https://www.linkedin.com/in/david-fernandes-08b005b4/"}
                         >
                             <a title={t("accessLinkedinTitle")}>
                                 <img
@@ -25,7 +25,7 @@ export const Footer = () => {
                                 />
                             </a>
                         </Link>
-                        <Link href={"https://github.com/davidalexandre"}>
+                        <Link href={"https://github.com/DavidAlexandre93"}>
                             <a title={t("accessGithubTitle")}>
                                 <img src="./github.svg" alt="Logo do Github" />
                             </a>

@@ -23,7 +23,7 @@ export const Contact = () => {
                 <div className="content-contact">
                     <Link
                         href={
-                            "https://www.google.com.br/maps/place/Imbiribeira,+Recife+-+PE/@-8.1073439,-34.9296383,14z/data=!3m1!4b1!4m5!3m4!1s0x7ab1ef8d31b72c5:0x75196a189ef3895a!8m2!3d-8.1088584!4d-34.91189"
+                            "https://www.google.com.br/maps/place/S%C3%A3o+Paulo,+SP/@-23.6815303,-46.8761671,10z/data=!3m1!4b1!4m5!3m4!1s0x94ce448183a461d1:0x9ba94b08ff335bae!8m2!3d-23.5557714!4d-46.6395571"
                         }
                     >
                         <a className="card-contact" title={t("locationTitle")}>
@@ -32,7 +32,7 @@ export const Contact = () => {
                                 className="icon-cardContact"
                             />
                             <h4>{t("location")}</h4>
-                            <p>Recife, PE</p>
+                            <p>São Paulo, SP</p>
                             <p>Brasil</p>
                         </a>
                     </Link>
@@ -47,7 +47,7 @@ export const Contact = () => {
                                 className="icon-cardContact"
                             />
                             <h4>E-mail</h4>
-                            <p>davidalexandrecontact@gmail.com</p>
+                            <p>davidalexandrefernandes@outlook.com</p>
                         </a>
                     </Link>
                     <Link href={"https://wa.me/5581987232647"}>
@@ -57,7 +57,7 @@ export const Contact = () => {
                                 className="icon-cardContact"
                             />
                             <h4>Whatsapp</h4>
-                            <p>(+55) 81 98723-2647</p>
+                            <p>(+55) 11 9 59364795</p>
                         </a>
                     </Link>
                 </div>

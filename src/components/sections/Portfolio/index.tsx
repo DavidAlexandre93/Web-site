@@ -26,7 +26,7 @@ export const Portfolio = () => {
                     <TitleSection>{t("portfolio")}</TitleSection>
                     <p>
                         {t("allMyProjectsInitial")}{" "}
-                        <Link href="https://www.github.com/davidalexandre">
+                        <Link href="https://www.github.com/DavidAlexandre93">
                             <a title={t("accessGithubTitle")}>Github</a>
                         </Link>
                         {t("allMyProjectsFinish")}

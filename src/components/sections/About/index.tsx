@@ -16,7 +16,7 @@ export const About = () => {
                     <TitleSection>{t("about")}</TitleSection>
                     <p>{t("descriptionAboutMe")}</p>
                     <div className="linkSocial">
-                        <Link href="https://github.com/davidalexandre">
+                        <Link href="https://github.com/DavidAlexandre93">
                             <a title={t("accessGithubTitle")}>
                                 <img src="./github.svg" alt="Logo Github" />
                             </a>
@@ -29,7 +29,7 @@ export const About = () => {
                                 />
                             </a>
                         </Link>
-                        <Link href="https://www.linkedin.com/in/davidalexandre/">
+                        <Link href="https://www.linkedin.com/in/david-fernandes-08b005b4/">
                             <a title={t("accessLinkedinTitle")}>
                                 <img src="./linkedin.svg" alt="Logo Linkedin" />
                             </a>
@@ -38,7 +38,7 @@ export const About = () => {
                 </div>
                 <div className="image">
                     <img
-                        src="./profile.png"
+                        src="./profile.jpeg"
                         alt={t("illustrativePhoto")}
                         title={t("illustrativePhoto")}
                     />

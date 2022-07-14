@@ -24,7 +24,7 @@ export const HomePage = () => {
                     <span>{t("knowAbout")}</span>
                     <BsArrowDownShort size={25} className="iconArrow" />
                 </button>
-                <Link href="https://github.com/davidalexandre">
+                <Link href="https://github.com/DavidAlexandre93">
                     <a title={t("accessGithubTitle")}>
                         <span>GitHub</span> <RiShareBoxFill size={18} />
                     </a>
@@ -32,7 +32,7 @@ export const HomePage = () => {
             </div>
             <div className="email">
                 <div className="text-mail">
-                    <p ref={emailRef}>davidalexandrecontact@gmail.com</p>
+                    <p ref={emailRef}>davidalexandrefernandes@outlook.com</p>
                 </div>
                 <button
                     title={t("copyEmailTitle")}
