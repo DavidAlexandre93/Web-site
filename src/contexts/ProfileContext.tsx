@@ -40,10 +40,10 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
         setLoadingRepositories(true);
         function getAllRepositories() {
             setTimeout(async () => {
-                const userReq = await Api.get("users/davidalexandre");
+                const userReq = await Api.get("users/DavidAlexandre93");
                 const amountRepos = await userReq.data.public_repos;
                 setAmountRepositories(amountRepos);
-                const reposReq = await Api.get("users/davidalexandre/repos");
+                const reposReq = await Api.get("users/DavidAlexandre93/repos");
                 const listRepos = await reposReq.data.splice(
                     0,
                     5 * listRepositoriesCurrentPage

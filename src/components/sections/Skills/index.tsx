@@ -39,8 +39,8 @@ export const Skills = () => {
                         <CardSkill
                             isSkillActive={false}
                             pathIconSkill="./sqlite.svg"
-                            nameSkill="SQLite"
-                            typeSkill={t("relationalDB")}
+                            nameSkill="Python"
+                            typeSkill={t("Python API")}
                             key={Math.random()}
                         />
                         <CardSkill
@@ -55,6 +55,20 @@ export const Skills = () => {
                             pathIconSkill="./express.svg"
                             nameSkill="Express"
                             typeSkill="Framework NodeJS"
+                            key={Math.random()}
+                        />
+                         <CardSkill
+                            isSkillActive={true}
+                            pathIconSkill="./go.svg"
+                            nameSkill="Golang"
+                            typeSkill="Golang API"
+                            key={Math.random()}
+                        />
+                        <CardSkill
+                            isSkillActive={true}
+                            pathIconSkill="./fastapi.svg"
+                            nameSkill="FastAPI"
+                            typeSkill="Framework FastAPI"
                             key={Math.random()}
                         />
                     </div>
@@ -102,7 +116,7 @@ export const Skills = () => {
                         />
                         <CardSkill
                             isSkillActive={false}
-                            nameSkill="Tailwind CSS"
+                            nameSkill="Ant Design CSS"
                             pathIconSkill="./tailwind.svg"
                             typeSkill="Framework CSS"
                             key={Math.random()}
@@ -111,13 +125,6 @@ export const Skills = () => {
                             isSkillActive={true}
                             nameSkill="Styled Components"
                             pathIconSkill="./styled-components.png"
-                            typeSkill="CSS in JS"
-                            key={Math.random()}
-                        />
-                        <CardSkill
-                            isSkillActive={true}
-                            nameSkill="Stitches"
-                            pathIconSkill="./stitches.svg"
                             typeSkill="CSS in JS"
                             key={Math.random()}
                         />
@@ -162,6 +169,71 @@ export const Skills = () => {
                             pathIconSkill="./sql.png"
                             nameSkill="SQL"
                             typeSkill={t("queryLanguage")}
+                            key={Math.random()}
+                        />
+                        <CardSkill
+                            isSkillActive={true}
+                            pathIconSkill="./python.png"
+                            nameSkill="Python"
+                            typeSkill={t("programmingLanguage")}
+                            key={Math.random()}
+                        />
+                         <CardSkill
+                            isSkillActive={true}
+                            pathIconSkill="./sqlite.png"
+                            nameSkill="Golang"
+                            typeSkill={t("programmingLanguage")}
+                            key={Math.random()}
+                        />
+                    </div>
+                </div>
+
+
+                <div className="category">
+                    <div className="title-category">
+                        <h4>{t("Cloud Computing")}</h4>
+                    </div>
+                    <div className="category-content">
+                        <CardSkill
+                            isSkillActive={true}
+                            pathIconSkill="./aws.svg"
+                            nameSkill="AWS"
+                            typeSkill={t("markupLanguage")}
+                            key={Math.random()}
+                        />
+                        <CardSkill
+                            isSkillActive={true}
+                            pathIconSkill="./gcp.svg"
+                            nameSkill="GCP"
+                            typeSkill={t("stylingLanguage")}
+                            key={Math.random()}
+                        />
+                        <CardSkill
+                            isSkillActive={true}
+                            pathIconSkill="./terraform.svg"
+                            nameSkill="Terraform"
+                            typeSkill={t("programmingLanguage")}
+                            key={Math.random()}
+                        />
+                        <CardSkill
+                            isSkillActive={true}
+                            pathIconSkill="./kubernetes.png"
+                            nameSkill="Kubernetes"
+                            typeSkill={t("queryLanguage")}
+                            key={Math.random()}
+                        />
+                        <CardSkill
+                            isSkillActive={true}
+                            pathIconSkill="./docker.png"
+                            nameSkill="Docker"
+                            typeSkill={t("programmingLanguage")}
+                            key={Math.random()}
+                        />
+                         <CardSkill
+                            isSkillActive={true}
+                            pathIconSkill="./devops.png"
+                            nameSkill="DevOps"
+                            typeSkill={t("programmingLanguage")}
                             key={Math.random()}
                         />
                     </div>

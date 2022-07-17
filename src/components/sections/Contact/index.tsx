@@ -38,7 +38,7 @@ export const Contact = () => {
                     </Link>
                     <Link
                         href={
-                            "https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcRwRCXCSJjHSxsTZscRMmmKHvRzcrDTpQjptVxVsCtFRcxVVSmkNDvWrhcmNhrLCkQVzSGbc"
+                            "https://calendly.com/davidalexandrefernandes"
                         }
                     >
                         <a className="card-contact" title={t("sendEmailTitle")}>
