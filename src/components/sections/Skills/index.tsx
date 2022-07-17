@@ -173,14 +173,14 @@ export const Skills = () => {
                         />
                         <CardSkill
                             isSkillActive={true}
-                            pathIconSkill="./python.png"
+                            pathIconSkill="./python.svg"
                             nameSkill="Python"
                             typeSkill={t("programmingLanguage")}
                             key={Math.random()}
                         />
                          <CardSkill
                             isSkillActive={true}
-                            pathIconSkill="./sqlite.png"
+                            pathIconSkill="./go.svg"
                             nameSkill="Golang"
                             typeSkill={t("programmingLanguage")}
                             key={Math.random()}
@@ -217,21 +217,21 @@ export const Skills = () => {
                         />
                         <CardSkill
                             isSkillActive={true}
-                            pathIconSkill="./kubernetes.png"
+                            pathIconSkill="./kubernetes.svg"
                             nameSkill="Kubernetes"
                             typeSkill={t("queryLanguage")}
                             key={Math.random()}
                         />
                         <CardSkill
                             isSkillActive={true}
-                            pathIconSkill="./docker.png"
+                            pathIconSkill="./docker.svg"
                             nameSkill="Docker"
                             typeSkill={t("programmingLanguage")}
                             key={Math.random()}
                         />
                          <CardSkill
                             isSkillActive={true}
-                            pathIconSkill="./devops.png"
+                            pathIconSkill="./devops.svg"
                             nameSkill="DevOps"
                             typeSkill={t("programmingLanguage")}
                             key={Math.random()}
