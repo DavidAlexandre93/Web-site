@@ -38,7 +38,7 @@ export const Skills = () => {
                         />
                         <CardSkill
                             isSkillActive={false}
-                            pathIconSkill="./sqlite.svg"
+                            pathIconSkill="./python.svg"
                             nameSkill="Python"
                             typeSkill={t("Python API")}
                             key={Math.random()}
