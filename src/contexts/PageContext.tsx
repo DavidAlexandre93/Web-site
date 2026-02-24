@@ -2,6 +2,7 @@ import {
     createContext,
     ReactNode,
     RefObject,
+    useCallback,
     useEffect,
     useRef,
     useState,
@@ -37,58 +38,55 @@ export const PageProvider = ({ children }: PageProviderProps) => {
     const emailRef = useRef<HTMLParagraphElement>(null);
     const [isVisibleHeader, setIsVisibleHeader] = useState(true);
     const [handlePageTop, setHandlePageTop] = useState(true);
-    const [lastScrollTop, setLastScrollTop] = useState(0);
     const [isActiveModalLang, setIsActiveModalLang] = useState(false);
+    const lastScrollTopRef = useRef(0);
 
-    function scrollToSection(elementRef: RefObject<HTMLElement>) {
+    const scrollToSection = useCallback((elementRef: RefObject<HTMLElement>) => {
         const elementOffsetY = elementRef.current?.offsetTop;
         window.scrollTo({
             top: Number(elementOffsetY) - 120,
             left: 0,
             behavior: "smooth",
         });
-    }
+    }, []);
 
-    function scrollPageTop() {
+    const scrollPageTop = useCallback(() => {
         window.scrollTo({
             top: 0,
             left: 0,
             behavior: "smooth",
         });
-    }
+    }, []);
 
-    function handleCopyEmailInput() {
+    const handleCopyEmailInput = useCallback(() => {
         copy(String(emailRef.current?.innerText));
-    }
+    }, []);
 
-    function toggleModalLanguage() {
-        isActiveModalLang
-            ? setIsActiveModalLang(false)
-            : setIsActiveModalLang(true);
-    }
+    const toggleModalLanguage = useCallback(() => {
+        setIsActiveModalLang((currentState) => !currentState);
+    }, []);
 
     useEffect(() => {
         function toggleVisibleHeader() {
-            let scrollTop =
-                window.scrollY || document.documentElement.scrollTop;
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-            if (scrollTop > lastScrollTop) {
+            if (scrollTop > lastScrollTopRef.current) {
                 setIsVisibleHeader(false);
                 setIsActiveModalLang(false);
             } else {
                 setIsVisibleHeader(true);
             }
 
-            scrollTop == 0 ? setHandlePageTop(true) : setHandlePageTop(false);
-
-            setLastScrollTop(scrollTop);
+            setHandlePageTop(scrollTop === 0);
+            lastScrollTopRef.current = scrollTop;
         }
-        addEventListener("scroll", toggleVisibleHeader);
+
+        window.addEventListener("scroll", toggleVisibleHeader);
 
         return () => {
-            removeEventListener("scroll", toggleVisibleHeader);
+            window.removeEventListener("scroll", toggleVisibleHeader);
         };
-    }, [lastScrollTop]);
+    }, []);
 
     return (
         <PageContext.Provider

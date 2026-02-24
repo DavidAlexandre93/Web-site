@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode, useCallback, useEffect, useState } from "react";
 import { Api } from "../services/Api";
 
 interface ProfileProviderProps {
@@ -20,6 +20,8 @@ type RepositoriesProps = {
     homepage: string | null;
 };
 
+const REPOSITORIES_PER_PAGE = 5;
+
 export const ProfileContext = createContext({} as ProfileContextData);
 
 export const ProfileProvider = ({ children }: ProfileProviderProps) => {
@@ -31,28 +33,57 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
         useState(1);
     const [loadingRepositories, setLoadingRepositories] = useState(false);
 
-    function loadMoreRepositories() {
-        listRepositoriesCurrentPage <= Math.ceil(amountRepositories / 5) &&
-            setListRepositoriesCurrentPage(listRepositoriesCurrentPage + 1);
-    }
+    const loadMoreRepositories = useCallback(() => {
+        setListRepositoriesCurrentPage((currentPage) => {
+            const maxPages = Math.ceil(amountRepositories / REPOSITORIES_PER_PAGE);
+
+            if (currentPage >= maxPages) {
+                return currentPage;
+            }
+
+            return currentPage + 1;
+        });
+    }, [amountRepositories]);
 
     useEffect(() => {
-        setLoadingRepositories(true);
-        function getAllRepositories() {
-            setTimeout(async () => {
-                const userReq = await Api.get("users/DavidAlexandre93");
-                const amountRepos = await userReq.data.public_repos;
-                setAmountRepositories(amountRepos);
-                const reposReq = await Api.get("users/DavidAlexandre93/repos");
-                const listRepos = await reposReq.data.splice(
-                    0,
-                    5 * listRepositoriesCurrentPage
-                );
-                setListRepositories(listRepos);
-                setLoadingRepositories(false);
-            }, 1000);
+        let isMounted = true;
+
+        async function getAllRepositories() {
+            setLoadingRepositories(true);
+
+            try {
+                const [userResponse, repositoriesResponse] = await Promise.all([
+                    Api.get("users/DavidAlexandre93"),
+                    Api.get("users/DavidAlexandre93/repos", {
+                        params: {
+                            per_page: REPOSITORIES_PER_PAGE * listRepositoriesCurrentPage,
+                            sort: "updated",
+                        },
+                    }),
+                ]);
+
+                if (!isMounted) {
+                    return;
+                }
+
+                setAmountRepositories(userResponse.data.public_repos);
+                setListRepositories(repositoriesResponse.data);
+            } catch {
+                if (isMounted) {
+                    setListRepositories([]);
+                }
+            } finally {
+                if (isMounted) {
+                    setLoadingRepositories(false);
+                }
+            }
         }
+
         getAllRepositories();
+
+        return () => {
+            isMounted = false;
+        };
     }, [listRepositoriesCurrentPage]);
 
     return (
