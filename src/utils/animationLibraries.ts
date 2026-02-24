@@ -8,8 +8,14 @@ type GsapInstance = {
     registerPlugin?: (plugin: unknown) => void;
     timeline: (config?: Record<string, unknown>) => any;
     context: (callback: () => void, scope?: Element) => { revert: () => void };
-    fromTo: (target: unknown, from: Record<string, unknown>, to: Record<string, unknown>) => void;
+    fromTo: (
+        target: unknown,
+        from: Record<string, unknown>,
+        to: Record<string, unknown>
+    ) => void;
 };
+
+let isGsapPluginRegistered = false;
 
 export const getGsap = (): GsapInstance | null => {
     if (typeof window === "undefined") {
@@ -21,8 +27,13 @@ export const getGsap = (): GsapInstance | null => {
         ScrollTrigger?: unknown;
     };
 
-    if (customWindow.gsap?.registerPlugin && customWindow.ScrollTrigger) {
+    if (
+        !isGsapPluginRegistered &&
+        customWindow.gsap?.registerPlugin &&
+        customWindow.ScrollTrigger
+    ) {
         customWindow.gsap.registerPlugin(customWindow.ScrollTrigger);
+        isGsapPluginRegistered = true;
     }
 
     return customWindow.gsap ?? null;
