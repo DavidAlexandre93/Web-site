@@ -27,7 +27,7 @@ const Home: NextPage = () => {
     return (
         <>
             <NextHead
-                title="Portfolio David Alexandre Fernandes - Desenvolvedor Frontend, ReactJS, NextJS, NodeJS"
+                title="Portfolio David Alexandre Fernandes - Software Developer | DevOps | Artificial Intelligence | Blockchain"
                 faviconPath="favicon.svg"
             />
             <HeaderProvider>

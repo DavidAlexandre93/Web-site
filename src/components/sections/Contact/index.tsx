@@ -66,7 +66,7 @@ export const Contact = () => {
                     </Link>
                     <Link
                         href={
-                            "https://calendly.com/davidalexandrefernandes"
+                            "mailto:davidalexandrefernandes@outlook.com"
                         }
                     >
                         <a className="card-contact" title={t("sendEmailTitle")}>
@@ -78,7 +78,7 @@ export const Contact = () => {
                             <p>davidalexandrefernandes@outlook.com</p>
                         </a>
                     </Link>
-                    <Link href={"https://wa.me/5581987232647"}>
+                    <Link href={"https://wa.me/5511959364795"}>
                         <a className="card-contact" title={t("contactTitle")}>
                             <BsWhatsapp
                                 size={40}
