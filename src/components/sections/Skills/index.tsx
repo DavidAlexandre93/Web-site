@@ -1,13 +1,40 @@
 import { useTranslation } from "next-i18next";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PageContext } from "../../../contexts/PageContext";
 import { CardSkill } from "../../partials/CardSkill";
 import { TitleSection } from "../../partials/TitleSection";
 import { SkillsContainer } from "./styles";
+import { getGsap } from "../../../utils/animationLibraries";
 
 export const Skills = () => {
     const { skillsRef } = useContext(PageContext);
     const { t } = useTranslation();
+
+    useEffect(() => {
+        const gsap = getGsap();
+        const section = skillsRef.current;
+
+        if (!gsap || !section) {
+            return;
+        }
+
+        const context = gsap.context(() => {
+            gsap.fromTo(
+                section.querySelectorAll(".category"),
+                { opacity: 0, y: 55 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.85,
+                    stagger: 0.2,
+                    ease: "power2.out",
+                    scrollTrigger: { trigger: section, start: "top 70%" }
+                }
+            );
+        }, section);
+
+        return () => context.revert();
+    }, [skillsRef]);
 
     return (
         <SkillsContainer ref={skillsRef}>
