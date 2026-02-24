@@ -1,8 +1,8 @@
 import { MenuMobileContainer } from "./styles";
 import { IoClose } from "react-icons/io5";
 import { useContext } from "react";
-import { HeaderContext } from "../../../contexts/HeaderContext";
-import { PageContext } from "../../../contexts/PageContext";
+import { HeaderContext } from "@/contexts";
+import { PageContext } from "@/contexts";
 import { useTranslation } from "next-i18next";
 
 export const MenuMobile = () => {

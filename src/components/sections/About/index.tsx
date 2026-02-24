@@ -1,9 +1,9 @@
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useContext, useEffect } from "react";
-import { PageContext } from "../../../contexts/PageContext";
-import { getGsap, getMotionAnimate } from "../../../utils/animationLibraries";
-import { TitleSection } from "../../partials/TitleSection";
+import { PageContext } from "@/contexts";
+import { getGsap, getMotionAnimate } from "@/utils";
+import { TitleSection } from "@/components/partials/TitleSection";
 import { AboutContainer } from "./styles";
 
 export const About = () => {

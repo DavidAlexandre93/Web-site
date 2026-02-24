@@ -1,18 +1,19 @@
 import type { NextPage } from "next";
-import { Header } from "../components/sections/Header";
-import { MenuMobile } from "../components/partials/MenuMobile";
-import { HomePage } from "../components/sections/HomePage";
-import { Stats } from "../components/sections/Stats";
-import { About } from "../components/sections/About";
-import { Separator } from "../components/partials/Separator";
-import NextHead from "../components/partials/NextHead";
-import { HeaderProvider } from "../contexts/HeaderContext";
-import { Skills } from "../components/sections/Skills";
-import { Contact } from "../components/sections/Contact";
-import { Footer } from "../components/sections/Footer";
-import { Portfolio } from "../components/sections/Portfolio";
-import { ProfileProvider } from "../contexts/ProfileContext";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import {
+    About,
+    Contact,
+    Footer,
+    Header,
+    HomePage,
+    MenuMobile,
+    NextHead,
+    Portfolio,
+    Separator,
+    Skills,
+    Stats,
+} from "@/components";
+import { HeaderProvider, ProfileProvider } from "@/contexts";
 
 export async function getStaticProps({ locale }: { locale: string }) {
     return {

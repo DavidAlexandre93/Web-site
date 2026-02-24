@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FooterContainer } from "./styles";
 import { FaLevelUpAlt } from "react-icons/fa";
 import { useContext } from "react";
-import { PageContext } from "../../../contexts/PageContext";
+import { PageContext } from "@/contexts";
 import { useTranslation } from "next-i18next";
 
 export const Footer = () => {

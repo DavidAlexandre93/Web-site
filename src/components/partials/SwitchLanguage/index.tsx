@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { IoLanguage } from "react-icons/io5";
 import { RefObject, useContext, useRef } from "react";
-import { PageContext } from "../../../contexts/PageContext";
+import { PageContext } from "@/contexts";
 
 export const SwitchLanguage = () => {
     const { isActiveModalLang, toggleModalLanguage } = useContext(PageContext);

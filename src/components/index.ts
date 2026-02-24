@@ -1,0 +1,16 @@
+export { Header } from "./sections/Header";
+export { MenuMobile } from "./partials/MenuMobile";
+export { HomePage } from "./sections/HomePage";
+export { Stats } from "./sections/Stats";
+export { About } from "./sections/About";
+export { Separator } from "./partials/Separator";
+export { Skills } from "./sections/Skills";
+export { Contact } from "./sections/Contact";
+export { Footer } from "./sections/Footer";
+export { Portfolio } from "./sections/Portfolio";
+export { SwitchLanguage } from "./partials/SwitchLanguage";
+export { TitleSection } from "./partials/TitleSection";
+export { CardSkill } from "./partials/CardSkill";
+export { CardProject } from "./partials/CardProject";
+export { default as Loading } from "./partials/Loading";
+export { default as NextHead } from "./partials/NextHead";

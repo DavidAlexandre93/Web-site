@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useCallback, useEffect, useState } from "react";
-import { Api } from "../services/Api";
+import { Api } from "@/services";
 
 interface ProfileProviderProps {
     children: ReactNode;

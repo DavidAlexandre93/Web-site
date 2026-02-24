@@ -1,8 +1,8 @@
 import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
 import Script from "next/script";
-import GlobalStyle from "../styles/GlobalStyle";
-import { PageProvider } from "../contexts/PageContext";
+import GlobalStyle from "@/styles/GlobalStyle";
+import { PageProvider } from "@/contexts";
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (

@@ -1,10 +1,10 @@
 import { useTranslation } from "next-i18next";
 import { useContext, useEffect } from "react";
-import { PageContext } from "../../../contexts/PageContext";
-import { CardSkill } from "../../partials/CardSkill";
-import { TitleSection } from "../../partials/TitleSection";
+import { PageContext } from "@/contexts";
+import { CardSkill } from "@/components/partials/CardSkill";
+import { TitleSection } from "@/components/partials/TitleSection";
 import { SkillsContainer } from "./styles";
-import { getGsap } from "../../../utils/animationLibraries";
+import { getGsap } from "@/utils";
 
 export const Skills = () => {
     const { skillsRef } = useContext(PageContext);
