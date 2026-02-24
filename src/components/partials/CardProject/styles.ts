@@ -6,11 +6,13 @@ export const CardProjectContainer = styled.div`
     border-radius: 1rem;
     overflow: hidden;
     position: relative;
+    box-shadow: 0 2.2rem 4rem rgba(0, 0, 0, 0.25);
+    transform-style: preserve-3d;
     .image {
         min-width: 100%;
         height: 100%;
         filter: blur(0);
-        transition: all 0.15s ease;
+        transition: all 0.25s ease;
         img {
             width: 100%;
             min-height: 100%;
@@ -23,7 +25,7 @@ export const CardProjectContainer = styled.div`
         }
     }
     .overlay {
-        background: rgba(0, 0, 0, 0.15);
+        background: linear-gradient(180deg, rgba(4, 11, 21, 0.1) 0%, rgba(4, 11, 21, 0.65) 100%);
         position: absolute;
         bottom: 0;
         left: 0;

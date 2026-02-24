@@ -8,8 +8,9 @@ export const CardSkillContainer = styled.div<CardSkillContainerProps>`
     width: 30rem;
     height: 12rem;
     padding: 2rem;
-    background-color: transparent;
+    background: linear-gradient(130deg, rgba(20, 33, 52, 0.8), rgba(11, 19, 33, 0.9));
     border: 0.2rem solid var(--border);
+    box-shadow: 0 1.2rem 2.6rem rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
     display: flex;
     align-items: center;

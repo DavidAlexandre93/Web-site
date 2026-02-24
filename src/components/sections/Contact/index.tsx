@@ -5,13 +5,41 @@ import { IoLocationOutline } from "react-icons/io5"; /* Location icon */
 import { IoMailOutline } from "react-icons/io5"; /* Email icon */
 import { BsWhatsapp } from "react-icons/bs"; /*Whatsapp icon */
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PageContext } from "../../../contexts/PageContext";
 import { useTranslation } from "next-i18next";
+import { getGsap } from "../../../utils/animationLibraries";
 
 export const Contact = () => {
     const { contactRef } = useContext(PageContext);
     const { t } = useTranslation();
+
+    useEffect(() => {
+        const gsap = getGsap();
+        const section = contactRef.current;
+
+        if (!gsap || !section) {
+            return;
+        }
+
+        const context = gsap.context(() => {
+            gsap.fromTo(
+                section.querySelectorAll(".card-contact"),
+                { opacity: 0, y: 40, rotateX: -10 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    rotateX: 0,
+                    duration: 0.75,
+                    stagger: 0.14,
+                    ease: "power2.out",
+                    scrollTrigger: { trigger: section, start: "top 70%" }
+                }
+            );
+        }, section);
+
+        return () => context.revert();
+    }, [contactRef]);
 
     return (
         <ContactContainer ref={contactRef}>

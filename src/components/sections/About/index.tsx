@@ -1,13 +1,60 @@
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { PageContext } from "../../../contexts/PageContext";
+import { getGsap, getMotionAnimate } from "../../../utils/animationLibraries";
 import { TitleSection } from "../../partials/TitleSection";
 import { AboutContainer } from "./styles";
 
 export const About = () => {
     const { aboutRef } = useContext(PageContext);
     const { t } = useTranslation();
+
+    useEffect(() => {
+        const gsap = getGsap();
+        const animate = getMotionAnimate();
+        const section = aboutRef.current;
+
+        if (!section || !gsap) {
+            return;
+        }
+
+        const context = gsap.context(() => {
+            gsap.fromTo(
+                section.querySelector(".textAbout"),
+                { x: -45, opacity: 0 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    duration: 0.9,
+                    ease: "power2.out",
+                    scrollTrigger: { trigger: section, start: "top 72%" }
+                }
+            );
+            gsap.fromTo(
+                section.querySelector(".image"),
+                { x: 45, opacity: 0, rotate: 2 },
+                {
+                    x: 0,
+                    opacity: 1,
+                    rotate: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: { trigger: section, start: "top 72%" }
+                }
+            );
+        }, section);
+
+        if (animate) {
+            animate(
+                section.querySelectorAll(".linkSocial a"),
+                { y: [0, -4, 0], scale: [1, 1.04, 1] },
+                { duration: 2.4, repeat: Infinity, easing: "ease-in-out", delay: 0.2 }
+            );
+        }
+
+        return () => context.revert();
+    }, []);
 
     return (
         <AboutContainer ref={aboutRef}>

@@ -21,7 +21,7 @@ export const CardProject = ({
 }: CardProjectProps) => {
     const { t } = useTranslation();
     return (
-        <CardProjectContainer>
+        <CardProjectContainer className="project-card">
             <div className="image">
                 {imageUrl ? (
                     <img src={imageUrl} alt={title} />
