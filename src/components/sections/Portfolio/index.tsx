@@ -73,14 +73,14 @@ export const Portfolio = () => {
                     </p>
                 </div>
                 <div className="content-portfolio">
-                    {listRepositories.map((repository, index) => (
+                    {listRepositories.map((repository) => (
                         <CardProject
                             title={repository.name}
                             description={repository.description}
                             repository={repository.html_url}
                             website={repository.homepage}
                             imageUrl={`https://raw.githubusercontent.com/DavidAlexandre93/${repository.name}/main/printscreen/application.png`}
-                            key={index}
+                            key={repository.html_url}
                         />
                     ))}
                     {loadingRepositories ? (
