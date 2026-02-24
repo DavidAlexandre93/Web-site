@@ -27,15 +27,15 @@ const NextHead = ({ title, faviconPath }: NextHeadProps) => {
             <meta httpEquiv="content-language" content="pt-br" />
             <meta
                 name="keywords"
-                content="David Alexandre Fernandes, portfolio David Alexandre Fernandes, dev, David Alexandre Fernandes dev,programador, programador frontend, desenvolvedor, desenvolvedor frontend, desenvolvedor backend, desenvolvimento web, frontend, backend, desenvolvedor react js, desenvolvedor next js, profissional de ti, criação de sites, desenvolvedor de sites"
+                content="David Alexandre Fernandes, portfolio David Alexandre Fernandes, dev, David Alexandre Fernandes dev,programador, desenvolvedor full cycle, desenvolvedor, devops, sre, qualidade de software, cloud computing, inteligência artificial, blockchain, nft, metaverso"
             />
             <meta
                 name="title"
-                content="Portfolio David Alexandre Fernandes - Desenvolvedor Frontend, ReactJS, NextJS, NodeJS"
+                content="Portfolio David Alexandre Fernandes - Software Developer | DevOps | Artificial Intelligence | Blockchain"
             />
             <meta
                 name="description"
-                content="Desenvolvedor Web, Websites , WebApp, HTML, CSS, JavaScript, Jquery, ReactJS, NextJS, NodeJS, MySQL, MongoDB, SQL, Profissional de TI, Frontend, Desenvolvimento de Sites, Portfolio Web de David Alexandre Fernandes"
+                content="Software Developer com atuação em Full Cycle, DevOps, SRE, Qualidade de Software, Cloud Computing, Inteligência Artificial e Blockchain (NFT/Metaverso)."
             />
             <meta name="author" content="David Alexandre Fernandes" />
             <meta name="creator" content="David Alexandre Fernandes" />
@@ -46,11 +46,11 @@ const NextHead = ({ title, faviconPath }: NextHeadProps) => {
             <meta property="og:type" content="website" />
             <meta
                 property="og:title"
-                content="Portfolio David Alexandre Fernandes - Desenvolvedor Frontend, ReactJS, NextJS, NodeJS"
+                content="Portfolio David Alexandre Fernandes - Software Developer | DevOps | Artificial Intelligence | Blockchain"
             />
             <meta
                 property="og:description"
-                content="Desenvolvedor Web Frontend, Websites , WebApp, HTML, CSS, JavaScript, Jquery, ReactJS, NextJS, NodeJS, MySQL, MongoDB, SQL, Profissional de TI, Frontend, Desenvolvimento de Sites"
+                content="Software Developer com atuação em Full Cycle, DevOps, SRE, Qualidade de Software, Cloud Computing, Inteligência Artificial e Blockchain (NFT/Metaverso)."
             />
             <meta
                 property="og:image"
@@ -58,7 +58,7 @@ const NextHead = ({ title, faviconPath }: NextHeadProps) => {
             />
             <meta
                 property="og:site_name"
-                content="Portfolio David Alexandre Fernandes - Desenvolvedor Frontend"
+                content="Portfolio David Alexandre Fernandes - Software Developer"
             />
         </Head>
     );
