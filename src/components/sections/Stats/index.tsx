@@ -3,10 +3,10 @@ import { FaBug } from "react-icons/fa"; /*Bug icon */
 import { RiGitRepositoryLine } from "react-icons/ri"; /*Repository icon */
 import { MdTimer } from "react-icons/md"; /*Timer icon */
 import { MdOutlineLightbulb } from "react-icons/md"; /*Light icon */
-import { ProfileContext } from "../../../contexts/ProfileContext";
+import { ProfileContext } from "@/contexts";
 import { useContext, useEffect, useRef } from "react";
 import { useTranslation } from "next-i18next";
-import { getGsap, getMotionAnimate } from "../../../utils/animationLibraries";
+import { getGsap, getMotionAnimate } from "@/utils";
 
 export const Stats = () => {
     const statsRef = useRef<HTMLElement>(null);

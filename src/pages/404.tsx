@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import NextHead from "../components/partials/NextHead";
+import { NextHead } from "@/components";
 import { IoReturnDownBackSharp } from "react-icons/io5";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";

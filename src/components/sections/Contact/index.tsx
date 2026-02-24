@@ -1,4 +1,4 @@
-import { TitleSection } from "../../partials/TitleSection";
+import { TitleSection } from "@/components/partials/TitleSection";
 import { ContactContainer } from "./styles";
 
 import { IoLocationOutline } from "react-icons/io5"; /* Location icon */
@@ -6,9 +6,9 @@ import { IoMailOutline } from "react-icons/io5"; /* Email icon */
 import { BsWhatsapp } from "react-icons/bs"; /*Whatsapp icon */
 import Link from "next/link";
 import { useContext, useEffect } from "react";
-import { PageContext } from "../../../contexts/PageContext";
+import { PageContext } from "@/contexts";
 import { useTranslation } from "next-i18next";
-import { getGsap } from "../../../utils/animationLibraries";
+import { getGsap } from "@/utils";
 
 export const Contact = () => {
     const { contactRef } = useContext(PageContext);

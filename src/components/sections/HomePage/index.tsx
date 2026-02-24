@@ -4,9 +4,9 @@ import { BsArrowDownShort } from "react-icons/bs"; /*ArrowDown icon*/
 import { FiCopy } from "react-icons/fi"; /*Copy icon*/
 import Link from "next/link";
 import { useContext, useEffect, useRef } from "react";
-import { PageContext } from "../../../contexts/PageContext";
+import { PageContext } from "@/contexts";
 import { useTranslation } from "next-i18next";
-import { getGsap, getMotionAnimate } from "../../../utils/animationLibraries";
+import { getGsap, getMotionAnimate } from "@/utils";
 
 export const HomePage = () => {
     const containerRef = useRef<HTMLElement>(null);

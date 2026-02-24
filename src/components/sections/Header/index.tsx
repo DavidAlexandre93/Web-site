@@ -4,10 +4,10 @@ import Link from "next/link";
 import { HeaderContainer } from "./styles";
 import { CgMenuRight } from "react-icons/cg"; /*Menu icon*/
 import { useContext } from "react";
-import { HeaderContext } from "../../../contexts/HeaderContext";
-import { PageContext } from "../../../contexts/PageContext";
+import { HeaderContext } from "@/contexts";
+import { PageContext } from "@/contexts";
 import { useTranslation } from "next-i18next";
-import { SwitchLanguage } from "../../partials/SwitchLanguage";
+import { SwitchLanguage } from "@/components/partials/SwitchLanguage";
 
 export const Header = () => {
     const { toggleShowMenu } = useContext(HeaderContext);

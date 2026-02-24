@@ -1,6 +1,6 @@
 import { useTranslation } from "next-i18next";
 import { useEffect, useRef } from "react";
-import { getMotionAnimate } from "../../../utils/animationLibraries";
+import { getMotionAnimate } from "@/utils";
 import { CardSkillContainer } from "./styles";
 
 type CardSkillProps = {

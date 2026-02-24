@@ -1,12 +1,12 @@
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useContext, useEffect } from "react";
-import { PageContext } from "../../../contexts/PageContext";
-import { ProfileContext } from "../../../contexts/ProfileContext";
-import { getGsap, getMotionAnimate } from "../../../utils/animationLibraries";
-import { CardProject } from "../../partials/CardProject";
-import Loading from "../../partials/Loading";
-import { TitleSection } from "../../partials/TitleSection";
+import { PageContext } from "@/contexts";
+import { ProfileContext } from "@/contexts";
+import { getGsap, getMotionAnimate } from "@/utils";
+import { CardProject } from "@/components/partials/CardProject";
+import Loading from "@/components/partials/Loading";
+import { TitleSection } from "@/components/partials/TitleSection";
 import { PortfolioContainer } from "./styles";
 
 export const Portfolio = () => {
