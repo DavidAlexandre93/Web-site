@@ -32,6 +32,15 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
         gap: 3rem;
         a.homeLink {
             background-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            img.profileLogo {
+                width: 4.2rem;
+                height: 4.2rem;
+                border-radius: 50%;
+                object-fit: cover;
+            }
             h1 {
                 padding: 0 0.5rem;
                 font-size: 2.2rem;

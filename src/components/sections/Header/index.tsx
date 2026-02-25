@@ -79,6 +79,11 @@ export const Header = () => {
             <div className="content-header">
                 <Link href="/">
                     <a className="homeLink">
+                        <img
+                            src="./profile.svg"
+                            alt="Imagem de perfil"
+                            className="profileLogo"
+                        />
                         <h1>David Alexandre Fernandes</h1>
                     </a>
                 </Link>
