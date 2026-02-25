@@ -1,7 +1,9 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
 
 type MenuMobileProps = {
     activeMenu: boolean;
+    children?: ReactNode;
 };
 
 export const MenuMobileContainer = styled.nav<MenuMobileProps>`
