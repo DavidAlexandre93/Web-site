@@ -5,23 +5,23 @@ Portfólio pessoal construído com Next.js, TypeScript, styled-components e inte
 ## Requisitos
 
 - Node.js **20.x**
-- Yarn 1.x
+- npm
 
 > Dica: use `nvm use` (arquivo `.nvmrc` incluso no projeto).
 
 ## Instalação
 
 ```bash
-yarn install
+npm install
 ```
 
 ## Scripts
 
 ```bash
-yarn dev    # ambiente de desenvolvimento
-yarn build  # build de produção
-yarn start  # sobe a aplicação em produção
-yarn lint   # validação estática com ESLint
+npm run dev    # ambiente de desenvolvimento
+npm run build  # build de produção
+npm run start  # sobe a aplicação em produção
+npm run lint   # validação estática com ESLint
 ```
 
 ## Qualidade de código
