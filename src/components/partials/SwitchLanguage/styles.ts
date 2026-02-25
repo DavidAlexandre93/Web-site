@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-type SwitchLanguageContainerProps = {
-    isActiveModalLang: boolean;
-};
-
-export const SwitchLanguageContainer = styled.div<SwitchLanguageContainerProps>`
+export const SwitchLanguageContainer = styled.div`
     width: 15rem;
     height: auto;
     display: flex;
@@ -22,9 +18,8 @@ export const SwitchLanguageContainer = styled.div<SwitchLanguageContainerProps>`
         font-size: 0;
     }
     .selectLang {
-        visibility: ${({ isActiveModalLang }) =>
-            isActiveModalLang ? "visible" : "hidden"};
-        opacity: ${({ isActiveModalLang }) => (isActiveModalLang ? "1" : "0")};
+        visibility: hidden;
+        opacity: 0;
         position: absolute;
         width: 15rem;
         top: 120%;
@@ -39,6 +34,12 @@ export const SwitchLanguageContainer = styled.div<SwitchLanguageContainerProps>`
         padding: 2rem;
         border-radius: 2rem 0 2rem 2rem;
         transition: all 0.3s ease;
+
+        &.open {
+            visibility: visible;
+            opacity: 1;
+        }
+
         button {
             padding: 1rem 1.5rem;
             color: var(--text-secondary);
