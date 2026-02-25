@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import type { PropsWithChildren } from "react";
 
-interface CardSkillContainerProps {
+interface CardSkillContainerOwnProps {
     skillActive: boolean;
 }
+
+type CardSkillContainerProps = PropsWithChildren<CardSkillContainerOwnProps>;
 
 export const CardSkillContainer = styled.div<CardSkillContainerProps>`
     width: 30rem;
