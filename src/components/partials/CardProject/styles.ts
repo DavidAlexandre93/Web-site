@@ -1,6 +1,12 @@
 import styled from "styled-components";
+import type { ReactNode } from "react";
 
-export const CardProjectContainer = styled.div`
+type CardProjectContainerProps = {
+    children?: ReactNode;
+    className?: string;
+};
+
+export const CardProjectContainer = styled.div<CardProjectContainerProps>`
     width: 50rem;
     height: 30rem;
     border-radius: 1rem;
