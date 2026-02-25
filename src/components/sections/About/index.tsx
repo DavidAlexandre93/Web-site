@@ -85,7 +85,7 @@ export const About = () => {
                 </div>
                 <div className="image">
                     <img
-                        src="./profile.jpeg"
+                        src="./profile.svg"
                         alt={t("illustrativePhoto")}
                         title={t("illustrativePhoto")}
                     />
