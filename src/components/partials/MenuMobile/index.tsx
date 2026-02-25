@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { useTranslation } from "next-i18next";
 import { MenuMobileContainer } from "./styles";
@@ -6,7 +6,6 @@ import { HeaderContext, PageContext } from "@/contexts";
 import { getGsap, getMotionAnimate } from "@/utils";
 
 export const MenuMobile = () => {
-    const menuRef = useRef<HTMLElement>(null);
     const { activeMenu, toggleShowMenu } = useContext(HeaderContext);
     const { scrollToSection, aboutRef, skillsRef, portfolioRef, contactRef } =
         useContext(PageContext);
@@ -15,7 +14,8 @@ export const MenuMobile = () => {
     useEffect(() => {
         const gsap = getGsap();
         const animate = getMotionAnimate();
-        const menuElement = menuRef.current;
+        const closeMenuButton = document.querySelector<HTMLElement>(".closeMenu");
+        const menuElement = closeMenuButton?.closest("nav");
 
         if (!gsap || !menuElement) {
             return;
@@ -35,17 +35,23 @@ export const MenuMobile = () => {
             );
         }
 
-        const floatAnimation = animate?.(
-            menuElement.querySelector(".closeMenu"),
-            { y: [0, -5, 0], rotate: [0, 6, -6, 0] },
-            { duration: 2, repeat: Infinity, easing: "ease-in-out" }
-        );
+        const floatAnimation = closeMenuButton
+            ? animate?.(
+                  closeMenuButton,
+                  { y: [0, -5, 0], rotate: [0, 6, -6, 0] },
+                  { duration: 2, repeat: Infinity, easing: "ease-in-out" }
+              )
+            : undefined;
 
-        return () => floatAnimation?.stop();
+        return () => {
+            if (typeof floatAnimation?.stop === "function") {
+                floatAnimation.stop();
+            }
+        };
     }, [activeMenu]);
 
     return (
-        <MenuMobileContainer ref={menuRef} activeMenu={activeMenu}>
+        <MenuMobileContainer activeMenu={activeMenu}>
             <button className="closeMenu" onClick={toggleShowMenu}>
                 <IoClose size={30} />
             </button>
