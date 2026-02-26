@@ -22,14 +22,14 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
     transition: all 0.25s ease;
 
     .content-header {
-        width: min(110rem, 90%);
+        width: min(110rem, 92%);
         margin: 0 auto;
         padding: 2rem 0;
 
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 3rem;
+        gap: clamp(1.2rem, 2vw, 3rem);
         a.homeLink {
             background-color: transparent;
             display: flex;
@@ -43,7 +43,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
             }
             h1 {
                 padding: 0 0.5rem;
-                font-size: 2.2rem;
+                font-size: clamp(1.8rem, 2.8vw, 2.2rem);
             }
         }
         nav {
@@ -105,11 +105,29 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
             }
         }
     }
+    @media (max-width: 1024px) {
+        .content-header {
+            nav {
+                ul {
+                    gap: 0.2rem;
+                    li {
+                        button {
+                            padding: 0.8rem;
+                            font-size: 1.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
     @media (max-width: 768px) {
         .content-header {
             gap: 0;
             a.homeLink {
-                margin-right: 3rem;
+                margin-right: 1.2rem;
+                h1 {
+                    display: none;
+                }
             }
             nav {
                 display: none;

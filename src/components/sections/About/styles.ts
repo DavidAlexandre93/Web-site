@@ -1,27 +1,29 @@
 import styled from "styled-components";
 
 export const AboutContainer = styled.section`
-    padding: 7rem 3rem;
+    padding: clamp(6rem, 8vw, 7rem) 3rem;
     width: 100%;
     background: transparent url("./aboutBackground.svg") no-repeat center/cover;
     .contentAbout {
-        width: min(110rem, 90%);
+        width: min(110rem, 92%);
         margin: 0 auto;
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
-        gap: 6rem;
+        gap: clamp(3rem, 6vw, 6rem);
         position: relative;
         .textAbout {
             p {
                 max-width: 70rem;
                 margin-top: 3rem;
-                font-size: 1.8rem;
+                font-size: clamp(1.6rem, 2.2vw, 1.8rem);
                 color: var(--text-secondary);
+                line-height: 1.7;
             }
             .linkSocial {
                 margin-top: 4rem;
                 display: flex;
+                flex-wrap: wrap;
                 align-items: center;
                 gap: 2rem;
                 a {
@@ -39,7 +41,7 @@ export const AboutContainer = styled.section`
             }
         }
         .image {
-            max-width: 30rem;
+            width: min(30rem, 100%);
             img {
                 max-width: 100%;
                 width: auto;
@@ -49,6 +51,12 @@ export const AboutContainer = styled.section`
         @media (max-width: 876px) {
             flex-direction: column-reverse;
             align-items: center;
+            .textAbout {
+                text-align: center;
+                .linkSocial {
+                    justify-content: center;
+                }
+            }
         }
     }
 `;

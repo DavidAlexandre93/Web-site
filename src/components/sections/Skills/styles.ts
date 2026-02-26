@@ -2,20 +2,20 @@ import styled from "styled-components";
 
 export const SkillsContainer = styled.section`
     width: 100%;
-    padding: 7rem 3rem;
+    padding: clamp(6rem, 8vw, 7rem) 3rem;
     .contentSkills {
-        width: min(110rem, 90%);
+        width: min(110rem, 92%);
         margin: 0 auto;
         .titleSkills {
             p {
-                font-size: 4rem;
+                font-size: clamp(2.7rem, 4vw, 4rem);
                 max-width: 60rem;
                 margin-bottom: 2rem;
             }
         }
 
         .category {
-            margin-top: 6rem;
+            margin-top: clamp(3rem, 7vw, 6rem);
             .title-category {
                 h4 {
                     text-transform: uppercase;
@@ -25,17 +25,9 @@ export const SkillsContainer = styled.section`
             .category-content {
                 margin-top: 2rem;
                 width: 100%;
-                display: flex;
-                flex-flow: row wrap;
-                align-items: center;
-                gap: 3rem;
-            }
-        }
-        @media (max-width: 475px) {
-            .titleSkills {
-                p {
-                    font-size: 3rem;
-                }
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+                gap: 2rem;
             }
         }
     }

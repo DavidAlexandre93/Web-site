@@ -29,6 +29,22 @@ export default createGlobalStyle`
     }
     html {
         font-size: 62.5%;
+        scroll-behavior: smooth;
+    }
+    @media (max-width: 1024px) {
+        html {
+            font-size: 60%;
+        }
+    }
+    @media (max-width: 768px) {
+        html {
+            font-size: 58%;
+        }
+    }
+    @media (max-width: 480px) {
+        html {
+            font-size: 56.25%;
+        }
     }
     body, a, input, button, textarea {
         font-size: 1.6rem;
@@ -55,6 +71,13 @@ export default createGlobalStyle`
         cursor: pointer;
         border: none;
         text-decoration: none;
+    }
+    img,
+    svg,
+    video,
+    canvas {
+        max-width: 100%;
+        height: auto;
     }
     button {
         background-color: transparent;
