@@ -2,21 +2,21 @@ import styled from "styled-components";
 
 export const HomeContainer = styled.section`
     width: 100%;
-    padding: 20rem 3rem;
+    padding: clamp(13rem, 18vw, 20rem) 3rem clamp(8rem, 12vw, 12rem);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
     h2.titleHome {
-        font-size: 4.5rem;
+        font-size: clamp(3.2rem, 5vw, 4.5rem);
         max-width: 50rem;
         text-align: center;
         font-weight: 600;
-        line-height: 5.3rem;
+        line-height: 1.2;
     }
     p.descriptionHome {
-        font-size: 2.1rem;
+        font-size: clamp(1.8rem, 2.8vw, 2.1rem);
         font-weight: 400;
         max-width: 50rem;
         text-align: center;
@@ -24,7 +24,7 @@ export const HomeContainer = styled.section`
         margin-top: 2rem;
     }
     .links {
-        margin-top: 6rem;
+        margin-top: clamp(3.5rem, 8vw, 6rem);
         display: flex;
         align-items: center;
         gap: 2rem;
@@ -57,13 +57,13 @@ export const HomeContainer = styled.section`
         }
     }
     .email {
-        width: 40rem;
+        width: min(40rem, 100%);
         background-color: var(--boxes);
         padding: 1.4rem 2rem;
         border-radius: 3rem;
         display: flex;
         align-items: center;
-        margin-top: 6rem;
+        margin-top: clamp(3.5rem, 8vw, 6rem);
         position: relative;
         .text-mail {
             width: 100%;
@@ -100,22 +100,14 @@ export const HomeContainer = styled.section`
         width: 100%;
         height: 100%;
     }
-    @media (max-width: 475px) {
-        h2.titleHome {
-            font-size: 3.8rem;
-        }
-        p.descriptionHome {
-            font-size: 1.9rem;
-        }
-        .email {
-            width: 100%;
-        }
-    }
     @media (max-width: 400px) {
         .links {
             flex-direction: column-reverse;
+            width: 100%;
+            button,
+            a {
+                width: 100%;
+            }
         }
-    }
-    @media (max-width: 320px) {
     }
 `;

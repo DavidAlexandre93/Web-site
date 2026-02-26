@@ -4,19 +4,19 @@ export const FooterContainer = styled.footer`
     padding: 4rem 3rem;
     background-color: var(--container);
     .content {
-        width: min(110rem, 90%);
+        width: min(110rem, 92%);
         margin: 0 auto;
         display: flex;
         flex-flow: row wrap;
-        row-gap: 4rem;
-        column-gap: 10rem;
+        row-gap: 3rem;
+        column-gap: 6rem;
         align-items: center;
         justify-content: space-between;
         .texts {
             p {
                 font-weight: 400;
                 color: var(--text-secondary);
-                max-width: 25rem;
+                max-width: 35rem;
             }
             .socials {
                 margin-top: 2rem;
@@ -45,6 +45,18 @@ export const FooterContainer = styled.footer`
             }
             100% {
                 transform: translateY(10%);
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+        .content {
+            justify-content: center;
+            text-align: center;
+            .texts {
+                .socials {
+                    justify-content: center;
+                }
             }
         }
     }

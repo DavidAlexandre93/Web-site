@@ -7,8 +7,9 @@ type CardProjectContainerProps = {
 };
 
 export const CardProjectContainer = styled.div<CardProjectContainerProps>`
-    width: 50rem;
-    height: 30rem;
+    width: 100%;
+    min-height: 30rem;
+    aspect-ratio: 5 / 3;
     border-radius: 1rem;
     overflow: hidden;
     position: relative;
@@ -106,7 +107,13 @@ export const CardProjectContainer = styled.div<CardProjectContainerProps>`
             filter: blur(0.4rem);
         }
     }
-    @media (max-width: 550px) {
-        width: 100%;
+    @media (max-width: 640px) {
+        aspect-ratio: 1 / 1;
+        min-height: 26rem;
+        .overlay {
+            .description {
+                padding: 0 2rem;
+            }
+        }
     }
 `;

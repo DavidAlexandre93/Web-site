@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const PortfolioContainer = styled.section`
-    padding: 10rem 3rem;
+    padding: clamp(6rem, 10vw, 10rem) 3rem;
     .content {
-        width: min(110rem, 90%);
+        width: min(110rem, 92%);
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -13,10 +13,10 @@ export const PortfolioContainer = styled.section`
             text-align: center;
             p {
                 max-width: 50rem;
-                font-size: 2.8rem;
+                font-size: clamp(2rem, 3.5vw, 2.8rem);
                 margin-top: 2rem;
                 a {
-                    font-size: 2.8rem;
+                    font-size: inherit;
                     text-decoration: underline;
                     text-decoration-color: var(--blue);
                     color: var(--blue);
@@ -24,15 +24,14 @@ export const PortfolioContainer = styled.section`
             }
         }
         .content-portfolio {
-            margin-top: 12rem;
-            display: flex;
-            flex-flow: row wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 4rem;
+            margin-top: clamp(5rem, 10vw, 12rem);
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
+            gap: clamp(2rem, 4vw, 4rem);
             button.loadMoreRepositories {
-                width: 50rem;
-                height: 30rem;
+                width: 100%;
+                min-height: 30rem;
                 border: 0.5rem dashed var(--blueOpacity);
                 p {
                     font-size: 2rem;
@@ -43,11 +42,6 @@ export const PortfolioContainer = styled.section`
                     p {
                         transform: scale(1.05);
                     }
-                }
-            }
-            @media (max-width: 550px) {
-                button.loadMoreRepositories {
-                    width: 100%;
                 }
             }
         }
