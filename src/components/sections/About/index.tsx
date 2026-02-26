@@ -53,11 +53,15 @@ export const About = () => {
             );
         }
 
-        return () => context.revert();
+
+    return () => context.revert();
     }, []);
 
+
+    const AboutContainerElement = AboutContainer as any;
+
     return (
-        <AboutContainer ref={aboutRef}>
+        <AboutContainerElement ref={aboutRef}>
             <div className="contentAbout">
                 <div className="textAbout">
                     <TitleSection>{t("about")}</TitleSection>
@@ -91,6 +95,6 @@ export const About = () => {
                     />
                 </div>
             </div>
-        </AboutContainer>
+        </AboutContainerElement>
     );
 };

@@ -33,11 +33,15 @@ export const Skills = () => {
             );
         }, section);
 
-        return () => context.revert();
+
+    return () => context.revert();
     }, [skillsRef]);
 
+
+    const SkillsContainerElement = SkillsContainer as any;
+
     return (
-        <SkillsContainer ref={skillsRef}>
+        <SkillsContainerElement ref={skillsRef}>
             <div className="contentSkills">
                 <div className="titleSkills">
                     <p>{t("allTechnologies")}</p>
@@ -239,6 +243,6 @@ export const Skills = () => {
                     </div>
                 </div>
             </div>
-        </SkillsContainer>
+        </SkillsContainerElement>
     );
 };

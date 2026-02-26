@@ -62,13 +62,17 @@ export const HomePage = () => {
             );
         }
 
-        return () => {
+
+    return () => {
             timeline.kill();
         };
     }, []);
 
+
+    const HomeContainerElement = HomeContainer as any;
+
     return (
-        <HomeContainer ref={containerRef}>
+        <HomeContainerElement ref={containerRef}>
             <h2 className="titleHome">{t("professionalPortfolio")}</h2>
             <p className="descriptionHome">{t("frontendDeveloper")}</p>
             <div className="links">
@@ -96,6 +100,6 @@ export const HomePage = () => {
                     <FiCopy size={20} className="iconCopy" />
                 </button>
             </div>
-        </HomeContainer>
+        </HomeContainerElement>
     );
 };
