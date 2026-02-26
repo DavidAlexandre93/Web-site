@@ -38,11 +38,15 @@ export const Contact = () => {
             );
         }, section);
 
-        return () => context.revert();
+
+    return () => context.revert();
     }, [contactRef]);
 
+
+    const ContactContainerElement = ContactContainer as any;
+
     return (
-        <ContactContainer ref={contactRef}>
+        <ContactContainerElement ref={contactRef}>
             <div className="content">
                 <div className="title-contact">
                     <p>{t("letStart")}</p>
@@ -90,6 +94,6 @@ export const Contact = () => {
                     </Link>
                 </div>
             </div>
-        </ContactContainer>
+        </ContactContainerElement>
     );
 };

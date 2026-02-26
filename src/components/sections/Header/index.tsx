@@ -58,20 +58,26 @@ export const Header = () => {
             );
         }, headerElement);
 
-        const pulse = animate?.(
-            ".btn-menuMobile",
-            { scale: [1, 1.06, 1], rotate: [0, -3, 0, 3, 0] },
-            { duration: 2.1, repeat: Infinity, easing: "ease-in-out" }
-        );
+        const pulse = animate
+            ? animate(
+                  ".btn-menuMobile",
+                  { scale: [1, 1.06, 1], rotate: [0, -3, 0, 3, 0] },
+                  { duration: 2.1, repeat: Infinity, easing: "ease-in-out" }
+              )
+            : undefined;
 
-        return () => {
+
+    return () => {
             context.revert();
-            pulse?.stop();
+            pulse?.stop?.();
         };
     }, []);
 
+
+    const HeaderContainerElement = HeaderContainer as any;
+
     return (
-        <HeaderContainer
+        <HeaderContainerElement
             ref={headerRef}
             visibleHeader={isVisibleHeader}
             isPageTop={handlePageTop}
@@ -120,6 +126,6 @@ export const Header = () => {
                     </button>
                 </div>
             </div>
-        </HeaderContainer>
+        </HeaderContainerElement>
     );
 };

@@ -47,20 +47,28 @@ export const Footer = () => {
             );
         }, footerElement);
 
-        const upAnimation = animate?.(
-            footerElement.querySelector(".btnTopPage svg"),
-            { y: [0, -6, 0] },
-            { duration: 1.4, repeat: Infinity, easing: "ease-in-out" }
-        );
+        const upIcon = footerElement.querySelector(".btnTopPage svg");
+        const upAnimation =
+            animate && upIcon
+                ? animate(
+                      upIcon,
+                      { y: [0, -6, 0] },
+                      { duration: 1.4, repeat: Infinity, easing: "ease-in-out" }
+                  )
+                : undefined;
 
-        return () => {
+
+    return () => {
             context.revert();
-            upAnimation?.stop();
+            upAnimation?.stop?.();
         };
     }, []);
 
+
+    const FooterContainerElement = FooterContainer as any;
+
     return (
-        <FooterContainer ref={footerRef}>
+        <FooterContainerElement ref={footerRef}>
             <div className="content">
                 <div className="texts">
                     <p>{t("rightsReserved")}, © 2022 David Alexandre Fernandes.</p>
@@ -93,6 +101,6 @@ export const Footer = () => {
                     <FaLevelUpAlt size={30} />
                 </button>
             </div>
-        </FooterContainer>
+        </FooterContainerElement>
     );
 };
