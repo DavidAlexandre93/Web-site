@@ -4,7 +4,7 @@
     "portfolio": "Portfólio",
     "contact": "Contato",
     "langPTBR": "Português",
-    "langEN": "Inglês",
+    "langEN": "Inglês (EUA)",
     "professionalPortfolio": "Portfólio Profissional de David Alexandre Fernandes",
     "frontendDeveloper": "Desenvolvedor de Software | DevOps | Qualidade de Software | Cloud Computing | Inteligência Artificial | Blockchain (NFT/Metaverso)",
     "knowAbout": "Conhecer Sobre",
@@ -52,5 +52,7 @@
     "homeTitle": "Vai para o topo da página",
     "pageNotFound": "Página Não Encontrada",
     "pageNotFoundDescription": "A página que você está procurando pode ter sido removida, ou está temporariamente indisponível",
-    "returnPage": "Voltar para o início"
+    "returnPage": "Voltar para o início",
+    "langFR": "Francês",
+    "langJA": "Japonês"
 }
