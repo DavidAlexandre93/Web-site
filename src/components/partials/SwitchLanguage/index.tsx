@@ -36,9 +36,15 @@ export const SwitchLanguage = () => {
                 </button>
                 <button
                     className="lang"
-                    onClick={() => handleLocaleChange("en")}
+                    onClick={() => handleLocaleChange("en-US")}
                 >
                     {t("langEN")}
+                </button>
+                <button className="lang" onClick={() => handleLocaleChange("fr")}>
+                    {t("langFR")}
+                </button>
+                <button className="lang" onClick={() => handleLocaleChange("ja")}>
+                    {t("langJA")}
                 </button>
             </div>
         </SwitchLanguageContainer>
