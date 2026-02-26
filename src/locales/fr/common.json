@@ -1,10 +1,10 @@
 {
-    "about": "About",
-    "skills": "Skills",
+    "about": "À propos",
+    "skills": "Compétences",
     "portfolio": "Portfolio",
     "contact": "Contact",
-    "langPTBR": "Portuguese",
-    "langEN": "English",
+    "langPTBR": "Portugais (Brésil)",
+    "langEN": "Anglais (États-Unis)",
     "professionalPortfolio": "David Alexandre Fernandes's Professional Portfolio",
     "frontendDeveloper": "Software Developer | DevOps | Software Quality | Cloud Computing | Artificial Intelligence | Blockchain (NFT/Metaverse)",
     "knowAbout": "Know About",
@@ -48,11 +48,11 @@
     "sendEmailTitle": "Send an email to David Alexandre Fernandes",
     "contactTitle": "Get in touch with David Alexandre Fernandes",
     "rightsReserved": "All rights reserved",
-    "home": "Home",
+    "home": "Accueil",
     "homeTitle": "Go to top of page",
-    "pageNotFound": "Page not found",
+    "pageNotFound": "Page non trouvée",
     "pageNotFoundDescription": "The page you are looking for may have been removed, or is temporarily unavailable",
-    "returnPage": "Back to home page",
-    "langFR": "French",
-    "langJA": "Japanese"
+    "returnPage": "Retour à l'accueil",
+    "langFR": "Français",
+    "langJA": "Japonais"
 }
