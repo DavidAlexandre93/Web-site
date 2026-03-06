@@ -12,11 +12,10 @@ export const Portfolio = () => {
     const {
         listRepositories,
         loadMoreRepositories,
-        listRepositoriesCurrentPage,
-        amountRepositories,
         loadingRepositories,
         repositoriesError,
         retryLoadRepositories,
+        hasMoreRepositories,
     } = useContext(ProfileContext);
     const { portfolioRef } = useContext(PageContext);
     const { t } = useTranslation();
@@ -98,7 +97,7 @@ export const Portfolio = () => {
                         <Loading />
                     ) : (
                         !repositoriesError &&
-                        listRepositoriesCurrentPage < Math.ceil(amountRepositories / 5) && (
+                        hasMoreRepositories && (
                             <button
                                 className="loadMoreRepositories"
                                 onClick={loadMoreRepositories}
