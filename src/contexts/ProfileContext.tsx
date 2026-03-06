@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useCallback, useEffect, useState } from "react";
+import {
+    createContext,
+    ReactNode,
+    useCallback,
+    useEffect,
+    useState,
+} from "react";
 import { Api } from "@/services";
 
 interface ProfileProviderProps {
@@ -10,7 +16,9 @@ type ProfileContextData = {
     listRepositories: RepositoriesProps[];
     listRepositoriesCurrentPage: number;
     loadingRepositories: boolean;
+    repositoriesError: string | null;
     loadMoreRepositories: () => void;
+    retryLoadRepositories: () => void;
 };
 
 type RepositoriesProps = {
@@ -26,12 +34,10 @@ export const ProfileContext = createContext({} as ProfileContextData);
 
 export const ProfileProvider = ({ children }: ProfileProviderProps) => {
     const [amountRepositories, setAmountRepositories] = useState(0);
-    const [listRepositories, setListRepositories] = useState<
-        RepositoriesProps[]
-    >([]);
-    const [listRepositoriesCurrentPage, setListRepositoriesCurrentPage] =
-        useState(1);
+    const [listRepositories, setListRepositories] = useState<RepositoriesProps[]>([]);
+    const [listRepositoriesCurrentPage, setListRepositoriesCurrentPage] = useState(1);
     const [loadingRepositories, setLoadingRepositories] = useState(false);
+    const [repositoriesError, setRepositoriesError] = useState<string | null>(null);
 
     const loadMoreRepositories = useCallback(() => {
         setListRepositoriesCurrentPage((currentPage) => {
@@ -45,11 +51,17 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
         });
     }, [amountRepositories]);
 
+    const retryLoadRepositories = useCallback(() => {
+        setRepositoriesError(null);
+        setListRepositoriesCurrentPage(1);
+    }, []);
+
     useEffect(() => {
         let isMounted = true;
 
         async function getAllRepositories() {
             setLoadingRepositories(true);
+            setRepositoriesError(null);
 
             try {
                 const [userResponse, repositoriesResponse] = await Promise.all([
@@ -68,10 +80,14 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
 
                 setAmountRepositories(userResponse.data.public_repos);
                 setListRepositories(repositoriesResponse.data);
-            } catch {
-                if (isMounted) {
-                    setListRepositories([]);
+            } catch (error) {
+                if (!isMounted) {
+                    return;
                 }
+
+                console.error("Erro ao carregar repositórios:", error);
+                setRepositoriesError("Falha ao carregar os repositórios.");
+                setListRepositories([]);
             } finally {
                 if (isMounted) {
                     setLoadingRepositories(false);
@@ -93,7 +109,9 @@ export const ProfileProvider = ({ children }: ProfileProviderProps) => {
                 listRepositories,
                 listRepositoriesCurrentPage,
                 loadingRepositories,
+                repositoriesError,
                 loadMoreRepositories,
+                retryLoadRepositories,
             }}
         >
             {children}

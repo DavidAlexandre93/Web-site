@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import { NextHead } from "@/components";
@@ -20,21 +21,20 @@ export default function Custom404() {
         <>
             <NextHead title={t("pageNotFound")} faviconPath="favicon-404.svg" />
             <NotFoundContainer>
-                <div className="overlay"></div>
+                <div className="overlay" />
                 <div className="content">
-                    <div className="image">
-                        <img src="/notfound.svg" alt={t("pageNotFound")} />
-                    </div>
-
                     <div className="link">
                         <h1>{t("pageNotFound")}</h1>
                         <p>{t("pageNotFoundDescription")}</p>
-                        <Link href={"/"}>
-                            <a>
-                                <IoReturnDownBackSharp size={30} />
+                        <Link href="/">
+                            <a title={t("returnPage")}>
+                                <IoReturnDownBackSharp size={23} />
                                 {t("returnPage")}
                             </a>
                         </Link>
+                    </div>
+                    <div className="image">
+                        <Image src="/notfound.svg" alt={t("pageNotFound")} width={640} height={420} />
                     </div>
                 </div>
             </NotFoundContainer>
@@ -42,8 +42,10 @@ export default function Custom404() {
     );
 }
 
-const NotFoundContainer = styled.div`
-    background: var(--body) url(./background-404.svg) no-repeat center/cover;
+const NotFoundContainer = styled.main`
+    width: 100%;
+    min-height: 100vh;
+    background: transparent url(/background-404.svg) no-repeat center/cover;
 
     position: relative;
     .overlay {

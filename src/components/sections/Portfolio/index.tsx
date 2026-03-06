@@ -1,8 +1,7 @@
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useContext, useEffect } from "react";
-import { PageContext } from "@/contexts";
-import { ProfileContext } from "@/contexts";
+import { PageContext, ProfileContext } from "@/contexts";
 import { getGsap, getMotionAnimate } from "@/utils";
 import { CardProject } from "@/components/partials/CardProject";
 import Loading from "@/components/partials/Loading";
@@ -16,6 +15,8 @@ export const Portfolio = () => {
         listRepositoriesCurrentPage,
         amountRepositories,
         loadingRepositories,
+        repositoriesError,
+        retryLoadRepositories,
     } = useContext(ProfileContext);
     const { portfolioRef } = useContext(PageContext);
     const { t } = useTranslation();
@@ -40,7 +41,7 @@ export const Portfolio = () => {
                     duration: 0.8,
                     stagger: 0.1,
                     ease: "power2.out",
-                    scrollTrigger: { trigger: section, start: "top 70%" }
+                    scrollTrigger: { trigger: section, start: "top 70%" },
                 }
             );
         }, section);
@@ -56,10 +57,8 @@ export const Portfolio = () => {
             }
         }
 
-
-    return () => context.revert();
+        return () => context.revert();
     }, [portfolioRef, listRepositories.length]);
-
 
     const PortfolioContainerElement = PortfolioContainer as any;
 
@@ -69,7 +68,7 @@ export const Portfolio = () => {
                 <div className="title-portfolio">
                     <TitleSection>{t("portfolio")}</TitleSection>
                     <p>
-                        {t("allMyProjectsInitial")} {" "}
+                        {t("allMyProjectsInitial")}{" "}
                         <Link href="https://www.github.com/DavidAlexandre93">
                             <a title={t("accessGithubTitle")}>Github</a>
                         </Link>
@@ -77,21 +76,29 @@ export const Portfolio = () => {
                     </p>
                 </div>
                 <div className="content-portfolio">
-                    {listRepositories.map((repository) => (
-                        <CardProject
-                            title={repository.name}
-                            description={repository.description}
-                            repository={repository.html_url}
-                            website={repository.homepage}
-                            imageUrl={`https://raw.githubusercontent.com/DavidAlexandre93/${repository.name}/main/printscreen/application.png`}
-                            key={repository.html_url}
-                        />
-                    ))}
+                    {repositoriesError && (
+                        <button className="loadMoreRepositories" onClick={retryLoadRepositories}>
+                            <p>{repositoriesError} Clique para tentar novamente.</p>
+                        </button>
+                    )}
+
+                    {!repositoriesError &&
+                        listRepositories.map((repository) => (
+                            <CardProject
+                                title={repository.name}
+                                description={repository.description}
+                                repository={repository.html_url}
+                                website={repository.homepage}
+                                imageUrl={`https://raw.githubusercontent.com/DavidAlexandre93/${repository.name}/main/printscreen/application.png`}
+                                key={repository.html_url}
+                            />
+                        ))}
+
                     {loadingRepositories ? (
                         <Loading />
                     ) : (
-                        listRepositoriesCurrentPage <
-                            Math.ceil(amountRepositories / 5) && (
+                        !repositoriesError &&
+                        listRepositoriesCurrentPage < Math.ceil(amountRepositories / 5) && (
                             <button
                                 className="loadMoreRepositories"
                                 onClick={loadMoreRepositories}

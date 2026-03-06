@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useContext, useEffect, useRef } from "react";
 import Link from "next/link";
 import { CgMenuRight } from "react-icons/cg";
@@ -66,13 +67,11 @@ export const Header = () => {
               )
             : undefined;
 
-
-    return () => {
+        return () => {
             context.revert();
             pulse?.stop?.();
         };
     }, []);
-
 
     const HeaderContainerElement = HeaderContainer as any;
 
@@ -85,10 +84,12 @@ export const Header = () => {
             <div className="content-header">
                 <Link href="/">
                     <a className="homeLink">
-                        <img
-                            src="./profile.svg"
+                        <Image
+                            src="/profile.svg"
                             alt="Imagem de perfil"
                             className="profileLogo"
+                            width={42}
+                            height={42}
                         />
                         <h1>David Alexandre Fernandes</h1>
                     </a>
@@ -97,24 +98,16 @@ export const Header = () => {
                 <nav>
                     <ul>
                         <li>
-                            <button onClick={() => scrollToSection(aboutRef)}>
-                                {t("about")}
-                            </button>
+                            <button onClick={() => scrollToSection(aboutRef)}>{t("about")}</button>
                         </li>
                         <li>
-                            <button onClick={() => scrollToSection(skillsRef)}>
-                                {t("skills")}
-                            </button>
+                            <button onClick={() => scrollToSection(skillsRef)}>{t("skills")}</button>
                         </li>
                         <li>
-                            <button onClick={() => scrollToSection(portfolioRef)}>
-                                {t("portfolio")}
-                            </button>
+                            <button onClick={() => scrollToSection(portfolioRef)}>{t("portfolio")}</button>
                         </li>
                         <li>
-                            <button onClick={() => scrollToSection(contactRef)}>
-                                {t("contact")}
-                            </button>
+                            <button onClick={() => scrollToSection(contactRef)}>{t("contact")}</button>
                         </li>
                     </ul>
                 </nav>
