@@ -2,6 +2,7 @@ import { HomeContainer } from "./styles";
 import { RiShareBoxFill } from "react-icons/ri"; /*Share icon*/
 import { BsArrowDownShort } from "react-icons/bs"; /*ArrowDown icon*/
 import { FiCopy } from "react-icons/fi"; /*Copy icon*/
+import { FaWhatsapp, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
 import { useContext, useEffect, useRef } from "react";
 import { PageContext } from "@/contexts";
@@ -62,14 +63,20 @@ export const HomePage = () => {
             );
         }
 
-
-    return () => {
+        return () => {
             timeline.kill();
         };
     }, []);
 
-
     const HomeContainerElement = HomeContainer as any;
+    const pageUrl = "https://www.david-alexandre.dev/";
+    const shareMessage = "Conheça o portfólio de David Alexandre Fernandes";
+
+    const shareLinks = {
+        whatsapp: `https://wa.me/?text=${encodeURIComponent(`${shareMessage} ${pageUrl}`)}`,
+        linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`,
+        twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareMessage)}`,
+    };
 
     return (
         <HomeContainerElement ref={containerRef}>
@@ -99,6 +106,17 @@ export const HomePage = () => {
                 >
                     <FiCopy size={20} className="iconCopy" />
                 </button>
+            </div>
+            <div className="shareLinks" aria-label="Links para compartilhar o portfólio">
+                <a href={shareLinks.whatsapp} target="_blank" rel="noreferrer" title="Compartilhar no WhatsApp">
+                    <FaWhatsapp size={18} /> WhatsApp
+                </a>
+                <a href={shareLinks.linkedin} target="_blank" rel="noreferrer" title="Compartilhar no LinkedIn">
+                    <FaLinkedin size={18} /> LinkedIn
+                </a>
+                <a href={shareLinks.twitter} target="_blank" rel="noreferrer" title="Compartilhar no Twitter">
+                    <FaTwitter size={18} /> Twitter
+                </a>
             </div>
         </HomeContainerElement>
     );
