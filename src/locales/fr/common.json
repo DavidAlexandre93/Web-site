@@ -54,5 +54,6 @@
     "pageNotFoundDescription": "The page you are looking for may have been removed, or is temporarily unavailable",
     "returnPage": "Retour à l'accueil",
     "langFR": "Français",
-    "langJA": "Japonais"
+    "langJA": "Japonais",
+    "retryLater": "Veuillez réessayer plus tard."
 }
