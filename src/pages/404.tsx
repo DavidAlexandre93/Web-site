@@ -19,7 +19,12 @@ export default function Custom404() {
 
     return (
         <>
-            <NextHead title={t("pageNotFound")} faviconPath="favicon-404.svg" />
+            <NextHead
+                title={t("pageNotFound")}
+                faviconPath="favicon-404.svg"
+                canonicalUrl="https://www.david-alexandre.dev/404"
+                noIndex
+            />
             <NotFoundContainer>
                 <div className="aurora aurora-purple" />
                 <div className="aurora aurora-blue" />
