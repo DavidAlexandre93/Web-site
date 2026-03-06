@@ -1,8 +1,9 @@
-import { CardProjectContainer } from "./styles";
-import { BsArrowBarUp } from "react-icons/bs"; /*ArrowUp icon */
-import { GoFileDirectory } from "react-icons/go"; /*Directory icon */
+import Image from "next/image";
+import { BsArrowBarUp } from "react-icons/bs";
+import { GoFileDirectory } from "react-icons/go";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import { CardProjectContainer } from "./styles";
 
 type CardProjectProps = {
     title: string;
@@ -20,11 +21,12 @@ export const CardProject = ({
     imageUrl,
 }: CardProjectProps) => {
     const { t } = useTranslation();
+
     return (
         <CardProjectContainer className="project-card">
             <div className="image">
                 {imageUrl ? (
-                    <img src={imageUrl} alt={title} />
+                    <Image src={imageUrl} alt={title} layout="fill" objectFit="cover" objectPosition="center" />
                 ) : (
                     <p>{t("notFoundImage")}</p>
                 )}
@@ -33,10 +35,7 @@ export const CardProject = ({
                 <div className="description">
                     <div className="title">
                         <h4>{title}</h4>
-                        <button
-                            name={t("viewInformation")}
-                            title={t("viewInformation")}
-                        >
+                        <button name={t("viewInformation")} title={t("viewInformation")}>
                             <BsArrowBarUp size={30} />
                         </button>
                     </div>
@@ -45,27 +44,18 @@ export const CardProject = ({
                         <div className="links">
                             <Link href={website || repository}>
                                 {website ? (
-                                    <a
-                                        className="link"
-                                        title={t("websiteOnlineTitle")}
-                                    >
+                                    <a className="link" title={t("websiteOnlineTitle")}>
                                         {t("websiteOnline")}
                                     </a>
                                 ) : (
-                                    <a
-                                        className="link"
-                                        title={t("accessRepository")}
-                                    >
+                                    <a className="link" title={t("accessRepository")}>
                                         {t("accessRepository")}
                                     </a>
                                 )}
                             </Link>
                             {website && (
                                 <Link href={repository}>
-                                    <a
-                                        className="link-extra"
-                                        title={t("accessRepository")}
-                                    >
+                                    <a className="link-extra" title={t("accessRepository")}>
                                         <GoFileDirectory size={25} />
                                     </a>
                                 </Link>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { CardSkillContainer } from "./styles";
 
@@ -15,11 +16,14 @@ export const CardSkill = ({
     typeSkill,
 }: CardSkillProps) => {
     const { t } = useTranslation();
+    const normalizedIconPath = pathIconSkill.startsWith("/")
+        ? pathIconSkill
+        : `/${pathIconSkill.replace(/^\.\//, "")}`;
 
     return (
         <CardSkillContainer skillActive={isSkillActive}>
             <div className="image">
-                <img src={pathIconSkill} alt={nameSkill} title={nameSkill} />
+                <Image src={normalizedIconPath} alt={nameSkill} title={nameSkill} width={60} height={60} />
             </div>
             <div className="title">
                 <h4>{nameSkill}</h4>

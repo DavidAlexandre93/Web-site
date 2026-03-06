@@ -1,3 +1,4 @@
+import React from "react";
 import Document, {
     DocumentContext,
     DocumentInitialProps,
@@ -26,10 +27,8 @@ export default class MyDocument extends Document {
             return {
                 ...initialProps,
                 styles: [
-                    <>
-                        {initialProps.styles}
-                        {sheet.getStyleElement()}
-                    </>,
+                    ...React.Children.toArray(initialProps.styles),
+                    ...sheet.getStyleElement(),
                 ],
             };
         } finally {
@@ -41,10 +40,7 @@ export default class MyDocument extends Document {
         return (
             <Html lang="pt-BR">
                 <Head>
-                    <link
-                        rel="preconnect"
-                        href="https://fonts.googleapis.com"
-                    />
+                    <link rel="preconnect" href="https://fonts.googleapis.com" />
                     <link rel="preconnect" href="https://fonts.gstatic.com" />
                     <link
                         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Mono&display=swap"
