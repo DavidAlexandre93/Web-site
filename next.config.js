@@ -16,6 +16,7 @@ const securityHeaders = [
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
+    poweredByHeader: false,
     compiler: {
         styledComponents: true,
         reactRemoveProperties: true,
@@ -34,6 +35,15 @@ const nextConfig = {
     },
     async headers() {
         return [
+            {
+                source: "/_next/static/:path*",
+                headers: [
+                    {
+                        key: "Cache-Control",
+                        value: "public, max-age=31536000, immutable",
+                    },
+                ],
+            },
             {
                 source: "/(.*)",
                 headers: securityHeaders,
