@@ -94,8 +94,8 @@ export const Header = () => {
                             src="/profile.svg"
                             alt="Imagem de perfil"
                             className="profileLogo"
-                            width={84}
-                            height={84}
+                            width={168}
+                            height={168}
                         />
                         <h1>David Alexandre Fernandes</h1>
                     </a>

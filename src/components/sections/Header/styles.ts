@@ -36,8 +36,8 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
             align-items: center;
             gap: 1rem;
             img.profileLogo {
-                width: 8.4rem;
-                height: 8.4rem;
+                width: 16.8rem;
+                height: 16.8rem;
                 border-radius: 50%;
                 object-fit: cover;
             }
