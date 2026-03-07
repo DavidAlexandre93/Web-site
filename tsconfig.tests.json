@@ -8,7 +8,8 @@
         "isolatedModules": false,
         "jsx": "react-jsx",
         "declaration": false,
-        "sourceMap": false
+        "sourceMap": false,
+        "moduleResolution": "node"
     },
     "include": [
         "src/utils/sectionNavigation.ts",

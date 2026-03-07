@@ -2,10 +2,46 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "next": [
+        "src/shims/next/index.ts"
+      ],
+      "next/app": [
+        "src/shims/next/app.ts"
+      ],
+      "next/error": [
+        "src/shims/next/error.tsx"
+      ],
+      "next/document": [
+        "src/shims/next/document.tsx"
+      ],
+      "next/router": [
+        "src/shims/next/router.ts"
+      ],
+      "next/link": [
+        "src/shims/next/link.tsx"
+      ],
+      "next/image": [
+        "src/shims/next/image.tsx"
+      ],
+      "next/script": [
+        "src/shims/next/script.tsx"
+      ],
+      "next-i18next": [
+        "src/shims/next-i18next/index.ts"
+      ],
+      "next-i18next/serverSideTranslations": [
+        "src/shims/next-i18next/serverSideTranslations.ts"
+      ]
     },
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es2020",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -13,12 +49,23 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src",
+    "middleware.ts",
+    "tests"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".next",
+    ".test-dist",
+    "src/pages",
+    "vite.config.ts"
+  ]
 }

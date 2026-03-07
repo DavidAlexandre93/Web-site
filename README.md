@@ -1,6 +1,6 @@
-# Portfolio Next.js
+# Portfolio Vite + React
 
-Portfólio pessoal construído com Next.js, TypeScript, styled-components e internacionalização com `next-i18next`.
+Portfólio pessoal construído com Vite, React, TypeScript e styled-components.
 
 ## Requisitos
 
@@ -18,9 +18,9 @@ npm install
 ## Scripts
 
 ```bash
-npm run dev            # ambiente de desenvolvimento
-npm run build          # build de produção
-npm run start          # sobe a aplicação em produção
+npm run dev            # ambiente de desenvolvimento (Vite)
+npm run build          # build de produção (Vite)
+npm run start          # preview local do build de produção
 npm run lint           # validação estática com ESLint
 npm run typecheck      # validação de tipos com TypeScript
 npm run format         # normaliza fim de linha + trailing spaces
@@ -49,4 +49,4 @@ A promoção para produção ocorre somente por tag semântica e após sucesso d
 
 ## Qualidade de código
 
-O projeto usa regras de ESLint baseadas em `next/core-web-vitals` para reforçar boas práticas de frontend (performance, acessibilidade e padrões React/Next.js).
+O projeto usa ESLint com plugins de React e React Hooks para reforçar boas práticas de frontend.
