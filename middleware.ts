@@ -1,21 +1,81 @@
-import { NextRequest, NextResponse } from "next/server";
+type RequestLike = {
+    nextUrl: {
+        pathname: string;
+    };
+    url: string;
+    geo?: {
+        country?: string;
+    };
+    headers: {
+        get: (name: string) => string | null;
+    };
+};
+
+const NextResponse = {
+    next: () => ({ type: "next" as const }),
+    redirect: (url: URL) => ({ type: "redirect" as const, url: url.toString() }),
+};
 
 const DEFAULT_LOCALE = "en-US";
 const SUPPORTED_LOCALES = ["pt-BR", "en-US", "fr", "ja"] as const;
 
 const COUNTRY_GROUPS = {
-    "pt-BR": new Set([
-        "BR", "PT", "AO", "MZ", "GW", "CV", "ST", "TL", "MO", "GQ",
-    ]),
+    "pt-BR": new Set(["BR", "PT", "AO", "MZ", "GW", "CV", "ST", "TL", "MO", "GQ"]),
     "en-US": new Set([
-        "US", "GB", "IE", "CA", "AU", "NZ", "ZA", "IN", "SG", "PH",
-        "NG", "GH", "KE", "UG", "ZM", "ZW", "PK", "MT", "JM", "BZ",
-        "TT", "BS", "BB",
+        "US",
+        "GB",
+        "IE",
+        "CA",
+        "AU",
+        "NZ",
+        "ZA",
+        "IN",
+        "SG",
+        "PH",
+        "NG",
+        "GH",
+        "KE",
+        "UG",
+        "ZM",
+        "ZW",
+        "PK",
+        "MT",
+        "JM",
+        "BZ",
+        "TT",
+        "BS",
+        "BB",
     ]),
     fr: new Set([
-        "FR", "BE", "CH", "LU", "MC", "CA", "HT", "SN", "CI", "ML",
-        "BF", "NE", "TG", "BJ", "CM", "CD", "CG", "GA", "DJ", "MG",
-        "MU", "SC", "RW", "BI", "GN", "TD", "CF", "KM", "VU",
+        "FR",
+        "BE",
+        "CH",
+        "LU",
+        "MC",
+        "CA",
+        "HT",
+        "SN",
+        "CI",
+        "ML",
+        "BF",
+        "NE",
+        "TG",
+        "BJ",
+        "CM",
+        "CD",
+        "CG",
+        "GA",
+        "DJ",
+        "MG",
+        "MU",
+        "SC",
+        "RW",
+        "BI",
+        "GN",
+        "TD",
+        "CF",
+        "KM",
+        "VU",
     ]),
     ja: new Set(["JP"]),
 } as const;
@@ -25,21 +85,10 @@ const PUBLIC_FILE = /\.(.*)$/;
 const normalizeLocale = (locale: string) => {
     const normalized = locale.toLowerCase();
 
-    if (normalized.startsWith("pt")) {
-        return "pt-BR";
-    }
-
-    if (normalized.startsWith("en")) {
-        return "en-US";
-    }
-
-    if (normalized.startsWith("fr")) {
-        return "fr";
-    }
-
-    if (normalized.startsWith("ja")) {
-        return "ja";
-    }
+    if (normalized.startsWith("pt")) return "pt-BR";
+    if (normalized.startsWith("en")) return "en-US";
+    if (normalized.startsWith("fr")) return "fr";
+    if (normalized.startsWith("ja")) return "ja";
 
     return null;
 };
@@ -65,7 +114,7 @@ const getLocaleFromAcceptLanguage = (headerValue: string | null) => {
     return null;
 };
 
-const getCountryCode = (request: NextRequest) => {
+const getCountryCode = (request: RequestLike) => {
     const geoCountry = request.geo?.country;
 
     if (geoCountry) {
@@ -83,26 +132,15 @@ const getLocaleFromCountry = (countryCode: string | null) => {
         return null;
     }
 
-    if (COUNTRY_GROUPS.ja.has(countryCode)) {
-        return "ja";
-    }
-
-    if (COUNTRY_GROUPS["pt-BR"].has(countryCode)) {
-        return "pt-BR";
-    }
-
-    if (COUNTRY_GROUPS.fr.has(countryCode)) {
-        return "fr";
-    }
-
-    if (COUNTRY_GROUPS["en-US"].has(countryCode)) {
-        return "en-US";
-    }
+    if (COUNTRY_GROUPS.ja.has(countryCode)) return "ja";
+    if (COUNTRY_GROUPS["pt-BR"].has(countryCode)) return "pt-BR";
+    if (COUNTRY_GROUPS.fr.has(countryCode)) return "fr";
+    if (COUNTRY_GROUPS["en-US"].has(countryCode)) return "en-US";
 
     return null;
 };
 
-const getPreferredLocale = (request: NextRequest) => {
+const getPreferredLocale = (request: RequestLike) => {
     const localeFromCountry = getLocaleFromCountry(getCountryCode(request));
 
     if (localeFromCountry) {
@@ -118,11 +156,11 @@ export const middlewareTestUtils = {
     getLocaleFromCountry,
 };
 
-export function middleware(request: NextRequest) {
+export function middleware(request: RequestLike) {
     const { pathname } = request.nextUrl;
 
     const hasLocalePrefix = SUPPORTED_LOCALES.some(
-        (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
+        (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
     );
 
     if (

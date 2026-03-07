@@ -1,4 +1,4 @@
-import Head from "next/head";
+import { useEffect } from "react";
 
 type NextHeadProps = {
     title: string;
@@ -15,6 +15,32 @@ const defaultDescription =
     "Software Developer com atuação em Full Cycle, DevOps, SRE, Qualidade de Software, Cloud Computing, Inteligência Artificial e Blockchain (NFT/Metaverso).";
 const defaultOgImage = "https://www.david-alexandre.dev/application.png";
 
+const upsertMeta = (selector: string, attributes: Record<string, string>) => {
+    let element = document.head.querySelector(selector) as HTMLMetaElement | null;
+
+    if (!element) {
+        element = document.createElement("meta");
+        document.head.appendChild(element);
+    }
+
+    Object.entries(attributes).forEach(([key, value]) => {
+        element?.setAttribute(key, value);
+    });
+};
+
+const upsertLink = (selector: string, attributes: Record<string, string>) => {
+    let element = document.head.querySelector(selector) as HTMLLinkElement | null;
+
+    if (!element) {
+        element = document.createElement("link");
+        document.head.appendChild(element);
+    }
+
+    Object.entries(attributes).forEach(([key, value]) => {
+        element?.setAttribute(key, value);
+    });
+};
+
 const NextHead = ({
     title,
     faviconPath,
@@ -24,58 +50,46 @@ const NextHead = ({
     noIndex = false,
     schema,
 }: NextHeadProps) => {
-    return (
-        <Head>
-            <meta charSet="UTF-8" />
-            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-            <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1, viewport-fit=cover"
-            />
+    useEffect(() => {
+        document.title = title;
 
-            <link
-                rel="shortcut icon"
-                href={`./${faviconPath}`}
-                type="image/x-icon"
-            />
+        upsertLink('link[rel="canonical"]', { rel: "canonical", href: canonicalUrl });
+        upsertLink('link[rel="icon"]', { rel: "icon", href: `/${faviconPath}` });
 
-            <title>{title}</title>
-            <link rel="canonical" href={canonicalUrl} />
-            <meta name="language" content="pt-BR" />
-            <meta httpEquiv="content-language" content="pt-br" />
-            <meta
-                name="keywords"
-                content="David Alexandre Fernandes, portfolio David Alexandre Fernandes, dev, David Alexandre Fernandes dev,programador, desenvolvedor full cycle, desenvolvedor, devops, sre, qualidade de software, cloud computing, inteligência artificial, blockchain, nft, metaverso"
-            />
-            <meta name="title" content={title} />
-            <meta name="description" content={description} />
-            <meta name="author" content="David Alexandre Fernandes" />
-            <meta name="creator" content="David Alexandre Fernandes" />
-            <meta name="copyright" content="© 2022 David Alexandre Fernandes" />
-            <meta name="rating" content="general" />
-            <meta name="robots" content={noIndex ? "noindex,nofollow" : "index,follow,max-image-preview:large"} />
+        upsertMeta('meta[name="description"]', { name: "description", content: description });
+        upsertMeta('meta[name="robots"]', {
+            name: "robots",
+            content: noIndex ? "noindex,nofollow" : "index,follow,max-image-preview:large",
+        });
+        upsertMeta('meta[property="og:title"]', { property: "og:title", content: title });
+        upsertMeta('meta[property="og:description"]', {
+            property: "og:description",
+            content: description,
+        });
+        upsertMeta('meta[property="og:url"]', { property: "og:url", content: canonicalUrl });
+        upsertMeta('meta[property="og:image"]', { property: "og:image", content: ogImage });
+        upsertMeta('meta[name="twitter:title"]', { name: "twitter:title", content: title });
+        upsertMeta('meta[name="twitter:description"]', {
+            name: "twitter:description",
+            content: description,
+        });
+        upsertMeta('meta[name="twitter:image"]', { name: "twitter:image", content: ogImage });
 
-            <meta property="og:url" content={canonicalUrl} />
-            <meta property="og:type" content="website" />
-            <meta property="og:title" content={title} />
-            <meta property="og:description" content={description} />
-            <meta property="og:image" content={ogImage} />
-            <meta property="og:site_name" content="Portfolio David Alexandre Fernandes - Software Developer" />
-            <meta property="og:locale" content="pt_BR" />
+        const schemaId = "portfolio-schema-json";
+        const existingSchema = document.getElementById(schemaId);
 
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:title" content={title} />
-            <meta name="twitter:description" content={description} />
-            <meta name="twitter:image" content={ogImage} />
+        if (schema) {
+            const schemaElement = existingSchema ?? document.createElement("script");
+            schemaElement.id = schemaId;
+            schemaElement.setAttribute("type", "application/ld+json");
+            schemaElement.textContent = JSON.stringify(schema);
+            if (!existingSchema) {
+                document.head.appendChild(schemaElement);
+            }
+        }
+    }, [canonicalUrl, description, faviconPath, noIndex, ogImage, schema, title]);
 
-            {schema ? (
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-                />
-            ) : null}
-        </Head>
-    );
+    return null;
 };
 
 export default NextHead;
