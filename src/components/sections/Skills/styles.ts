@@ -29,6 +29,25 @@ export const SkillsContainer = styled.section`
                 grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
                 gap: 2rem;
             }
+
+            button.loadMoreSkills {
+                margin-top: 2rem;
+                width: 100%;
+                min-height: 7rem;
+                border: 0.3rem dashed var(--blueOpacity);
+
+                p {
+                    font-size: 1.8rem;
+                    color: var(--blue);
+                    transition: all 0.3s linear;
+                }
+
+                &:hover {
+                    p {
+                        transform: scale(1.05);
+                    }
+                }
+            }
         }
     }
 `;
