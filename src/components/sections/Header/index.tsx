@@ -1,12 +1,12 @@
 import Image from "next/image";
-import React, { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Link from "next/link";
 import { CgMenuRight } from "react-icons/cg";
 import { useTranslation } from "next-i18next";
 import { HeaderContainer } from "./styles";
 import { HeaderContext, PageContext } from "@/contexts";
 import { SwitchLanguage } from "@/components/partials/SwitchLanguage";
-import { getGsap, getMotionAnimate } from "@/utils";
+import { createSectionNavigationItems, getGsap, getMotionAnimate } from "@/utils";
 
 export const Header = () => {
     const headerRef = useRef<HTMLElement>(null);
@@ -22,6 +22,12 @@ export const Header = () => {
     } = useContext(PageContext);
 
     const { t } = useTranslation();
+
+    const navigationItems = createSectionNavigationItems({
+        scrollToSection,
+        sectionRefs: { aboutRef, skillsRef, portfolioRef, contactRef },
+        translate: t,
+    });
 
     useEffect(() => {
         const gsap = getGsap();
@@ -97,18 +103,11 @@ export const Header = () => {
 
                 <nav>
                     <ul>
-                        <li>
-                            <button onClick={() => scrollToSection(aboutRef)}>{t("about")}</button>
-                        </li>
-                        <li>
-                            <button onClick={() => scrollToSection(skillsRef)}>{t("skills")}</button>
-                        </li>
-                        <li>
-                            <button onClick={() => scrollToSection(portfolioRef)}>{t("portfolio")}</button>
-                        </li>
-                        <li>
-                            <button onClick={() => scrollToSection(contactRef)}>{t("contact")}</button>
-                        </li>
+                        {navigationItems.map((item) => (
+                            <li key={item.id}>
+                                <button onClick={item.onClick}>{item.label}</button>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
 
@@ -118,7 +117,6 @@ export const Header = () => {
                         className="btn-menuMobile"
                         onClick={toggleShowMenu}
                         aria-label="Abrir menu mobile"
-                        aria-controls="menu-mobile"
                         aria-expanded={activeMenu}
                     >
                         <span className="sr-only">Abrir menu mobile</span>
