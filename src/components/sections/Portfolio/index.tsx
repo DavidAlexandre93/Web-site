@@ -88,7 +88,9 @@ export const Portfolio = () => {
                                 description={repository.description}
                                 repository={repository.html_url}
                                 website={repository.homepage}
-                                imageUrl={`https://raw.githubusercontent.com/${repository.owner.login}/${repository.name}/${repository.default_branch}/favicon.ico`}
+                                imageUrl={`https://www.google.com/s2/favicons?sz=256&domain_url=${encodeURIComponent(
+                                    repository.homepage || repository.html_url
+                                )}`}
                                 key={repository.html_url}
                             />
                         ))}
