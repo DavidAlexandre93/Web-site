@@ -79,7 +79,7 @@ export const HomePage = () => {
     };
 
     return (
-        <HomeContainerElement ref={containerRef}>
+        <HomeContainerElement ref={containerRef} id="home">
             <h2 className="titleHome">{t("professionalPortfolio")}</h2>
             <p className="descriptionHome">{t("frontendDeveloper")}</p>
             <div className="links">

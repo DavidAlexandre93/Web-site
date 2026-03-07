@@ -41,7 +41,7 @@ export const Skills = () => {
     const SkillsContainerElement = SkillsContainer as any;
 
     return (
-        <SkillsContainerElement ref={skillsRef}>
+        <SkillsContainerElement ref={skillsRef} id="skills">
             <div className="contentSkills">
                 <div className="titleSkills">
                     <p>{t("allTechnologies")}</p>

@@ -24,10 +24,13 @@ export const SwitchLanguage = () => {
             <button
                 className="btnOpenOptionsLanguage"
                 onClick={toggleModalLanguage}
+                aria-label="Selecionar idioma"
+                aria-expanded={isActiveModalLang}
+                aria-controls="language-options"
             >
                 <IoLanguage size={30} />
             </button>
-            <div className={`selectLang ${isActiveModalLang ? "open" : ""}`}>
+            <div id="language-options" className={`selectLang ${isActiveModalLang ? "open" : ""}`}>
                 <button
                     className="lang"
                     onClick={() => handleLocaleChange("pt-BR")}

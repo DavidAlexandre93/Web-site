@@ -91,7 +91,8 @@ export const HomeContainer = styled.section`
             width: 100%;
             overflow-x: auto;
             p {
-                min-width: 28rem;
+                min-width: 0;
+                overflow-wrap: anywhere;
             }
         }
         button {

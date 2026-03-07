@@ -62,7 +62,7 @@ export const Portfolio = () => {
     const PortfolioContainerElement = PortfolioContainer as any;
 
     return (
-        <PortfolioContainerElement ref={portfolioRef}>
+        <PortfolioContainerElement ref={portfolioRef} id="portfolio">
             <div className="content">
                 <div className="title-portfolio">
                     <TitleSection>{t("portfolio")}</TitleSection>
