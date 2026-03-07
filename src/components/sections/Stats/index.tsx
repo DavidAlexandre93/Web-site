@@ -65,8 +65,8 @@ export const Stats = () => {
     const StatsContainerElement = StatsContainer as any;
 
     return (
-        <StatsContainerElement ref={statsRef}>
-            <div className="cardStats" title={t("debugsTitle")}>
+        <StatsContainerElement ref={statsRef} data-reveal>
+            <div className="cardStats" title={t("debugsTitle")} data-tilt>
                 <div className="icon">
                     <FaBug size={40} />
                 </div>
@@ -74,7 +74,7 @@ export const Stats = () => {
                 <p>{t("debugs")}</p>
             </div>
 
-            <div className="cardStats" title={t("projectsTitle")}>
+            <div className="cardStats" title={t("projectsTitle")} data-tilt>
                 <div className="icon">
                     <RiGitRepositoryLine size={40} />
                 </div>
@@ -82,7 +82,7 @@ export const Stats = () => {
                 <p>{t("projects")}</p>
             </div>
 
-            <div className="cardStats" title={t("hourProgrammingTitle")}>
+            <div className="cardStats" title={t("hourProgrammingTitle")} data-tilt>
                 <div className="icon">
                     <MdTimer size={40} />
                 </div>
@@ -90,7 +90,7 @@ export const Stats = () => {
                 <p>{t("hourProgramming")}</p>
             </div>
 
-            <div className="cardStats" title={t("numberIdeasTitle")}>
+            <div className="cardStats" title={t("numberIdeasTitle")} data-tilt>
                 <div className="icon">
                     <MdOutlineLightbulb size={40} />
                 </div>

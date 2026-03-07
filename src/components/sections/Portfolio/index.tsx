@@ -62,7 +62,7 @@ export const Portfolio = () => {
     const PortfolioContainerElement = PortfolioContainer as any;
 
     return (
-        <PortfolioContainerElement ref={portfolioRef} id="portfolio">
+        <PortfolioContainerElement ref={portfolioRef} id="portfolio" data-reveal>
             <div className="content">
                 <div className="title-portfolio">
                     <TitleSection>{t("portfolio")}</TitleSection>
@@ -76,7 +76,7 @@ export const Portfolio = () => {
                 </div>
                 <div className="content-portfolio">
                     {repositoriesError && (
-                        <button className="loadMoreRepositories" onClick={retryLoadRepositories}>
+                        <button className="loadMoreRepositories" onClick={retryLoadRepositories} data-ripple>
                             <p>{repositoriesError} Clique para tentar novamente.</p>
                         </button>
                     )}
@@ -104,6 +104,7 @@ export const Portfolio = () => {
                                 className="loadMoreRepositories"
                                 onClick={loadMoreRepositories}
                                 title={t("seeMoreTitle")}
+                                data-ripple
                             >
                                 <p>{t("seeMore")}</p>
                             </button>

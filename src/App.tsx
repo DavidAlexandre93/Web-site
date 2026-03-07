@@ -14,8 +14,10 @@ import {
 } from "@/components";
 import { HeaderProvider, PageProvider, ProfileProvider } from "@/contexts";
 import GlobalStyle from "@/styles/GlobalStyle";
+import { useEnhancedExperience } from "@/utils";
 
 export default function App() {
+    useEnhancedExperience();
     const schema = {
         "@context": "https://schema.org",
         "@type": "Person",
