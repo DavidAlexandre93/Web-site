@@ -1,16 +1,17 @@
 import { HomeContainer } from "./styles";
 import { RiShareBoxFill } from "react-icons/ri"; /*Share icon*/
 import { BsArrowDownShort } from "react-icons/bs"; /*ArrowDown icon*/
-import { FiCopy } from "react-icons/fi"; /*Copy icon*/
+import { FiCheck, FiCopy, FiLoader } from "react-icons/fi"; /*Copy icon*/
 import { FaWhatsapp, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { PageContext } from "@/contexts";
 import { useTranslation } from "next-i18next";
 import { getGsap, getMotionAnimate } from "@/utils";
 
 export const HomePage = () => {
     const containerRef = useRef<HTMLElement>(null);
+    const [copyState, setCopyState] = useState<"idle" | "loading" | "success">("idle");
     const { scrollToSection, handleCopyEmailInput, aboutRef, emailRef } =
         useContext(PageContext);
     const { t } = useTranslation();
@@ -48,7 +49,59 @@ export const HomePage = () => {
                 { scale: 0.94, opacity: 0 },
                 { scale: 1, opacity: 1, duration: 0.7 },
                 "-=0.2"
+            )
+            .fromTo(
+                element.querySelector(".shareLinks"),
+                { y: 12, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.45 },
+                "-=0.3"
             );
+
+        const context = gsap.context(() => {
+            gsap.to(".ambientGlow", {
+                yPercent: -22,
+                xPercent: 8,
+                scale: 1.08,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: element,
+                    scrub: 1,
+                    start: "top top",
+                    end: "bottom top",
+                },
+            });
+
+            gsap.fromTo(
+                ".shareLinks a",
+                { opacity: 0, y: 20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.1,
+                    duration: 0.4,
+                    scrollTrigger: {
+                        trigger: ".shareLinks",
+                        start: "top 85%",
+                    },
+                }
+            );
+        }, element);
+
+        const mouseMoveHandler = (event: MouseEvent) => {
+            const bounds = element.getBoundingClientRect();
+            const x = (event.clientX - bounds.left) / bounds.width;
+            const y = (event.clientY - bounds.top) / bounds.height;
+
+            gsap.to(".ambientGlow", {
+                x: (x - 0.5) * 24,
+                y: (y - 0.5) * 18,
+                duration: 0.45,
+                ease: "power2.out",
+                overwrite: true,
+            });
+        };
+
+        element.addEventListener("mousemove", mouseMoveHandler);
 
         if (animate) {
             animate(
@@ -64,6 +117,8 @@ export const HomePage = () => {
         }
 
         return () => {
+            element.removeEventListener("mousemove", mouseMoveHandler);
+            context.revert();
             timeline.kill();
         };
     }, []);
@@ -78,8 +133,29 @@ export const HomePage = () => {
         twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareMessage)}`,
     };
 
+    const handleCopy = () => {
+        setCopyState("loading");
+
+        window.setTimeout(() => {
+            const copied = handleCopyEmailInput();
+            setCopyState(copied ? "success" : "idle");
+
+            if (copied) {
+                window.setTimeout(() => {
+                    setCopyState("idle");
+                }, 1800);
+            }
+        }, 250);
+    };
+
+    const copyButtonLabel =
+        copyState === "success"
+            ? t("copied", { defaultValue: "Copiado" })
+            : t("copyEmailTitle");
+
     return (
         <HomeContainerElement ref={containerRef} id="home">
+            <div className="ambientGlow" aria-hidden="true" />
             <h2 className="titleHome">{t("professionalPortfolio")}</h2>
             <p className="descriptionHome">{t("frontendDeveloper")}</p>
             <div className="links">
@@ -96,15 +172,23 @@ export const HomePage = () => {
                     </a>
                 </Link>
             </div>
-            <div className="email">
+            <div className="email" data-status={copyState}>
                 <div className="text-mail">
                     <p ref={emailRef}>davidalexandrefernandes@outlook.com</p>
                 </div>
                 <button
-                    title={t("copyEmailTitle")}
-                    onClick={handleCopyEmailInput}
+                    title={copyButtonLabel}
+                    onClick={handleCopy}
+                    aria-live="polite"
+                    aria-busy={copyState === "loading"}
                 >
-                    <FiCopy size={20} className="iconCopy" />
+                    {copyState === "loading" ? (
+                        <FiLoader size={20} className="iconLoadingCopy" />
+                    ) : copyState === "success" ? (
+                        <FiCheck size={20} className="iconCopySuccess" />
+                    ) : (
+                        <FiCopy size={20} className="iconCopy" />
+                    )}
                 </button>
             </div>
             <div className="shareLinks" aria-label="Links para compartilhar o portfólio">

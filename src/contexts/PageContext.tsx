@@ -16,7 +16,7 @@ interface PageProviderProps {
 type PageContextData = {
     scrollToSection: (elementRef: RefObject<HTMLElement>) => void;
     scrollPageTop: () => void;
-    handleCopyEmailInput: () => void;
+    handleCopyEmailInput: () => boolean;
     toggleModalLanguage: () => void;
     aboutRef: RefObject<HTMLElement>;
     skillsRef: RefObject<HTMLElement>;
@@ -59,7 +59,7 @@ export const PageProvider = ({ children }: PageProviderProps) => {
     }, []);
 
     const handleCopyEmailInput = useCallback(() => {
-        copy(String(emailRef.current?.innerText));
+        return copy(String(emailRef.current?.innerText));
     }, []);
 
     const toggleModalLanguage = useCallback(() => {

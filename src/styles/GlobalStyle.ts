@@ -46,6 +46,16 @@ export default createGlobalStyle`
             font-size: 56.25%;
         }
     }
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
     body, a, input, button, textarea {
         font-size: 1.6rem;
         font-weight: 500;
