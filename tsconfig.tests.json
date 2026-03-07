@@ -1,0 +1,15 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "noEmit": false,
+        "outDir": ".test-dist",
+        "module": "commonjs",
+        "target": "es2020",
+        "isolatedModules": false,
+        "jsx": "react-jsx",
+        "declaration": false,
+        "sourceMap": false
+    },
+    "include": ["src/utils/sectionNavigation.ts", "tests/**/*.ts"],
+    "exclude": ["node_modules", ".next", ".test-dist"]
+}
