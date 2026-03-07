@@ -15,14 +15,11 @@ const securityHeaders = [
 
 const nextConfig = {
     reactStrictMode: true,
-    swcMinify: true,
     poweredByHeader: false,
+    outputFileTracingRoot: __dirname,
     compiler: {
         styledComponents: true,
         reactRemoveProperties: true,
-    },
-    experimental: {
-        serverComponents: true,
     },
     images: {
         domains: ["raw.githubusercontent.com"],
