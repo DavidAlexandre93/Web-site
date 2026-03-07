@@ -10,6 +10,14 @@
         "declaration": false,
         "sourceMap": false
     },
-    "include": ["src/utils/sectionNavigation.ts", "tests/**/*.ts"],
-    "exclude": ["node_modules", ".next", ".test-dist"]
+    "include": [
+        "src/utils/sectionNavigation.ts",
+        "middleware.ts",
+        "tests/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        ".next",
+        ".test-dist"
+    ]
 }

@@ -3,12 +3,22 @@ import { NextRequest, NextResponse } from "next/server";
 const DEFAULT_LOCALE = "en-US";
 const SUPPORTED_LOCALES = ["pt-BR", "en-US", "fr", "ja"] as const;
 
-const COUNTRY_LOCALE_MAP: Record<string, (typeof SUPPORTED_LOCALES)[number]> = {
-    BR: "pt-BR",
-    FR: "fr",
-    US: "en-US",
-    JP: "ja",
-};
+const COUNTRY_GROUPS = {
+    "pt-BR": new Set([
+        "BR", "PT", "AO", "MZ", "GW", "CV", "ST", "TL", "MO", "GQ",
+    ]),
+    "en-US": new Set([
+        "US", "GB", "IE", "CA", "AU", "NZ", "ZA", "IN", "SG", "PH",
+        "NG", "GH", "KE", "UG", "ZM", "ZW", "PK", "MT", "JM", "BZ",
+        "TT", "BS", "BB",
+    ]),
+    fr: new Set([
+        "FR", "BE", "CH", "LU", "MC", "CA", "HT", "SN", "CI", "ML",
+        "BF", "NE", "TG", "BJ", "CM", "CD", "CG", "GA", "DJ", "MG",
+        "MU", "SC", "RW", "BI", "GN", "TD", "CF", "KM", "VU",
+    ]),
+    ja: new Set(["JP"]),
+} as const;
 
 const PUBLIC_FILE = /\.(.*)$/;
 
@@ -55,17 +65,57 @@ const getLocaleFromAcceptLanguage = (headerValue: string | null) => {
     return null;
 };
 
+const getCountryCode = (request: NextRequest) => {
+    const geoCountry = request.geo?.country;
+
+    if (geoCountry) {
+        return geoCountry.toUpperCase();
+    }
+
+    const providerCountry =
+        request.headers.get("x-vercel-ip-country") || request.headers.get("cf-ipcountry");
+
+    return providerCountry?.toUpperCase() || null;
+};
+
+const getLocaleFromCountry = (countryCode: string | null) => {
+    if (!countryCode) {
+        return null;
+    }
+
+    if (COUNTRY_GROUPS.ja.has(countryCode)) {
+        return "ja";
+    }
+
+    if (COUNTRY_GROUPS["pt-BR"].has(countryCode)) {
+        return "pt-BR";
+    }
+
+    if (COUNTRY_GROUPS.fr.has(countryCode)) {
+        return "fr";
+    }
+
+    if (COUNTRY_GROUPS["en-US"].has(countryCode)) {
+        return "en-US";
+    }
+
+    return null;
+};
+
 const getPreferredLocale = (request: NextRequest) => {
-    const countryCode = request.geo?.country;
-    const localeFromCountry = countryCode
-        ? COUNTRY_LOCALE_MAP[countryCode]
-        : null;
+    const localeFromCountry = getLocaleFromCountry(getCountryCode(request));
 
     if (localeFromCountry) {
         return localeFromCountry;
     }
 
     return getLocaleFromAcceptLanguage(request.headers.get("accept-language")) || DEFAULT_LOCALE;
+};
+
+export const middlewareTestUtils = {
+    normalizeLocale,
+    getLocaleFromAcceptLanguage,
+    getLocaleFromCountry,
 };
 
 export function middleware(request: NextRequest) {
