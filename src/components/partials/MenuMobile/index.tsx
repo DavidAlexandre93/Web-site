@@ -51,8 +51,8 @@ export const MenuMobile = () => {
     }, [activeMenu]);
 
     return (
-        <MenuMobileContainer activeMenu={activeMenu}>
-            <button className="closeMenu" onClick={toggleShowMenu}>
+        <MenuMobileContainer id="menu-mobile" activeMenu={activeMenu} aria-hidden={!activeMenu}>
+            <button className="closeMenu" onClick={toggleShowMenu} aria-label="Fechar menu mobile">
                 <IoClose size={30} />
             </button>
             <ul>

@@ -60,7 +60,7 @@ export const About = () => {
     const AboutContainerElement = AboutContainer as any;
 
     return (
-        <AboutContainerElement ref={aboutRef}>
+        <AboutContainerElement ref={aboutRef} id="about">
             <div className="contentAbout">
                 <div className="textAbout">
                     <TitleSection>{t("about")}</TitleSection>

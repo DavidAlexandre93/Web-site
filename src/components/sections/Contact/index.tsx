@@ -46,7 +46,7 @@ export const Contact = () => {
     const ContactContainerElement = ContactContainer as any;
 
     return (
-        <ContactContainerElement ref={contactRef}>
+        <ContactContainerElement ref={contactRef} id="contact">
             <div className="content">
                 <div className="title-contact">
                     <p>{t("letStart")}</p>

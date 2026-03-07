@@ -10,7 +10,7 @@ import { getGsap, getMotionAnimate } from "@/utils";
 
 export const Header = () => {
     const headerRef = useRef<HTMLElement>(null);
-    const { toggleShowMenu } = useContext(HeaderContext);
+    const { toggleShowMenu, activeMenu } = useContext(HeaderContext);
     const {
         scrollToSection,
         aboutRef,
@@ -114,7 +114,14 @@ export const Header = () => {
 
                 <SwitchLanguage />
                 <div className="buttons-header">
-                    <button className="btn-menuMobile" onClick={toggleShowMenu}>
+                    <button
+                        className="btn-menuMobile"
+                        onClick={toggleShowMenu}
+                        aria-label="Abrir menu mobile"
+                        aria-controls="menu-mobile"
+                        aria-expanded={activeMenu}
+                    >
+                        <span className="sr-only">Abrir menu mobile</span>
                         <CgMenuRight size={25} />
                     </button>
                 </div>
