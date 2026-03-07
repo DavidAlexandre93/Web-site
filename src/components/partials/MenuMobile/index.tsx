@@ -3,13 +3,19 @@ import { IoClose } from "react-icons/io5";
 import { useTranslation } from "next-i18next";
 import { MenuMobileContainer } from "./styles";
 import { HeaderContext, PageContext } from "@/contexts";
-import { getGsap, getMotionAnimate } from "@/utils";
+import { createSectionNavigationItems, getGsap, getMotionAnimate } from "@/utils";
 
 export const MenuMobile = () => {
     const { activeMenu, toggleShowMenu } = useContext(HeaderContext);
     const { scrollToSection, aboutRef, skillsRef, portfolioRef, contactRef } =
         useContext(PageContext);
     const { t } = useTranslation();
+
+    const navigationItems = createSectionNavigationItems({
+        scrollToSection,
+        sectionRefs: { aboutRef, skillsRef, portfolioRef, contactRef },
+        translate: t,
+    });
 
     useEffect(() => {
         const gsap = getGsap();
@@ -51,31 +57,16 @@ export const MenuMobile = () => {
     }, [activeMenu]);
 
     return (
-        <MenuMobileContainer id="menu-mobile" activeMenu={activeMenu} aria-hidden={!activeMenu}>
+        <MenuMobileContainer activeMenu={activeMenu} aria-hidden={!activeMenu}>
             <button className="closeMenu" onClick={toggleShowMenu} aria-label="Fechar menu mobile">
                 <IoClose size={30} />
             </button>
             <ul>
-                <li>
-                    <button onClick={() => scrollToSection(aboutRef)}>
-                        {t("about")}
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => scrollToSection(skillsRef)}>
-                        {t("skills")}
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => scrollToSection(portfolioRef)}>
-                        {t("portfolio")}
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => scrollToSection(contactRef)}>
-                        {t("contact")}
-                    </button>
-                </li>
+                {navigationItems.map((item) => (
+                    <li key={item.id}>
+                        <button onClick={item.onClick}>{item.label}</button>
+                    </li>
+                ))}
             </ul>
         </MenuMobileContainer>
     );

@@ -55,9 +55,7 @@ export const MenuMobileContainer = styled.nav<MenuMobileProps>`
             display: flex;
             align-items: center;
             justify-content: center;
-            transform: rotate(
-                ${(props) => (props.activeMenu ? "0deg" : "-45deg")}
-            );
+            transform: rotate(${(props) => (props.activeMenu ? "0deg" : "-45deg")});
             transition: all 0.45s ease;
         }
     }
