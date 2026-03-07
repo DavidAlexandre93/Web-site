@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useRef } from "react";
 import { FaLevelUpAlt } from "react-icons/fa";
@@ -47,52 +48,52 @@ export const Footer = () => {
             );
         }, footerElement);
 
-        const upAnimation = animate?.(
-            footerElement.querySelector(".btnTopPage svg"),
-            { y: [0, -6, 0] },
-            { duration: 1.4, repeat: Infinity, easing: "ease-in-out" }
-        );
+        const upIcon = footerElement.querySelector(".btnTopPage svg");
+        const upAnimation =
+            animate && upIcon
+                ? animate(
+                      upIcon,
+                      { y: [0, -6, 0] },
+                      { duration: 1.4, repeat: Infinity, easing: "ease-in-out" }
+                  )
+                : undefined;
 
         return () => {
             context.revert();
-            upAnimation?.stop();
+            upAnimation?.stop?.();
         };
     }, []);
 
+    const FooterContainerElement = FooterContainer as any;
+
     return (
-        <FooterContainer ref={footerRef}>
+        <FooterContainerElement ref={footerRef}>
             <div className="content">
                 <div className="texts">
                     <p>{t("rightsReserved")}, © 2022 David Alexandre Fernandes.</p>
                     <div className="socials">
-                        <Link
-                            href={"https://www.linkedin.com/in/david-fernandes-08b005b4/"}
-                        >
+                        <Link href={"https://www.linkedin.com/in/david-fernandes-08b005b4/"}>
                             <a title={t("accessLinkedinTitle")}>
-                                <img src="./linkedin.svg" alt="Logo do Linkedin" />
+                                <Image src="/linkedin.svg" alt="Logo do Linkedin" width={45} height={45} />
                             </a>
                         </Link>
                         <Link href={"https://github.com/DavidAlexandre93"}>
                             <a title={t("accessGithubTitle")}>
-                                <img src="./github.svg" alt="Logo do Github" />
+                                <Image src="/github.svg" alt="Logo do Github" width={45} height={45} />
                             </a>
                         </Link>
                         <Link href={"https://www.instagram.com/davidalexandrepro/"}>
                             <a title={t("accessInstagramTitle")}>
-                                <img src="./instagram.svg" alt="Logo do Instagram" />
+                                <Image src="/instagram.svg" alt="Logo do Instagram" width={45} height={45} />
                             </a>
                         </Link>
                     </div>
                 </div>
-                <button
-                    className="btnTopPage"
-                    onClick={scrollPageTop}
-                    title={t("homeTitle")}
-                >
+                <button className="btnTopPage" onClick={scrollPageTop} title={t("homeTitle")}>
                     <span>{t("home")}</span>
                     <FaLevelUpAlt size={30} />
                 </button>
             </div>
-        </FooterContainer>
+        </FooterContainerElement>
     );
 };

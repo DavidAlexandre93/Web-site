@@ -54,14 +54,18 @@ export const Stats = () => {
             });
         }
 
-        return () => {
+
+    return () => {
             context.revert();
         };
     }, []);
 
 
+
+    const StatsContainerElement = StatsContainer as any;
+
     return (
-        <StatsContainer ref={statsRef}>
+        <StatsContainerElement ref={statsRef}>
             <div className="cardStats" title={t("debugsTitle")}>
                 <div className="icon">
                     <FaBug size={40} />
@@ -93,6 +97,6 @@ export const Stats = () => {
                 <h3>100</h3>
                 <p>{t("numberIdeas")}</p>
             </div>
-        </StatsContainer>
+        </StatsContainerElement>
     );
 };

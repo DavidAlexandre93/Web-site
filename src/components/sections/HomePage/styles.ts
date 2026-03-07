@@ -56,6 +56,28 @@ export const HomeContainer = styled.section`
             }
         }
     }
+    .shareLinks {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        a {
+            padding: 0.8rem 1.4rem;
+            border-radius: 3rem;
+            background-color: var(--boxes);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: var(--container);
+            }
+        }
+    }
+
     .email {
         width: min(40rem, 100%);
         background-color: var(--boxes);
@@ -69,7 +91,8 @@ export const HomeContainer = styled.section`
             width: 100%;
             overflow-x: auto;
             p {
-                min-width: 28rem;
+                min-width: 0;
+                overflow-wrap: anywhere;
             }
         }
         button {

@@ -9,7 +9,14 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "typecheck": "tsc --noEmit",
+        "format": "node scripts/format-check.mjs --write",
+        "format:check": "node scripts/format-check.mjs",
+        "test:unit": "npm run test:compile && node --test .test-dist/tests/**/*.test.js",
+        "test:coverage": "npm run test:compile && node --test --experimental-test-coverage .test-dist/tests/**/*.test.js",
+        "test:compile": "tsc -p tsconfig.tests.json",
+        "security:audit": "npm audit --omit=dev --audit-level=high"
     },
     "dependencies": {
         "axios": "^0.27.2",

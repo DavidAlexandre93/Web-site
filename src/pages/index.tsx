@@ -24,11 +24,32 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const Home: NextPage = () => {
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "David Alexandre Fernandes",
+        url: "https://www.david-alexandre.dev/",
+        jobTitle: "Software Developer",
+        image: "https://www.david-alexandre.dev/application.png",
+        sameAs: [
+            "https://github.com/DavidAlexandre93",
+            "https://www.linkedin.com/in/david-alexandre-fernandes/",
+            "https://www.instagram.com/davids.8/",
+        ],
+        worksFor: {
+            "@type": "Organization",
+            name: "David Alexandre Fernandes",
+        },
+    };
+
     return (
         <>
             <NextHead
                 title="Portfolio David Alexandre Fernandes - Software Developer | DevOps | Artificial Intelligence | Blockchain"
                 faviconPath="favicon.svg"
+                description="Portfólio com projetos, experiência em desenvolvimento full cycle, DevOps e inteligência artificial."
+                canonicalUrl="https://www.david-alexandre.dev/"
+                schema={schema}
             />
             <HeaderProvider>
                 <Header />

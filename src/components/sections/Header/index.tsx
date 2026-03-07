@@ -1,15 +1,16 @@
-import React, { useContext, useEffect, useRef } from "react";
+import Image from "next/image";
+import { useContext, useEffect, useRef } from "react";
 import Link from "next/link";
 import { CgMenuRight } from "react-icons/cg";
 import { useTranslation } from "next-i18next";
 import { HeaderContainer } from "./styles";
 import { HeaderContext, PageContext } from "@/contexts";
 import { SwitchLanguage } from "@/components/partials/SwitchLanguage";
-import { getGsap, getMotionAnimate } from "@/utils";
+import { createSectionNavigationItems, getGsap, getMotionAnimate } from "@/utils";
 
 export const Header = () => {
     const headerRef = useRef<HTMLElement>(null);
-    const { toggleShowMenu } = useContext(HeaderContext);
+    const { toggleShowMenu, activeMenu } = useContext(HeaderContext);
     const {
         scrollToSection,
         aboutRef,
@@ -21,6 +22,12 @@ export const Header = () => {
     } = useContext(PageContext);
 
     const { t } = useTranslation();
+
+    const navigationItems = createSectionNavigationItems({
+        scrollToSection,
+        sectionRefs: { aboutRef, skillsRef, portfolioRef, contactRef },
+        translate: t,
+    });
 
     useEffect(() => {
         const gsap = getGsap();
@@ -58,20 +65,24 @@ export const Header = () => {
             );
         }, headerElement);
 
-        const pulse = animate?.(
-            ".btn-menuMobile",
-            { scale: [1, 1.06, 1], rotate: [0, -3, 0, 3, 0] },
-            { duration: 2.1, repeat: Infinity, easing: "ease-in-out" }
-        );
+        const pulse = animate
+            ? animate(
+                  ".btn-menuMobile",
+                  { scale: [1, 1.06, 1], rotate: [0, -3, 0, 3, 0] },
+                  { duration: 2.1, repeat: Infinity, easing: "ease-in-out" }
+              )
+            : undefined;
 
         return () => {
             context.revert();
-            pulse?.stop();
+            pulse?.stop?.();
         };
     }, []);
 
+    const HeaderContainerElement = HeaderContainer as any;
+
     return (
-        <HeaderContainer
+        <HeaderContainerElement
             ref={headerRef}
             visibleHeader={isVisibleHeader}
             isPageTop={handlePageTop}
@@ -79,10 +90,12 @@ export const Header = () => {
             <div className="content-header">
                 <Link href="/">
                     <a className="homeLink">
-                        <img
-                            src="./profile.svg"
+                        <Image
+                            src="/profile.svg"
                             alt="Imagem de perfil"
                             className="profileLogo"
+                            width={42}
+                            height={42}
                         />
                         <h1>David Alexandre Fernandes</h1>
                     </a>
@@ -90,36 +103,27 @@ export const Header = () => {
 
                 <nav>
                     <ul>
-                        <li>
-                            <button onClick={() => scrollToSection(aboutRef)}>
-                                {t("about")}
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => scrollToSection(skillsRef)}>
-                                {t("skills")}
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => scrollToSection(portfolioRef)}>
-                                {t("portfolio")}
-                            </button>
-                        </li>
-                        <li>
-                            <button onClick={() => scrollToSection(contactRef)}>
-                                {t("contact")}
-                            </button>
-                        </li>
+                        {navigationItems.map((item) => (
+                            <li key={item.id}>
+                                <button onClick={item.onClick}>{item.label}</button>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
 
                 <SwitchLanguage />
                 <div className="buttons-header">
-                    <button className="btn-menuMobile" onClick={toggleShowMenu}>
+                    <button
+                        className="btn-menuMobile"
+                        onClick={toggleShowMenu}
+                        aria-label="Abrir menu mobile"
+                        aria-expanded={activeMenu}
+                    >
+                        <span className="sr-only">Abrir menu mobile</span>
                         <CgMenuRight size={25} />
                     </button>
                 </div>
             </div>
-        </HeaderContainer>
+        </HeaderContainerElement>
     );
 };

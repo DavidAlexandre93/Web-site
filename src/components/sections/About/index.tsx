@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useContext, useEffect } from "react";
@@ -28,7 +29,7 @@ export const About = () => {
                     opacity: 1,
                     duration: 0.9,
                     ease: "power2.out",
-                    scrollTrigger: { trigger: section, start: "top 72%" }
+                    scrollTrigger: { trigger: section, start: "top 72%" },
                 }
             );
             gsap.fromTo(
@@ -40,7 +41,7 @@ export const About = () => {
                     rotate: 0,
                     duration: 1,
                     ease: "power2.out",
-                    scrollTrigger: { trigger: section, start: "top 72%" }
+                    scrollTrigger: { trigger: section, start: "top 72%" },
                 }
             );
         }, section);
@@ -54,10 +55,12 @@ export const About = () => {
         }
 
         return () => context.revert();
-    }, []);
+    }, [aboutRef]);
+
+    const AboutContainerElement = AboutContainer as any;
 
     return (
-        <AboutContainer ref={aboutRef}>
+        <AboutContainerElement ref={aboutRef} id="about">
             <div className="contentAbout">
                 <div className="textAbout">
                     <TitleSection>{t("about")}</TitleSection>
@@ -65,32 +68,31 @@ export const About = () => {
                     <div className="linkSocial">
                         <Link href="https://github.com/DavidAlexandre93">
                             <a title={t("accessGithubTitle")}>
-                                <img src="./github.svg" alt="Logo Github" />
+                                <Image src="/github.svg" alt="Logo Github" width={50} height={50} />
                             </a>
                         </Link>
                         <Link href="https://www.instagram.com/davidalexandrepro/">
                             <a title={t("accessInstagramTitle")}>
-                                <img
-                                    src="./instagram.svg"
-                                    alt="Logo Instagram"
-                                />
+                                <Image src="/instagram.svg" alt="Logo Instagram" width={50} height={50} />
                             </a>
                         </Link>
                         <Link href="https://www.linkedin.com/in/david-fernandes-08b005b4/">
                             <a title={t("accessLinkedinTitle")}>
-                                <img src="./linkedin.svg" alt="Logo Linkedin" />
+                                <Image src="/linkedin.svg" alt="Logo Linkedin" width={50} height={50} />
                             </a>
                         </Link>
                     </div>
                 </div>
                 <div className="image">
-                    <img
-                        src="./profile.svg"
+                    <Image
+                        src="/profile.svg"
                         alt={t("illustrativePhoto")}
                         title={t("illustrativePhoto")}
+                        width={500}
+                        height={500}
                     />
                 </div>
             </div>
-        </AboutContainer>
+        </AboutContainerElement>
     );
 };
