@@ -8,7 +8,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "start": "vite preview",
+        "start": "npm run build && vite preview",
         "lint": "eslint .",
         "typecheck": "tsc --noEmit",
         "format": "node scripts/format-check.mjs --write",
