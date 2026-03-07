@@ -122,9 +122,14 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
     }
     @media (max-width: 768px) {
         .content-header {
+            padding: 1rem 0;
             gap: 0;
             a.homeLink {
                 margin-right: 1.2rem;
+                img.profileLogo {
+                    width: 9.6rem;
+                    height: 9.6rem;
+                }
                 h1 {
                     display: none;
                 }
