@@ -46,7 +46,7 @@ export const Contact = () => {
     const ContactContainerElement = ContactContainer as any;
 
     return (
-        <ContactContainerElement ref={contactRef} id="contact">
+        <ContactContainerElement ref={contactRef} id="contact" data-reveal>
             <div className="content">
                 <div className="title-contact">
                     <p>{t("letStart")}</p>
@@ -58,7 +58,7 @@ export const Contact = () => {
                             "https://www.google.com.br/maps/place/S%C3%A3o+Paulo,+SP/@-23.6815303,-46.8761671,10z/data=!3m1!4b1!4m5!3m4!1s0x94ce448183a461d1:0x9ba94b08ff335bae!8m2!3d-23.5557714!4d-46.6395571"
                         }
                     >
-                        <a className="card-contact" title={t("locationTitle")}>
+                        <a className="card-contact" title={t("locationTitle")} data-tilt data-ripple>
                             <IoLocationOutline
                                 size={40}
                                 className="icon-cardContact"
@@ -73,7 +73,7 @@ export const Contact = () => {
                             "mailto:davidalexandrefernandes@outlook.com"
                         }
                     >
-                        <a className="card-contact" title={t("sendEmailTitle")}>
+                        <a className="card-contact" title={t("sendEmailTitle")} data-tilt data-ripple>
                             <IoMailOutline
                                 size={40}
                                 className="icon-cardContact"
@@ -83,7 +83,7 @@ export const Contact = () => {
                         </a>
                     </Link>
                     <Link href={"https://wa.me/5511959364795"}>
-                        <a className="card-contact" title={t("contactTitle")}>
+                        <a className="card-contact" title={t("contactTitle")} data-tilt data-ripple>
                             <BsWhatsapp
                                 size={40}
                                 className="icon-cardContact"

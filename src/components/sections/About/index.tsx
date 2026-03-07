@@ -60,24 +60,24 @@ export const About = () => {
     const AboutContainerElement = AboutContainer as any;
 
     return (
-        <AboutContainerElement ref={aboutRef} id="about">
+        <AboutContainerElement ref={aboutRef} id="about" data-reveal>
             <div className="contentAbout">
                 <div className="textAbout">
                     <TitleSection>{t("about")}</TitleSection>
                     <p>{t("descriptionAboutMe")}</p>
                     <div className="linkSocial">
                         <Link href="https://github.com/DavidAlexandre93">
-                            <a title={t("accessGithubTitle")}>
+                            <a title={t("accessGithubTitle")} data-ripple>
                                 <Image src="/github.svg" alt="Logo Github" width={50} height={50} />
                             </a>
                         </Link>
                         <Link href="https://www.instagram.com/davidalexandrepro/">
-                            <a title={t("accessInstagramTitle")}>
+                            <a title={t("accessInstagramTitle")} data-ripple>
                                 <Image src="/instagram.svg" alt="Logo Instagram" width={50} height={50} />
                             </a>
                         </Link>
                         <Link href="https://www.linkedin.com/in/david-fernandes-08b005b4/">
-                            <a title={t("accessLinkedinTitle")}>
+                            <a title={t("accessLinkedinTitle")} data-ripple>
                                 <Image src="/linkedin.svg" alt="Logo Linkedin" width={50} height={50} />
                             </a>
                         </Link>

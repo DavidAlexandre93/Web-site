@@ -154,7 +154,7 @@ export const HomePage = () => {
             : t("copyEmailTitle");
 
     return (
-        <HomeContainerElement ref={containerRef} id="home">
+        <HomeContainerElement ref={containerRef} id="home" data-reveal>
             <div className="ambientGlow" aria-hidden="true" />
             <h2 className="titleHome">{t("professionalPortfolio")}</h2>
             <p className="descriptionHome">{t("frontendDeveloper")}</p>
@@ -162,12 +162,13 @@ export const HomePage = () => {
                 <button
                     onClick={() => scrollToSection(aboutRef)}
                     title={t("knowAboutTitle")}
+                    data-ripple
                 >
                     <span>{t("knowAbout")}</span>
                     <BsArrowDownShort size={25} className="iconArrow" />
                 </button>
                 <Link href="https://github.com/DavidAlexandre93">
-                    <a title={t("accessGithubTitle")}>
+                    <a title={t("accessGithubTitle")} data-ripple>
                         <span>GitHub</span> <RiShareBoxFill size={18} />
                     </a>
                 </Link>
@@ -178,6 +179,7 @@ export const HomePage = () => {
                 </div>
                 <button
                     title={copyButtonLabel}
+                    data-ripple
                     onClick={handleCopy}
                     aria-live="polite"
                     aria-busy={copyState === "loading"}
@@ -192,13 +194,13 @@ export const HomePage = () => {
                 </button>
             </div>
             <div className="shareLinks" aria-label="Links para compartilhar o portfólio">
-                <a href={shareLinks.whatsapp} target="_blank" rel="noreferrer" title="Compartilhar no WhatsApp">
+                <a href={shareLinks.whatsapp} target="_blank" rel="noreferrer" title="Compartilhar no WhatsApp" data-ripple>
                     <FaWhatsapp size={18} /> WhatsApp
                 </a>
-                <a href={shareLinks.linkedin} target="_blank" rel="noreferrer" title="Compartilhar no LinkedIn">
+                <a href={shareLinks.linkedin} target="_blank" rel="noreferrer" title="Compartilhar no LinkedIn" data-ripple>
                     <FaLinkedin size={18} /> LinkedIn
                 </a>
-                <a href={shareLinks.twitter} target="_blank" rel="noreferrer" title="Compartilhar no Twitter">
+                <a href={shareLinks.twitter} target="_blank" rel="noreferrer" title="Compartilhar no Twitter" data-ripple>
                     <FaTwitter size={18} /> Twitter
                 </a>
             </div>

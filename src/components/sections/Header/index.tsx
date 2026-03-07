@@ -105,7 +105,7 @@ export const Header = () => {
                     <ul>
                         {navigationItems.map((item) => (
                             <li key={item.id}>
-                                <button onClick={item.onClick}>{item.label}</button>
+                                <button onClick={item.onClick} data-ripple>{item.label}</button>
                             </li>
                         ))}
                     </ul>
@@ -118,6 +118,7 @@ export const Header = () => {
                         onClick={toggleShowMenu}
                         aria-label="Abrir menu mobile"
                         aria-expanded={activeMenu}
+                        data-ripple
                     >
                         <span className="sr-only">Abrir menu mobile</span>
                         <CgMenuRight size={25} />

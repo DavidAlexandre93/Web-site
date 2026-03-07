@@ -91,8 +91,47 @@ export default createGlobalStyle`
     }
     button {
         background-color: transparent;
-        
     }
+    [data-tilt] {
+        --tilt-rotate-x: 0deg;
+        --tilt-rotate-y: 0deg;
+        transform: perspective(90rem) rotateX(var(--tilt-rotate-x)) rotateY(var(--tilt-rotate-y));
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
+        will-change: transform;
+    }
+    [data-ripple] {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+    .interaction-ripple {
+        position: absolute;
+        width: 1.4rem;
+        height: 1.4rem;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: rgba(255, 255, 255, 0.4);
+        pointer-events: none;
+        z-index: 0;
+        animation: rippleExpand 0.65s ease-out forwards;
+    }
+    [data-reveal] {
+        opacity: 0;
+        transform: translateY(2.2rem);
+        transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    [data-reveal].is-in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    @keyframes rippleExpand {
+        to {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(18);
+        }
+    }
+
     main {
         z-index: 1;
     }

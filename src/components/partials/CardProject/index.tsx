@@ -23,7 +23,7 @@ export const CardProject = ({
     const { t } = useTranslation();
 
     return (
-        <CardProjectContainer className="project-card">
+        <CardProjectContainer className="project-card" data-tilt data-reveal>
             <div className="image">
                 {imageUrl ? (
                     <Image src={imageUrl} alt={title} layout="fill" objectFit="cover" objectPosition="center" />
@@ -35,7 +35,7 @@ export const CardProject = ({
                 <div className="description">
                     <div className="title">
                         <h4>{title}</h4>
-                        <button name={t("viewInformation")} title={t("viewInformation")}>
+                        <button name={t("viewInformation")} title={t("viewInformation")} data-ripple>
                             <BsArrowBarUp size={30} />
                         </button>
                     </div>
@@ -44,18 +44,18 @@ export const CardProject = ({
                         <div className="links">
                             <Link href={website || repository}>
                                 {website ? (
-                                    <a className="link" title={t("websiteOnlineTitle")}>
+                                    <a className="link" title={t("websiteOnlineTitle")} data-ripple>
                                         {t("websiteOnline")}
                                     </a>
                                 ) : (
-                                    <a className="link" title={t("accessRepository")}>
+                                    <a className="link" title={t("accessRepository")} data-ripple>
                                         {t("accessRepository")}
                                     </a>
                                 )}
                             </Link>
                             {website && (
                                 <Link href={repository}>
-                                    <a className="link-extra" title={t("accessRepository")}>
+                                    <a className="link-extra" title={t("accessRepository")} data-ripple>
                                         <GoFileDirectory size={25} />
                                     </a>
                                 </Link>

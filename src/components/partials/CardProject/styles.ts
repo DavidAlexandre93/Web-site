@@ -15,6 +15,12 @@ export const CardProjectContainer = styled.div<CardProjectContainerProps>`
     position: relative;
     box-shadow: 0 2.2rem 4rem rgba(0, 0, 0, 0.25);
     transform-style: preserve-3d;
+    --tilt-rotate-x: 0deg;
+    --tilt-rotate-y: 0deg;
+    --tilt-glow-x: 50%;
+    --tilt-glow-y: 50%;
+    transform: perspective(100rem) rotateX(var(--tilt-rotate-x)) rotateY(var(--tilt-rotate-y));
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
     .image {
         min-width: 100%;
         height: 100%;
@@ -34,6 +40,14 @@ export const CardProjectContainer = styled.div<CardProjectContainerProps>`
     }
     .overlay {
         background: linear-gradient(180deg, rgba(4, 11, 21, 0.1) 0%, rgba(4, 11, 21, 0.65) 100%);
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at var(--tilt-glow-x) var(--tilt-glow-y), rgba(15, 138, 253, 0.26), transparent 50%);
+            opacity: 0.7;
+            pointer-events: none;
+        }
         position: absolute;
         bottom: 0;
         left: 0;
@@ -94,6 +108,7 @@ export const CardProjectContainer = styled.div<CardProjectContainerProps>`
         }
     }
     &:hover {
+        box-shadow: 0 2.8rem 4.2rem rgba(0, 0, 0, 0.3);
         .overlay {
             .description {
                 transform: translateY(0);
