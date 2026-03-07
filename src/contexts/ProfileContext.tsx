@@ -28,6 +28,10 @@ type RepositoriesProps = {
     html_url: string;
     description: string | null;
     homepage: string | null;
+    default_branch: string;
+    owner: {
+        login: string;
+    };
 };
 
 const REPOSITORIES_PER_PAGE = 5;
