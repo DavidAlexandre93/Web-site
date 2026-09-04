@@ -79,7 +79,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
                         }
                         &::after {
                             width: 100%;
-                            background: var(--blueGradient);
+                            background: var(--accent);
                         }
                     }
                 }

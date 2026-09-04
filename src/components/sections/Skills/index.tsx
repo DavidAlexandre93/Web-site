@@ -170,7 +170,7 @@ export const Skills = () => {
             },
             {
                 key: "cloud",
-                title: t("Cloud Computing"),
+                title: t("cloudArchitecture"),
                 items: [
                     {
                         isSkillActive: true,
@@ -208,6 +208,17 @@ export const Skills = () => {
                         nameSkill: "DevOps",
                         typeSkill: t("programmingLanguage"),
                     },
+                ],
+            },
+            {
+                key: "ai-observability",
+                title: t("aiObservability"),
+                items: [
+                    { isSkillActive: true, pathIconSkill: "./python.svg", nameSkill: "LLMs", typeSkill: "AI Engineering" },
+                    { isSkillActive: true, pathIconSkill: "./python.svg", nameSkill: "RAG", typeSkill: "AI Architecture" },
+                    { isSkillActive: true, pathIconSkill: "./nodejs.svg", nameSkill: "MCP", typeSkill: "AI Integration" },
+                    { isSkillActive: true, pathIconSkill: "./devops.svg", nameSkill: "OpenTelemetry", typeSkill: "Observability" },
+                    { isSkillActive: true, pathIconSkill: "./kubernetes.svg", nameSkill: "Datadog", typeSkill: "Monitoring" },
                 ],
             },
         ],

@@ -2,6 +2,10 @@
 
 Portfólio pessoal construído com Vite, React, TypeScript e styled-components.
 
+## Experiência AI-native
+
+O portfólio inclui um concierge contextual acessível no canto inferior da página. Nesta fase ele usa um provider local, sem credenciais ou chamadas externas: responde somente com fatos curados, exibe fontes internas e mantém busca e descoberta disponíveis sem IA remota. O contrato `AssistantProvider` em `src/services/assistant.ts` isola a implementação para a futura troca por um endpoint server-side com streaming; nenhuma chave deve ser colocada no frontend.
+
 ## Requisitos
 
 - Node.js **20.x**

@@ -13,7 +13,9 @@
     },
     "include": [
         "src/utils/sectionNavigation.ts",
+        "src/services/assistant.ts",
         "middleware.ts",
+        "tests/services/assistant.test.ts",
         "tests/**/*.ts"
     ],
     "exclude": [

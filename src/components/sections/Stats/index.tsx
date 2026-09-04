@@ -1,8 +1,7 @@
 import { StatsContainer } from "./styles";
-import { FaBug } from "react-icons/fa"; /*Bug icon */
+import { FaBriefcase } from "react-icons/fa";
 import { RiGitRepositoryLine } from "react-icons/ri"; /*Repository icon */
-import { MdTimer } from "react-icons/md"; /*Timer icon */
-import { MdOutlineLightbulb } from "react-icons/md"; /*Light icon */
+import { MdCloudQueue, MdOutlinePsychology } from "react-icons/md";
 import { ProfileContext } from "@/contexts";
 import { useContext, useEffect, useRef } from "react";
 import { useTranslation } from "next-i18next";
@@ -66,12 +65,12 @@ export const Stats = () => {
 
     return (
         <StatsContainerElement ref={statsRef} data-reveal>
-            <div className="cardStats" title={t("debugsTitle")} data-tilt>
+            <div className="cardStats" title={t("yearsExperience")} data-tilt>
                 <div className="icon">
-                    <FaBug size={40} />
+                    <FaBriefcase size={40} />
                 </div>
-                <h3>40+</h3>
-                <p>{t("debugs")}</p>
+                <h3>10+</h3>
+                <p>{t("yearsExperience")}</p>
             </div>
 
             <div className="cardStats" title={t("projectsTitle")} data-tilt>
@@ -82,20 +81,20 @@ export const Stats = () => {
                 <p>{t("projects")}</p>
             </div>
 
-            <div className="cardStats" title={t("hourProgrammingTitle")} data-tilt>
+            <div className="cardStats" title={t("cloudProviders")} data-tilt>
                 <div className="icon">
-                    <MdTimer size={40} />
+                    <MdCloudQueue size={40} />
                 </div>
-                <h3>3800+</h3>
-                <p>{t("hourProgramming")}</p>
+                <h3>3</h3>
+                <p>{t("cloudProviders")}</p>
             </div>
 
-            <div className="cardStats" title={t("numberIdeasTitle")} data-tilt>
+            <div className="cardStats" title={t("featuredProjects")} data-tilt>
                 <div className="icon">
-                    <MdOutlineLightbulb size={40} />
+                    <MdOutlinePsychology size={40} />
                 </div>
-                <h3>100</h3>
-                <p>{t("numberIdeas")}</p>
+                <h3>3</h3>
+                <p>{t("featuredProjects")}</p>
             </div>
         </StatsContainerElement>
     );

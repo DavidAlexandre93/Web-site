@@ -1,194 +1,55 @@
 import styled from "styled-components";
+import { ReactNode } from "react";
 
-export const HomeContainer = styled.section`
-    width: 100%;
-    padding: clamp(13rem, 18vw, 20rem) 3rem clamp(8rem, 12vw, 12rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+type HomeContainerProps = { children?: ReactNode; id?: string };
 
-    .ambientGlow {
-        position: absolute;
-        width: min(70rem, 70vw);
-        height: min(70rem, 70vw);
-        top: 6rem;
-        border-radius: 50%;
-        pointer-events: none;
-        filter: blur(5rem);
-        background: radial-gradient(circle, rgba(15, 138, 253, 0.35) 0%, rgba(110, 87, 224, 0.22) 45%, rgba(255, 255, 255, 0) 72%);
-        z-index: -1;
-        will-change: transform;
+export const HomeContainer = styled.section<HomeContainerProps>`
+    width: min(118rem, 92%);
+    min-height: min(78rem, 92vh);
+    margin: 0 auto;
+    padding: clamp(12rem, 18vw, 18rem) 0 clamp(6rem, 10vw, 10rem);
+    display: grid;
+    align-content: center;
+    gap: 7rem;
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(28rem, 0.75fr);
+        gap: clamp(4rem, 10vw, 12rem);
+        align-items: end;
+    }
+    .hero-copy { max-width: 75rem; }
+    .eyebrow { display: flex; align-items: center; gap: 0.8rem; color: var(--accent); font-size: 1.25rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+    .eyebrow span, .status-dot { width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0.5rem var(--accent-soft); }
+    h2 { max-width: 78rem; margin-top: 2rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(4.8rem, 8vw, 9.6rem); font-weight: 500; line-height: 0.98; letter-spacing: -0.04em; }
+    .descriptionHome { max-width: 65rem; margin-top: 2.4rem; color: var(--text-secondary); font-size: clamp(1.7rem, 2.2vw, 2.2rem); line-height: 1.45; }
+    .hero-lede { max-width: 57rem; margin-top: 1.6rem; color: var(--text-muted); font-size: 1.5rem; line-height: 1.7; }
+    .links { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 3.4rem; }
+    .links button, .links .text-link { min-height: 4.8rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.8rem; padding: 0 1.6rem; border: 1px solid var(--accent-border); border-radius: 1.1rem; background: var(--accent); color: #071018; font-weight: 800; transition: transform 180ms ease, background 180ms ease; }
+    .links button:hover, .links .text-link:hover { transform: translateY(-0.2rem); }
+    .links button.secondary, .links .text-link { background: transparent; color: var(--text-primary); border-color: var(--line); }
+    .links .text-link { border: 0; color: var(--accent); padding-inline: 0.8rem; }
+    .hero-signal { padding: 2.4rem; border: 1px solid var(--line); border-radius: 1.8rem; background: linear-gradient(145deg, var(--surface-raised), var(--surface)); box-shadow: var(--shadow-md); }
+    .signal-top { display: flex; align-items: center; gap: 1.2rem; color: var(--text-secondary); font-size: 1.3rem; }
+    .signal-number { margin-top: 5rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(3.6rem, 6vw, 6.8rem); line-height: 1; letter-spacing: -0.04em; }
+    .signal-number span { color: var(--accent); }
+    .signal-copy { margin-top: 1.4rem; color: var(--text-secondary); line-height: 1.6; }
+    .signal-list { display: grid; gap: 1.1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); color: var(--text-secondary); font-size: 1.3rem; }
+    .signal-list span { display: flex; align-items: center; gap: 0.8rem; }
+    .signal-list svg { color: var(--accent); }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: clamp(2rem, 8vw, 8rem); padding-top: 2rem; border-top: 1px solid var(--line); color: var(--text-muted); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .hero-meta strong { display: block; margin-bottom: 0.7rem; color: var(--text-primary); font-family: Georgia, "Times New Roman", serif; font-size: 2.4rem; font-weight: 500; letter-spacing: 0; }
+
+    @media (max-width: 760px) {
+        min-height: auto;
+        .hero-grid { grid-template-columns: 1fr; gap: 4rem; }
+        .signal-number { margin-top: 3rem; }
+        .links { align-items: stretch; flex-direction: column; }
+        .links .text-link, .links button { width: 100%; }
+        .hero-meta { gap: 2rem; justify-content: space-between; }
     }
 
-    h2.titleHome {
-        font-size: clamp(3.2rem, 5vw, 4.5rem);
-        max-width: 50rem;
-        text-align: center;
-        font-weight: 600;
-        line-height: 1.2;
-    }
-    p.descriptionHome {
-        font-size: clamp(1.8rem, 2.8vw, 2.1rem);
-        font-weight: 400;
-        max-width: 50rem;
-        text-align: center;
-        color: var(--text-secondary);
-        margin-top: 2rem;
-    }
-    .links {
-        margin-top: clamp(3.5rem, 8vw, 6rem);
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        button,
-        a {
-            padding: 1rem 2rem;
-            border-radius: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-        }
-        button {
-            background-color: var(--blue);
-            box-shadow: 0 0 0 rgba(9, 125, 234, 0);
-            .iconArrow {
-                transition: all 0.2s ease;
-            }
-            &:hover {
-                transform: translateY(-0.2rem);
-                background-color: var(--blueHover);
-                box-shadow: 0 1.2rem 2rem -1rem rgba(9, 125, 234, 0.7);
-                .iconArrow {
-                    transform: translateY(0.3rem);
-                }
-            }
-        }
-        a {
-            &:hover {
-                transform: translateY(-0.2rem);
-                background-color: var(--boxes);
-            }
-        }
-    }
-    .shareLinks {
-        margin-top: 2rem;
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-
-        a {
-            padding: 0.8rem 1.4rem;
-            border-radius: 3rem;
-            background-color: var(--boxes);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-
-            &:hover {
-                transform: translateY(-0.2rem);
-                box-shadow: 0 0.8rem 1.5rem -1rem rgba(15, 138, 253, 0.7);
-                background-color: var(--container);
-            }
-        }
-    }
-
-    .email {
-        width: min(40rem, 100%);
-        background-color: var(--boxes);
-        border: 0.1rem solid transparent;
-        padding: 1.4rem 2rem;
-        border-radius: 3rem;
-        display: flex;
-        align-items: center;
-        margin-top: clamp(3.5rem, 8vw, 6rem);
-        position: relative;
-        transition: border-color 0.25s ease, box-shadow 0.25s ease;
-
-        &[data-status="loading"] {
-            border-color: rgba(9, 125, 234, 0.6);
-        }
-
-        &[data-status="success"] {
-            border-color: rgba(34, 197, 94, 0.5);
-            box-shadow: 0 0 0 0.35rem rgba(34, 197, 94, 0.15);
-        }
-
-        .text-mail {
-            width: 100%;
-            overflow-x: auto;
-            p {
-                min-width: 0;
-                overflow-wrap: anywhere;
-            }
-        }
-        button {
-            margin-left: 1rem;
-            font-size: 0;
-            padding: 0.6rem;
-            border-radius: 0.6rem;
-            min-width: 3.6rem;
-            min-height: 3.6rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.2s ease, color 0.2s ease;
-
-            .iconLoadingCopy {
-                animation: rotateLoading 1s linear infinite;
-            }
-
-            .iconCopySuccess {
-                color: #22c55e;
-            }
-
-            &:hover {
-                background-color: var(--container);
-            }
-        }
-    }
-
-    @keyframes rotateLoading {
-        from {
-            transform: rotate(0);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    &::after {
-        z-index: -2;
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-                circle at 15% 50%,
-                rgba(110, 87, 224, 0.4),
-                rgba(255, 255, 255, 0) 25%
-            ),
-            radial-gradient(
-                circle at 85% 30%,
-                rgba(9, 125, 234, 0.4),
-                rgba(255, 255, 255, 0) 25%
-            );
-        width: 100%;
-        height: 100%;
-    }
-    @media (max-width: 400px) {
-        .links {
-            flex-direction: column-reverse;
-            width: 100%;
-            button,
-            a {
-                width: 100%;
-            }
-        }
+    @media (prefers-reduced-motion: reduce) {
+        .links button, .links .text-link { transition: none; }
     }
 `;

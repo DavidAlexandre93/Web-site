@@ -1,4 +1,3 @@
-import Script from "next/script";
 import {
     About,
     Contact,
@@ -8,6 +7,7 @@ import {
     MenuMobile,
     NextHead,
     Portfolio,
+    PortfolioAssistant,
     Separator,
     Skills,
     Stats,
@@ -22,12 +22,12 @@ export default function App() {
         "@context": "https://schema.org",
         "@type": "Person",
         name: "David Alexandre Fernandes",
-        url: "https://www.david-alexandre.dev/",
-        jobTitle: "Software Developer",
-        image: "https://www.david-alexandre.dev/application.png",
+        url: "https://www.davidalexandrefernandes.com/",
+        jobTitle: "Senior Software Engineer",
+        image: "https://www.davidalexandrefernandes.com/application.png",
         sameAs: [
             "https://github.com/DavidAlexandre93",
-            "https://www.linkedin.com/in/david-alexandre-fernandes/",
+            "https://www.linkedin.com/in/david-alexandre-fernandes-08b005b4/",
             "https://www.instagram.com/davids.8/",
         ],
         worksFor: {
@@ -38,10 +38,6 @@ export default function App() {
 
     return (
         <>
-            <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" />
-            <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" />
-            <Script src="https://cdn.jsdelivr.net/npm/motion@10.18.0/dist/motion.umd.min.js" />
-
             <NextHead
                 title="Portfolio David Alexandre Fernandes - Software Developer | DevOps | Artificial Intelligence | Blockchain"
                 faviconPath="favicon.svg"
@@ -71,6 +67,7 @@ export default function App() {
                         <Footer />
                     </main>
                 </ProfileProvider>
+                <PortfolioAssistant />
                 <GlobalStyle />
             </PageProvider>
         </>

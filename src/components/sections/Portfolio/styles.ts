@@ -23,6 +23,30 @@ export const PortfolioContainer = styled.section`
                 }
             }
         }
+        .portfolio-discovery {
+            width: 100%;
+            margin-top: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            .search-field {
+                flex: 1 1 24rem;
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                min-height: 4.6rem;
+                padding: 0 1.2rem;
+                border: 1px solid var(--line);
+                border-radius: 1rem;
+                background: var(--surface);
+                color: var(--accent);
+                input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--text-primary); }
+            }
+            .intent-filters { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+            .intent-filters button { min-height: 4.2rem; display: inline-flex; align-items: center; gap: 0.6rem; padding: 0 1rem; border: 1px solid var(--line); border-radius: 0.9rem; color: var(--text-secondary); &.active, &:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); } }
+        }
         .content-portfolio {
             margin-top: clamp(5rem, 10vw, 12rem);
             width: 100%;
@@ -44,6 +68,8 @@ export const PortfolioContainer = styled.section`
                     }
                 }
             }
+            .empty-state { grid-column: 1 / -1; padding: 4rem; border: 1px dashed var(--line); border-radius: 1.2rem; color: var(--text-secondary); text-align: center; }
         }
     }
+    @media (max-width: 640px) { .portfolio-discovery { align-items: stretch; flex-direction: column; } .intent-filters button { flex: 1; justify-content: center; } }
 `;

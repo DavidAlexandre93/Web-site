@@ -20,6 +20,7 @@ export const AboutContainer = styled.section`
                 color: var(--text-secondary);
                 line-height: 1.7;
             }
+            p.objective { margin-top: 1.6rem; color: var(--text-primary); }
             .linkSocial {
                 margin-top: 4rem;
                 display: flex;

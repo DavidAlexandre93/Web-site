@@ -5,27 +5,28 @@ export default createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        &:focus {
-            outline: 0.4rem solid rgba(34, 126, 240, 0.55);
+        &:focus-visible {
+            outline: 0.3rem solid var(--accent);
+            outline-offset: 0.3rem;
         }
     }
     :root {
-        --body: #151718;
-        --container: #242830;
-        --border: #202325;
-        --boxes: #202024;
-        --header: rgba(21, 23, 24, 0.35);
-
-        --blue: #097dea;
-        --blueHover: #0982f4;
-        --blueOpacity: rgba(34, 126, 240, 0.4);
-        --blueGradient: linear-gradient(65deg, #0270d7 0, #0f8afd 100%);
-        --blueGradientHover: linear-gradient(65deg, #0275e1 0, #198ffd 100%);
-        --purple: #6e57e0;
-        --orange: #f6ad55;
-
-        --text-primary: #e1e1e7;
-        --text-secondary: #a8a8b3;
+        --body: #070b0e;
+        --surface: #0d1519;
+        --surface-raised: #142127;
+        --surface-strong: rgba(10, 17, 21, 0.97);
+        --container: #111d23;
+        --border: #20323a;
+        --line: rgba(157, 184, 188, 0.13);
+        --header: rgba(7, 11, 14, 0.86);
+        --accent: #7df2cf;
+        --accent-soft: rgba(125, 242, 207, 0.11);
+        --accent-border: rgba(125, 242, 207, 0.42);
+        --text-primary: #f4faf7;
+        --text-secondary: #adc0c0;
+        --text-muted: #71888b;
+        --shadow-md: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+        --shadow-lg: 0 2.5rem 7rem rgba(0, 0, 0, 0.38);
     }
     html {
         font-size: 62.5%;
@@ -59,12 +60,14 @@ export default createGlobalStyle`
     body, a, input, button, textarea {
         font-size: 1.6rem;
         font-weight: 500;
-        font-family: 'Poppins', sans-serif;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
         -webkit-font-smoothing: antialiased;
         color: var(--text-primary);
     }
     body {
         background-color: var(--body);
+        background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size: 5.6rem 5.6rem;
         .sr-only {
             position: absolute;
             padding: 0;
@@ -116,15 +119,7 @@ export default createGlobalStyle`
         z-index: 0;
         animation: rippleExpand 0.65s ease-out forwards;
     }
-    [data-reveal] {
-        opacity: 0;
-        transform: translateY(2.2rem);
-        transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    [data-reveal].is-in-view {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    [data-reveal] { opacity: 1; }
     @keyframes rippleExpand {
         to {
             opacity: 0;

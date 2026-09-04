@@ -1,5 +1,9 @@
 ## Context
 
+## Implemented slice
+
+Esta primeira fatia mantém o runtime Vite operacional enquanto prepara a migração: o shell recebeu tokens semânticos dark/light, conteúdo inicial visível sem observer, hero editorial responsivo, reduced motion, foco visível e copy completa nas quatro locales. O concierge usa o port `AssistantProvider` e um adapter local fundamentado em fatos allowlisted, com consentimento explícito, sugestões, fontes e fallback determinístico; não há chave ou provider externo no bundle. A descoberta de projetos ganhou busca lexical, filtros de objetivo, estado vazio e imagem local de fallback. Streaming server-side, moderação remota, persistência, idempotência e providers externos permanecem tarefas posteriores da mesma change.
+
 Ver `proposal.md` para a motivação e `specs/*/spec.md` para os contratos observáveis.
 
 O repositório tem cerca de 2,4 mil linhas TypeScript/TSX, React 18 e styled-components, mas está dividido entre vestígios de Next.js e uma SPA Vite. `src/pages` é excluído do typecheck, imports de Next passam por 11 shims, o middleware não roda no runtime Vite, o CI ainda empacota `.next`, animações são carregadas por três scripts CDN e tipos críticos usam `any`. O audit confirmou formatter e lint inoperantes, três erros TypeScript, cobertura que compila somente dois módulos e quatro vulnerabilidades altas. A inspeção visual confirmou conteúdo inicialmente invisível por CSS/observer, baixa legibilidade em regiões, imagens remotas de 16 px ampliadas, traduções incompletas, links sem protocolo e estados mobile frágeis.

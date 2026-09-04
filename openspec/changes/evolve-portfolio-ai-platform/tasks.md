@@ -160,3 +160,13 @@
 - [ ] 14.8 Executar format, lint, stylelint, typecheck, coverage 100%, mutation, contract, integration, E2E, axe, visual, Lighthouse, security audit e production build sem falhas.
 - [ ] 14.9 Fazer inspeção visual final desktop/mobile/ultrawide, validar modo degradado e comparar contra baseline.
 - [ ] 14.10 Atualizar a matriz de aceite de todas as specs, registrar riscos residuais e preparar a change para archive somente quando 100% das tarefas estiverem concluídas.
+
+## 15. Fatia implementada nesta execução
+
+- [x] 15.1 Remover scripts CDN de animação do shell e garantir que o hero e as seções não iniciem invisíveis por `data-reveal`.
+- [x] 15.2 Implementar tokens semânticos premium, adaptação dark/light por preferência, foco visível, reduced motion e layout editorial responsivo.
+- [x] 15.3 Implementar concierge local provider-agnostic com fatos allowlisted, consentimento, perguntas sugeridas, fontes e estado de carregamento.
+- [x] 15.4 Implementar descoberta lexical de projetos com busca, filtros de objetivo, estado vazio e fallback de imagem local.
+- [x] 15.5 Completar as novas chaves de hero, concierge e descoberta nas locales `pt-BR`, `en-US`, `fr` e `ja`.
+- [x] 15.6 Cobrir o provider local com testes de grounding, fontes e recusa de fatos não comprovados.
+- [x] 15.7 Sincronizar resumo profissional, objetivo, métricas, competências de IA/observabilidade e URL do LinkedIn com o currículo fornecido.

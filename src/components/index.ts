@@ -14,3 +14,4 @@ export { CardSkill } from "./partials/CardSkill";
 export { CardProject } from "./partials/CardProject";
 export { default as Loading } from "./partials/Loading";
 export { default as NextHead } from "./partials/NextHead";
+export { PortfolioAssistant } from "./partials/PortfolioAssistant";

@@ -1,6 +1,7 @@
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { FiSearch, FiStar } from "react-icons/fi";
 import { PageContext, ProfileContext } from "@/contexts";
 import { getGsap, getMotionAnimate } from "@/utils";
 import { CardProject } from "@/components/partials/CardProject";
@@ -19,6 +20,15 @@ export const Portfolio = () => {
     } = useContext(ProfileContext);
     const { portfolioRef } = useContext(PageContext);
     const { t } = useTranslation();
+    const [query, setQuery] = useState("");
+    const [intent, setIntent] = useState<"all" | "ai" | "quality">("all");
+    const normalizedQuery = query.trim().toLocaleLowerCase();
+    const visibleRepositories = listRepositories.filter((repository) => {
+        const searchableText = `${repository.name} ${repository.description || ""}`.toLocaleLowerCase();
+        const matchesQuery = !normalizedQuery || searchableText.includes(normalizedQuery);
+        const matchesIntent = intent === "all" || searchableText.includes(intent === "ai" ? "ai" : "quality");
+        return matchesQuery && matchesIntent;
+    });
 
     useEffect(() => {
         const gsap = getGsap();
@@ -74,6 +84,17 @@ export const Portfolio = () => {
                         {t("allMyProjectsFinish")}
                     </p>
                 </div>
+                <div className="portfolio-discovery">
+                    <label className="search-field">
+                        <FiSearch aria-hidden="true" />
+                        <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t("portfolioSearch")} aria-label={t("portfolioSearch")} />
+                    </label>
+                    <div className="intent-filters" aria-label={t("portfolioDiscovery")}>
+                        <button className={intent === "all" ? "active" : ""} onClick={() => setIntent("all")}>{t("portfolioAll")}</button>
+                        <button className={intent === "ai" ? "active" : ""} onClick={() => setIntent("ai")}><FiStar aria-hidden="true" /> {t("portfolioRecommended")}</button>
+                        <button className={intent === "quality" ? "active" : ""} onClick={() => setIntent("quality")}>{t("portfolioQuality")}</button>
+                    </div>
+                </div>
                 <div className="content-portfolio">
                     {repositoriesError && (
                         <button className="loadMoreRepositories" onClick={retryLoadRepositories} data-ripple>
@@ -82,15 +103,13 @@ export const Portfolio = () => {
                     )}
 
                     {!repositoriesError &&
-                        listRepositories.map((repository) => (
+                        visibleRepositories.map((repository) => (
                             <CardProject
                                 title={repository.name}
                                 description={repository.description}
                                 repository={repository.html_url}
                                 website={repository.homepage}
-                                imageUrl={`https://www.google.com/s2/favicons?sz=256&domain_url=${encodeURIComponent(
-                                    repository.homepage || repository.html_url
-                                )}`}
+                                imageUrl="/profile.svg"
                                 key={repository.html_url}
                             />
                         ))}
@@ -109,6 +128,10 @@ export const Portfolio = () => {
                                 <p>{t("seeMore")}</p>
                             </button>
                         )
+                    )}
+
+                    {!loadingRepositories && !repositoriesError && visibleRepositories.length === 0 && (
+                        <p className="empty-state" role="status">{t("portfolioNoResults")}</p>
                     )}
                 </div>
             </div>
