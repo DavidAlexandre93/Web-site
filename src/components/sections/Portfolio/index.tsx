@@ -69,10 +69,8 @@ export const Portfolio = () => {
         return () => context.revert();
     }, [portfolioRef, listRepositories.length]);
 
-    const PortfolioContainerElement = PortfolioContainer as any;
-
     return (
-        <PortfolioContainerElement ref={portfolioRef} id="portfolio" data-reveal>
+        <PortfolioContainer ref={portfolioRef} id="portfolio" data-reveal>
             <div className="content">
                 <div className="title-portfolio">
                     <TitleSection>{t("portfolio")}</TitleSection>
@@ -135,6 +133,6 @@ export const Portfolio = () => {
                     )}
                 </div>
             </div>
-        </PortfolioContainerElement>
+        </PortfolioContainer>
     );
 };

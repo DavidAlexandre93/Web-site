@@ -61,10 +61,8 @@ export const Stats = () => {
 
 
 
-    const StatsContainerElement = StatsContainer as any;
-
     return (
-        <StatsContainerElement ref={statsRef} data-reveal>
+        <StatsContainer ref={statsRef} data-reveal>
             <div className="cardStats" title={t("yearsExperience")} data-tilt>
                 <div className="icon">
                     <FaBriefcase size={40} />
@@ -96,6 +94,6 @@ export const Stats = () => {
                 <h3>3</h3>
                 <p>{t("featuredProjects")}</p>
             </div>
-        </StatsContainerElement>
+        </StatsContainer>
     );
 };

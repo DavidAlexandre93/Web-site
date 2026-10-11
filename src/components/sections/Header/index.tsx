@@ -79,10 +79,8 @@ export const Header = () => {
         };
     }, []);
 
-    const HeaderContainerElement = HeaderContainer as any;
-
     return (
-        <HeaderContainerElement
+        <HeaderContainer
             ref={headerRef}
             visibleHeader={isVisibleHeader}
             isPageTop={handlePageTop}
@@ -97,7 +95,7 @@ export const Header = () => {
                             width={168}
                             height={168}
                         />
-                        <h1>David Alexandre Fernandes</h1>
+                        <span className="brand-name">David Alexandre Fernandes</span>
                     </a>
                 </Link>
 
@@ -118,6 +116,7 @@ export const Header = () => {
                         onClick={toggleShowMenu}
                         aria-label="Abrir menu mobile"
                         aria-expanded={activeMenu}
+                        aria-controls="mobile-navigation"
                         data-ripple
                     >
                         <span className="sr-only">Abrir menu mobile</span>
@@ -125,6 +124,6 @@ export const Header = () => {
                     </button>
                 </div>
             </div>
-        </HeaderContainerElement>
+        </HeaderContainer>
     );
 };

@@ -1,6 +1,7 @@
+import type { ComponentPropsWithRef } from "react";
 import styled from "styled-components";
 
-export const StatsContainer = styled.section`
+export const StatsContainer = styled.section<ComponentPropsWithRef<"section">>`
     background: var(--container);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));

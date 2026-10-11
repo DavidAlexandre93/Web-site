@@ -4,7 +4,7 @@ import { CardSkillContainer } from "./styles";
 
 type CardSkillProps = {
     isSkillActive: boolean;
-    pathIconSkill: string;
+    pathIconSkill?: string;
     nameSkill: string;
     typeSkill: string;
 };
@@ -16,14 +16,20 @@ export const CardSkill = ({
     typeSkill,
 }: CardSkillProps) => {
     const { t } = useTranslation();
-    const normalizedIconPath = pathIconSkill.startsWith("/")
-        ? pathIconSkill
-        : `/${pathIconSkill.replace(/^\.\//, "")}`;
+    const normalizedIconPath = pathIconSkill
+        ? pathIconSkill.startsWith("/")
+            ? pathIconSkill
+            : `/${pathIconSkill.replace(/^\.\//, "")}`
+        : null;
 
     return (
         <CardSkillContainer skillActive={isSkillActive}>
             <div className="image">
-                <Image src={normalizedIconPath} alt={nameSkill} title={nameSkill} width={60} height={60} />
+                {normalizedIconPath ? (
+                    <Image src={normalizedIconPath} alt={nameSkill} title={nameSkill} width={60} height={60} />
+                ) : (
+                    <span className="skill-mark" aria-hidden="true">{nameSkill.slice(0, 2)}</span>
+                )}
             </div>
             <div className="title">
                 <h4>{nameSkill}</h4>

@@ -1,7 +1,7 @@
 import { ComponentType } from "react";
 
 export type AppProps = {
-    Component: ComponentType<any>;
+    Component: ComponentType<Record<string, unknown>>;
     pageProps: Record<string, unknown>;
 };
 

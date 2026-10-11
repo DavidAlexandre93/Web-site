@@ -1,6 +1,7 @@
+import type { ComponentPropsWithRef } from "react";
 import styled from "styled-components";
 
-export const FooterContainer = styled.footer`
+export const FooterContainer = styled.footer<ComponentPropsWithRef<"footer">>`
     padding: 4rem 3rem;
     background-color: var(--container);
     .content {

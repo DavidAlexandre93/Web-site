@@ -1,6 +1,7 @@
+import type { ComponentPropsWithRef } from "react";
 import styled from "styled-components";
 
-export const SkillsContainer = styled.section`
+export const SkillsContainer = styled.section<ComponentPropsWithRef<"section">>`
     width: 100%;
     padding: clamp(6rem, 8vw, 7rem) 3rem;
     .contentSkills {

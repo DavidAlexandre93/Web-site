@@ -57,24 +57,19 @@ export const About = () => {
         return () => context.revert();
     }, [aboutRef]);
 
-    const AboutContainerElement = AboutContainer as any;
-
     return (
-        <AboutContainerElement ref={aboutRef} id="about" data-reveal>
+        <AboutContainer ref={aboutRef} id="about" data-reveal>
             <div className="contentAbout">
                 <div className="textAbout">
                     <TitleSection>{t("about")}</TitleSection>
                     <p>{t("descriptionAboutMe")}</p>
+                    <p className="objective">{t("educationSummary")}</p>
+                    <p className="objective">{t("resumeProjects")}</p>
                     <p className="objective">{t("professionalObjective")}</p>
                     <div className="linkSocial">
                         <Link href="https://github.com/DavidAlexandre93">
                             <a title={t("accessGithubTitle")} data-ripple>
                                 <Image src="/github.svg" alt="Logo Github" width={50} height={50} />
-                            </a>
-                        </Link>
-                        <Link href="https://www.instagram.com/davidalexandrepro/">
-                            <a title={t("accessInstagramTitle")} data-ripple>
-                                <Image src="/instagram.svg" alt="Logo Instagram" width={50} height={50} />
                             </a>
                         </Link>
                         <Link href="https://www.linkedin.com/in/david-alexandre-fernandes-08b005b4/">
@@ -94,6 +89,6 @@ export const About = () => {
                     />
                 </div>
             </div>
-        </AboutContainerElement>
+        </AboutContainer>
     );
 };

@@ -29,25 +29,24 @@ const Home: NextPage = () => {
         "@type": "Person",
         name: "David Alexandre Fernandes",
         url: "https://www.david-alexandre.dev/",
-        jobTitle: "Software Developer",
+        jobTitle: "Software Engineer",
         image: "https://www.david-alexandre.dev/application.png",
         sameAs: [
             "https://github.com/DavidAlexandre93",
-            "https://www.linkedin.com/in/david-alexandre-fernandes/",
-            "https://www.instagram.com/davids.8/",
+            "https://www.linkedin.com/in/david-alexandre-fernandes-08b005b4/",
         ],
         worksFor: {
             "@type": "Organization",
-            name: "David Alexandre Fernandes",
+            name: "Dock",
         },
     };
 
     return (
         <>
             <NextHead
-                title="Portfolio David Alexandre Fernandes - Software Developer | DevOps | Artificial Intelligence | Blockchain"
+                title="David Alexandre Fernandes | Software Engineer | Pix, Cloud & Applied AI"
                 faviconPath="favicon.svg"
-                description="Portfólio com projetos, experiência em desenvolvimento full cycle, DevOps e inteligência artificial."
+                description="Engenheiro de Software Sênior com 10 anos de experiência em APIs, microsserviços, pagamentos Pix, cloud e inteligência artificial aplicada."
                 canonicalUrl="https://www.david-alexandre.dev/"
                 schema={schema}
             />

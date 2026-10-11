@@ -1,6 +1,7 @@
+import type { ComponentPropsWithRef } from "react";
 import styled from "styled-components";
 
-export const AboutContainer = styled.section`
+export const AboutContainer = styled.section<ComponentPropsWithRef<"section">>`
     padding: clamp(6rem, 8vw, 7rem) 3rem;
     width: 100%;
     background: transparent url("./aboutBackground.svg") no-repeat center/cover;

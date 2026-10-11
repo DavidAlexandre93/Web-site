@@ -29,6 +29,19 @@ export const CardSkillContainer = styled.div<CardSkillContainerProps>`
         img {
             width: 100%;
         }
+        .skill-mark {
+            width: 4.8rem;
+            height: 4.8rem;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--accent-border);
+            border-radius: 1rem;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 1.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
     }
     .title {
         h4 {

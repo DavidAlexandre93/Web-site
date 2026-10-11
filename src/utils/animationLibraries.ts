@@ -6,7 +6,7 @@ export type MotionAnimation = (
 
 type GsapInstance = {
     registerPlugin?: (plugin: unknown) => void;
-    timeline: (config?: Record<string, unknown>) => any;
+    timeline: (config?: Record<string, unknown>) => unknown;
     context: (callback: () => void, scope?: Element) => { revert: () => void };
     fromTo: (
         target: unknown,

@@ -4,14 +4,18 @@ const TRANSIENT_STATUS_CODES = new Set([408, 425, 429, 500, 502, 503, 504]);
 const MAX_RETRIES = 2;
 const BASE_DELAY_MS = 250;
 
-const isTransientError = (error: any) => {
-    const statusCode = error?.response?.status;
+const isTransientError = (error: unknown) => {
+    if (!axios.isAxiosError(error)) {
+        return false;
+    }
+
+    const statusCode = error.response?.status;
 
     if (statusCode && TRANSIENT_STATUS_CODES.has(statusCode)) {
         return true;
     }
 
-    return Boolean(error?.code === "ECONNABORTED" || error?.message?.includes("Network Error"));
+    return error.code === "ECONNABORTED" || error.message.includes("Network Error");
 };
 
 const getBackoffDelay = (retryAttempt: number) => {
@@ -29,13 +33,13 @@ export const Api = axios.create({
 });
 
 Api.interceptors.request.use((config) => {
-    config.metadata = { startedAt: Date.now() } as any;
+    config.metadata = { startedAt: Date.now() };
     return config;
 });
 
 Api.interceptors.response.use(
     (response) => {
-        const metadata = response.config.metadata as { startedAt?: number } | undefined;
+        const metadata = response.config.metadata;
         const duration = metadata?.startedAt ? Date.now() - metadata.startedAt : null;
 
         if (duration !== null) {
@@ -48,17 +52,22 @@ Api.interceptors.response.use(
 
         return response;
     },
-    async (error) => {
+    async (error: unknown) => {
+        if (!axios.isAxiosError(error)) {
+            return Promise.reject(error);
+        }
+
         const config = error.config;
 
         if (!config) {
             return Promise.reject(error);
         }
 
-        config.__retryCount = config.__retryCount || 0;
+        const retryCount = config.__retryCount ?? 0;
+        config.__retryCount = retryCount;
 
-        if (config.__retryCount < MAX_RETRIES && isTransientError(error)) {
-            config.__retryCount += 1;
+        if (retryCount < MAX_RETRIES && isTransientError(error)) {
+            config.__retryCount = retryCount + 1;
             const delay = getBackoffDelay(config.__retryCount);
 
             await new Promise((resolve) => setTimeout(resolve, delay));
@@ -66,12 +75,12 @@ Api.interceptors.response.use(
             return Api(config);
         }
 
-        const metadata = config.metadata as { startedAt?: number } | undefined;
+        const metadata = config.metadata;
         const duration = metadata?.startedAt ? Date.now() - metadata.startedAt : null;
 
         console.error(`[metrics] github_request_error`, {
             url: config.url,
-            status: error?.response?.status,
+            status: error.response?.status,
             durationMs: duration,
             retries: config.__retryCount,
         });

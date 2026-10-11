@@ -15,7 +15,7 @@ export const HomePage = () => {
             <div className="hero-grid">
                 <div className="hero-copy">
                     <p className="eyebrow"><span /> {t("heroEyebrow")}</p>
-                    <h2>{t("professionalPortfolio")}</h2>
+                    <h1>{t("professionalPortfolio")}</h1>
                     <p className="descriptionHome">{t("frontendDeveloper")}</p>
                     <p className="hero-lede">{t("heroLede")}</p>
                     <div className="links">
@@ -44,9 +44,9 @@ export const HomePage = () => {
                 </div>
             </div>
             <div className="hero-meta" aria-label={t("heroMetaLabel")}>
-                <span><strong>04+</strong> {t("heroMetaYears")}</span>
-                <span><strong>24/7</strong> {t("heroMetaSystems")}</span>
-                <span><strong>∞</strong> {t("heroMetaCuriosity")}</span>
+                <span><strong>10+</strong> {t("heroMetaYears")}</span>
+                <span><strong>06</strong> {t("heroMetaSystems")}</span>
+                <span><strong>03</strong> {t("heroMetaCuriosity")}</span>
             </div>
         </HomeContainer>
     );

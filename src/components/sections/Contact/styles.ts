@@ -1,6 +1,7 @@
+import type { ComponentPropsWithRef } from "react";
 import styled from "styled-components";
 
-export const ContactContainer = styled.section`
+export const ContactContainer = styled.section<ComponentPropsWithRef<"section">>`
     padding: clamp(6rem, 10vw, 10rem) 3rem;
     background-color: var(--container);
     .content {
@@ -22,7 +23,7 @@ export const ContactContainer = styled.section`
             width: 100%;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-            gap: clamp(3rem, 8vw, 10rem);
+            gap: clamp(2rem, 4vw, 5rem);
             align-items: flex-start;
             justify-items: center;
             .card-contact {

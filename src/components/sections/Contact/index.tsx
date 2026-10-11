@@ -4,6 +4,7 @@ import { ContactContainer } from "./styles";
 import { IoLocationOutline } from "react-icons/io5"; /* Location icon */
 import { IoMailOutline } from "react-icons/io5"; /* Email icon */
 import { BsWhatsapp } from "react-icons/bs"; /*Whatsapp icon */
+import { FiGlobe } from "react-icons/fi";
 import Link from "next/link";
 import { useContext, useEffect } from "react";
 import { PageContext } from "@/contexts";
@@ -43,10 +44,8 @@ export const Contact = () => {
     }, [contactRef]);
 
 
-    const ContactContainerElement = ContactContainer as any;
-
     return (
-        <ContactContainerElement ref={contactRef} id="contact" data-reveal>
+        <ContactContainer ref={contactRef} id="contact" data-reveal>
             <div className="content">
                 <div className="title-contact">
                     <p>{t("letStart")}</p>
@@ -68,11 +67,7 @@ export const Contact = () => {
                             <p>Brasil</p>
                         </a>
                     </Link>
-                    <Link
-                        href={
-                            "mailto:davidalexandrefernandes@outlook.com"
-                        }
-                    >
+                    <Link href="mailto:davidalexandrefernandes@outlook.com">
                         <a className="card-contact" title={t("sendEmailTitle")} data-tilt data-ripple>
                             <IoMailOutline
                                 size={40}
@@ -82,18 +77,25 @@ export const Contact = () => {
                             <p>davidalexandrefernandes@outlook.com</p>
                         </a>
                     </Link>
-                    <Link href={"https://wa.me/5511959364795"}>
+                    <Link href="https://wa.me/5511967786118">
                         <a className="card-contact" title={t("contactTitle")} data-tilt data-ripple>
                             <BsWhatsapp
                                 size={40}
                                 className="icon-cardContact"
                             />
                             <h4>Whatsapp</h4>
-                            <p>(+55) 11 9 59364795</p>
+                            <p>+55 11 9 6778-6118</p>
+                        </a>
+                    </Link>
+                    <Link href="https://www.davidalexandrefernandes.com/">
+                        <a className="card-contact" title={t("portfolioLinkTitle")} target="_blank" rel="noopener noreferrer" data-tilt data-ripple>
+                            <FiGlobe size={40} className="icon-cardContact" aria-hidden="true" />
+                            <h4>{t("portfolioLink")}</h4>
+                            <p>www.davidalexandrefernandes.com</p>
                         </a>
                     </Link>
                 </div>
             </div>
-        </ContactContainerElement>
+        </ContactContainer>
     );
 };

@@ -1,9 +1,8 @@
-import { ReactNode } from "react";
+import { HTMLAttributes } from "react";
 import styled from "styled-components";
 
-type MenuMobileProps = {
+type MenuMobileProps = HTMLAttributes<HTMLElement> & {
     activeMenu: boolean;
-    children?: ReactNode;
 };
 
 export const MenuMobileContainer = styled.nav<MenuMobileProps>`
@@ -17,14 +16,17 @@ export const MenuMobileContainer = styled.nav<MenuMobileProps>`
 
         width: 100%;
         height: 100vh;
+        height: 100dvh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
 
         opacity: ${(props) => (props.activeMenu ? "1" : "0")};
         visibility: ${(props) => (props.activeMenu ? "visible" : "hidden")};
-        background-color: var(--boxes);
+        background-color: var(--surface-strong);
         pointer-events: ${(props) => (props.activeMenu ? "auto" : "none")};
 
         transform: translateX(${(props) => (props.activeMenu ? "0%" : "-10%")});
-        transition: all 0.45s ease;
+        transition: opacity 0.3s ease, transform 0.3s ease;
         ul {
             width: inherit;
             height: inherit;
@@ -49,8 +51,8 @@ export const MenuMobileContainer = styled.nav<MenuMobileProps>`
             position: absolute;
             right: 2rem;
             top: 2rem;
-            width: 4rem;
-            height: 4rem;
+            width: 4.8rem;
+            height: 4.8rem;
             border-radius: 1rem;
             display: flex;
             align-items: center;

@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useCallback, useState } from "react";
 
 interface HeaderProviderProps {
     children: ReactNode;
@@ -15,15 +15,9 @@ export const HeaderContext = createContext({} as HeaderContextData);
 export const HeaderProvider = ({ children }: HeaderProviderProps) => {
     const [activeMenu, setActiveMenu] = useState(false);
 
-    function toggleShowMenu() {
-        if (activeMenu) {
-            document.body.style.overflowY = "scroll";
-            setActiveMenu(false);
-        } else {
-            document.body.style.overflowY = "hidden";
-            setActiveMenu(true);
-        }
-    }
+    const toggleShowMenu = useCallback(() => {
+        setActiveMenu((isActive) => !isActive);
+    }, []);
 
     return (
         <HeaderContext.Provider

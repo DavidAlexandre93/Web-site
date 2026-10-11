@@ -1,6 +1,7 @@
+import type { ComponentPropsWithRef } from "react";
 import styled from "styled-components";
 
-type HeaderContainerProps = {
+type HeaderContainerProps = ComponentPropsWithRef<"header"> & {
     visibleHeader: boolean;
     isPageTop: boolean;
 };
@@ -41,9 +42,10 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
                 border-radius: 50%;
                 object-fit: cover;
             }
-            h1 {
+            .brand-name {
                 padding: 0 0.5rem;
                 font-size: clamp(1.8rem, 2.8vw, 2.2rem);
+                font-weight: 700;
             }
         }
         nav {
@@ -130,7 +132,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
                     width: 9.6rem;
                     height: 9.6rem;
                 }
-                h1 {
+                .brand-name {
                     display: none;
                 }
             }

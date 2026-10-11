@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { IoClose } from "react-icons/io5";
 import { useTranslation } from "next-i18next";
 import { MenuMobileContainer } from "./styles";
@@ -10,6 +10,8 @@ export const MenuMobile = () => {
     const { scrollToSection, aboutRef, skillsRef, portfolioRef, contactRef } =
         useContext(PageContext);
     const { t } = useTranslation();
+    const closeButtonRef = useRef<HTMLButtonElement>(null);
+    const previousFocusRef = useRef<HTMLElement | null>(null);
 
     const navigationItems = createSectionNavigationItems({
         scrollToSection,
@@ -56,9 +58,92 @@ export const MenuMobile = () => {
         };
     }, [activeMenu]);
 
+    useEffect(() => {
+        if (!activeMenu) {
+            return;
+        }
+
+        const menuElement = closeButtonRef.current?.closest("nav");
+
+        if (!menuElement) {
+            return;
+        }
+
+        previousFocusRef.current =
+            document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        let focusFrame = 0;
+        const focusCloseButtonWhenVisible = () => {
+            const closeButton = closeButtonRef.current;
+
+            if (!closeButton || menuElement.getAttribute("aria-hidden") === "true") {
+                return;
+            }
+
+            if (getComputedStyle(closeButton).visibility === "visible") {
+                closeButton.focus();
+                return;
+            }
+
+            focusFrame = window.requestAnimationFrame(focusCloseButtonWhenVisible);
+        };
+
+        focusFrame = window.requestAnimationFrame(focusCloseButtonWhenVisible);
+
+        const previousOverflowY = document.body.style.overflowY;
+        document.body.style.overflowY = "hidden";
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                event.preventDefault();
+                toggleShowMenu();
+                return;
+            }
+
+            if (event.key !== "Tab") {
+                return;
+            }
+
+            const focusableElements = Array.from(
+                menuElement.querySelectorAll<HTMLElement>(
+                    'button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+                )
+            );
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (!firstElement || !lastElement) {
+                return;
+            }
+
+            const focusIsOutsideMenu = !menuElement.contains(document.activeElement);
+
+            if ((event.shiftKey && document.activeElement === firstElement) || (event.shiftKey && focusIsOutsideMenu)) {
+                event.preventDefault();
+                lastElement.focus();
+            } else if ((!event.shiftKey && document.activeElement === lastElement) || (!event.shiftKey && focusIsOutsideMenu)) {
+                event.preventDefault();
+                firstElement.focus();
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.cancelAnimationFrame(focusFrame);
+            document.removeEventListener("keydown", handleKeyDown);
+            document.body.style.overflowY = previousOverflowY;
+            previousFocusRef.current?.focus();
+        };
+    }, [activeMenu, toggleShowMenu]);
+
     return (
-        <MenuMobileContainer activeMenu={activeMenu} aria-hidden={!activeMenu}>
-            <button className="closeMenu" onClick={toggleShowMenu} aria-label="Fechar menu mobile">
+        <MenuMobileContainer id="mobile-navigation" activeMenu={activeMenu} aria-hidden={!activeMenu}>
+            <button
+                ref={closeButtonRef}
+                className="closeMenu"
+                onClick={toggleShowMenu}
+                aria-label="Fechar menu mobile"
+            >
                 <IoClose size={30} />
             </button>
             <ul>

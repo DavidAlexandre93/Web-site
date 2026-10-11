@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
-export const Html = ({ children }: PropsWithChildren<{}>) => <>{children}</>;
-export const Head = ({ children }: PropsWithChildren<{}>) => <>{children}</>;
+export const Html = ({ children }: PropsWithChildren<Record<string, unknown>>) => <>{children}</>;
+export const Head = ({ children }: PropsWithChildren<Record<string, unknown>>) => <>{children}</>;
 export const Main = () => null;
 export const NextScript = () => null;
 

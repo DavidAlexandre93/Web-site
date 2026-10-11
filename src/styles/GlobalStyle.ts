@@ -11,20 +11,21 @@ export default createGlobalStyle`
         }
     }
     :root {
-        --body: #070b0e;
-        --surface: #0d1519;
-        --surface-raised: #142127;
-        --surface-strong: rgba(10, 17, 21, 0.97);
-        --container: #111d23;
-        --border: #20323a;
-        --line: rgba(157, 184, 188, 0.13);
-        --header: rgba(7, 11, 14, 0.86);
-        --accent: #7df2cf;
-        --accent-soft: rgba(125, 242, 207, 0.11);
-        --accent-border: rgba(125, 242, 207, 0.42);
-        --text-primary: #f4faf7;
-        --text-secondary: #adc0c0;
-        --text-muted: #71888b;
+        --body: #080d10;
+        --surface: #10181b;
+        --surface-raised: #172326;
+        --surface-strong: rgba(10, 16, 18, 0.96);
+        --container: #121d20;
+        --border: #29383a;
+        --line: rgba(184, 204, 197, 0.14);
+        --header: rgba(8, 13, 16, 0.88);
+        --accent: #9af2ce;
+        --accent-soft: rgba(154, 242, 206, 0.11);
+        --accent-border: rgba(154, 242, 206, 0.4);
+        --accent-warm: #ffb18a;
+        --text-primary: #f4f7f2;
+        --text-secondary: #b2c0ba;
+        --text-muted: #82918d;
         --shadow-md: 0 2rem 5rem rgba(0, 0, 0, 0.2);
         --shadow-lg: 0 2.5rem 7rem rgba(0, 0, 0, 0.38);
     }
@@ -66,8 +67,11 @@ export default createGlobalStyle`
     }
     body {
         background-color: var(--body);
-        background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
-        background-size: 5.6rem 5.6rem;
+        background-image:
+            radial-gradient(ellipse at 78% 12%, rgba(154, 242, 206, 0.055), transparent 34%),
+            linear-gradient(rgba(184, 204, 197, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(184, 204, 197, 0.035) 1px, transparent 1px);
+        background-size: auto, 5.6rem 5.6rem, 5.6rem 5.6rem;
         .sr-only {
             position: absolute;
             padding: 0;

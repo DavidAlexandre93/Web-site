@@ -64,15 +64,13 @@ export const Footer = () => {
         };
     }, []);
 
-    const FooterContainerElement = FooterContainer as any;
-
     return (
-        <FooterContainerElement ref={footerRef}>
+        <FooterContainer ref={footerRef}>
             <div className="content">
                 <div className="texts">
-                    <p>{t("rightsReserved")}, © 2022 David Alexandre Fernandes.</p>
+                    <p>{t("rightsReserved")}, © {new Date().getFullYear()} David Alexandre Fernandes.</p>
                     <div className="socials">
-                        <Link href={"https://www.linkedin.com/in/david-fernandes-08b005b4/"}>
+                        <Link href="https://www.linkedin.com/in/david-alexandre-fernandes-08b005b4/">
                             <a title={t("accessLinkedinTitle")}>
                                 <Image src="/linkedin.svg" alt="Logo do Linkedin" width={45} height={45} />
                             </a>
@@ -82,11 +80,6 @@ export const Footer = () => {
                                 <Image src="/github.svg" alt="Logo do Github" width={45} height={45} />
                             </a>
                         </Link>
-                        <Link href={"https://www.instagram.com/davidalexandrepro/"}>
-                            <a title={t("accessInstagramTitle")}>
-                                <Image src="/instagram.svg" alt="Logo do Instagram" width={45} height={45} />
-                            </a>
-                        </Link>
                     </div>
                 </div>
                 <button className="btnTopPage" onClick={scrollPageTop} title={t("homeTitle")}>
@@ -94,6 +87,6 @@ export const Footer = () => {
                     <FaLevelUpAlt size={30} />
                 </button>
             </div>
-        </FooterContainerElement>
+        </FooterContainer>
     );
 };

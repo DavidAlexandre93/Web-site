@@ -1,39 +1,38 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
       ],
       "next": [
-        "src/shims/next/index.ts"
+        "./src/shims/next/index.ts"
       ],
       "next/app": [
-        "src/shims/next/app.ts"
+        "./src/shims/next/app.ts"
       ],
       "next/error": [
-        "src/shims/next/error.tsx"
+        "./src/shims/next/error.tsx"
       ],
       "next/document": [
-        "src/shims/next/document.tsx"
+        "./src/shims/next/document.tsx"
       ],
       "next/router": [
-        "src/shims/next/router.ts"
+        "./src/shims/next/router.ts"
       ],
       "next/link": [
-        "src/shims/next/link.tsx"
+        "./src/shims/next/link.tsx"
       ],
       "next/image": [
-        "src/shims/next/image.tsx"
+        "./src/shims/next/image.tsx"
       ],
       "next/script": [
-        "src/shims/next/script.tsx"
+        "./src/shims/next/script.tsx"
       ],
       "next-i18next": [
-        "src/shims/next-i18next/index.ts"
+        "./src/shims/next-i18next/index.ts"
       ],
       "next-i18next/serverSideTranslations": [
-        "src/shims/next-i18next/serverSideTranslations.ts"
+        "./src/shims/next-i18next/serverSideTranslations.ts"
       ]
     },
     "target": "es2020",

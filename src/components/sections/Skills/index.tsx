@@ -8,7 +8,7 @@ import { getGsap } from "@/utils";
 
 type SkillItem = {
     isSkillActive: boolean;
-    pathIconSkill: string;
+    pathIconSkill?: string;
     nameSkill: string;
     typeSkill: string;
 };
@@ -29,13 +29,13 @@ export const Skills = () => {
                 title: "Backend",
                 items: [
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./mongodb.svg",
                         nameSkill: "MongoDB",
                         typeSkill: t("nonRelationalDB"),
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./mysql.svg",
                         nameSkill: "MySQL",
                         typeSkill: t("relationalDB"),
@@ -44,127 +44,135 @@ export const Skills = () => {
                         isSkillActive: false,
                         pathIconSkill: "./python.svg",
                         nameSkill: "Python",
-                        typeSkill: t("Python API"),
+                        typeSkill: "FastAPI / Flask",
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
+                        nameSkill: "Java",
+                        typeSkill: "Spring Boot / Quarkus",
+                    },
+                    {
+                        isSkillActive: false,
+                        nameSkill: "JPA / Maven",
+                        typeSkill: "Java ecosystem",
+                    },
+                    {
+                        isSkillActive: false,
                         pathIconSkill: "./nodejs.svg",
                         nameSkill: "NodeJS",
                         typeSkill: "Software",
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./express.svg",
                         nameSkill: "Express",
                         typeSkill: "Framework NodeJS",
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./go.svg",
                         nameSkill: "Golang",
                         typeSkill: "Golang API",
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./fastapi.svg",
                         nameSkill: "FastAPI",
-                        typeSkill: "Framework FastAPI",
+                        typeSkill: "Python API",
+                    },
+                    {
+                        isSkillActive: false,
+                        nameSkill: "Kafka / Redis",
+                        typeSkill: "Messaging / cache",
+                    },
+                    {
+                        isSkillActive: false,
+                        nameSkill: "REST / GraphQL / gRPC",
+                        typeSkill: "API design",
+                    },
+                    {
+                        isSkillActive: false,
+                        nameSkill: "Microservices / Hexagonal / Clean Architecture",
+                        typeSkill: "Software architecture",
+                    },
+                    {
+                        isSkillActive: false,
+                        nameSkill: "DDD / concurrency / functional programming",
+                        typeSkill: "Software design and implementation",
                     },
                 ],
             },
             {
                 key: "frontend",
-                title: `Frontend Frameworks e ${t("library")}`,
+                title: t("frontendMobile"),
                 items: [
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         nameSkill: "ReactJS",
                         pathIconSkill: "./reactjs.svg",
                         typeSkill: `${t("library")} JS`,
                     },
                     {
-                        isSkillActive: true,
-                        nameSkill: "NextJS",
-                        pathIconSkill: "./nextjs.svg",
-                        typeSkill: "Framework React",
-                    },
-                    {
                         isSkillActive: false,
-                        nameSkill: "JQuery",
-                        pathIconSkill: "./jquery.svg",
-                        typeSkill: "Framework JS",
-                    },
-                    {
-                        isSkillActive: false,
-                        nameSkill: "Bootstrap",
-                        pathIconSkill: "./bootstrap.svg",
-                        typeSkill: "Framework CSS",
-                    },
-                    {
-                        isSkillActive: false,
-                        nameSkill: "Sass e Less",
-                        pathIconSkill: "./sass.svg",
-                        typeSkill: "Framework CSS",
-                    },
-                    {
-                        isSkillActive: false,
-                        nameSkill: "Ant Design CSS",
-                        pathIconSkill: "./tailwind.svg",
-                        typeSkill: "Framework CSS",
-                    },
-                    {
-                        isSkillActive: true,
-                        nameSkill: "Styled Components",
-                        pathIconSkill: "./styled-components.png",
-                        typeSkill: "CSS in JS",
+                        nameSkill: "React Native",
+                        typeSkill: "Mobile",
                     },
                     {
                         isSkillActive: true,
                         nameSkill: "Typescript",
                         pathIconSkill: "./typescript.svg",
-                        typeSkill: "Superset JS",
+                        typeSkill: "TypeScript",
+                    },
+                    {
+                        isSkillActive: false,
+                        nameSkill: "Angular",
+                        typeSkill: "Web applications",
+                    },
+                    {
+                        isSkillActive: false,
+                        nameSkill: "Expo Go",
+                        typeSkill: "React Native tooling",
                     },
                 ],
             },
             {
                 key: "languages",
-                title: t("languages"),
+                title: t("programmingLanguages"),
                 items: [
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./html.svg",
-                        nameSkill: "HTML",
+                        nameSkill: "HTML5",
                         typeSkill: t("markupLanguage"),
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./css.svg",
-                        nameSkill: "CSS",
+                        nameSkill: "CSS3",
                         typeSkill: t("stylingLanguage"),
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./javascript.svg",
-                        nameSkill: "Javascript",
+                        nameSkill: "JavaScript",
                         typeSkill: t("programmingLanguage"),
                     },
                     {
-                        isSkillActive: true,
-                        pathIconSkill: "./sql.png",
-                        nameSkill: "SQL",
-                        typeSkill: t("queryLanguage"),
-                    },
-                    {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./python.svg",
                         nameSkill: "Python",
                         typeSkill: t("programmingLanguage"),
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./go.svg",
                         nameSkill: "Golang",
                         typeSkill: t("programmingLanguage"),
+                    },
+                    {
+                        isSkillActive: false,
+                        nameSkill: "PHP",
+                        typeSkill: "Laravel",
                     },
                 ],
             },
@@ -176,34 +184,44 @@ export const Skills = () => {
                         isSkillActive: true,
                         pathIconSkill: "./aws.svg",
                         nameSkill: "AWS",
-                        typeSkill: t("markupLanguage"),
+                        typeSkill: "SQS / Lambda / CloudFormation",
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./gcp.svg",
                         nameSkill: "GCP",
-                        typeSkill: t("stylingLanguage"),
+                        typeSkill: "Cloud platform",
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
+                        nameSkill: "Azure Functions",
+                        typeSkill: "Cloud / Node.js",
+                    },
+                    {
+                        isSkillActive: false,
                         pathIconSkill: "./terraform.svg",
                         nameSkill: "Terraform",
-                        typeSkill: t("programmingLanguage"),
+                        typeSkill: "Terraform / IaC",
                     },
                     {
                         isSkillActive: true,
                         pathIconSkill: "./kubernetes.svg",
                         nameSkill: "Kubernetes",
-                        typeSkill: t("queryLanguage"),
+                        typeSkill: "Containers / orchestration",
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
                         pathIconSkill: "./docker.svg",
                         nameSkill: "Docker",
-                        typeSkill: t("programmingLanguage"),
+                        typeSkill: "Containers / platform",
                     },
                     {
-                        isSkillActive: true,
+                        isSkillActive: false,
+                        nameSkill: "OpenShift / CI/CD",
+                        typeSkill: "Platform engineering",
+                    },
+                    {
+                        isSkillActive: false,
                         pathIconSkill: "./devops.svg",
                         nameSkill: "DevOps",
                         typeSkill: t("programmingLanguage"),
@@ -211,14 +229,60 @@ export const Skills = () => {
                 ],
             },
             {
+                key: "data",
+                title: t("dataPlatforms"),
+                items: [
+                    { isSkillActive: false, pathIconSkill: "./sql.png", nameSkill: "SQL / NoSQL", typeSkill: t("queryLanguage") },
+                    { isSkillActive: false, pathIconSkill: "./mysql.svg", nameSkill: "Oracle / MySQL", typeSkill: t("relationalDB") },
+                    { isSkillActive: false, pathIconSkill: "./mongodb.svg", nameSkill: "MongoDB", typeSkill: t("nonRelationalDB") },
+                    { isSkillActive: false, nameSkill: "Databricks / Data Lake", typeSkill: "Data platforms" },
+                    { isSkillActive: false, nameSkill: "Power BI / Tableau", typeSkill: "Business intelligence" },
+                    { isSkillActive: false, nameSkill: "Relational / non-relational DBs", typeSkill: "Data modeling / migrations" },
+                ],
+            },
+            {
                 key: "ai-observability",
-                title: t("aiObservability"),
+                title: t("aiEngineering"),
                 items: [
                     { isSkillActive: true, pathIconSkill: "./python.svg", nameSkill: "LLMs", typeSkill: "AI Engineering" },
                     { isSkillActive: true, pathIconSkill: "./python.svg", nameSkill: "RAG", typeSkill: "AI Architecture" },
-                    { isSkillActive: true, pathIconSkill: "./nodejs.svg", nameSkill: "MCP", typeSkill: "AI Integration" },
-                    { isSkillActive: true, pathIconSkill: "./devops.svg", nameSkill: "OpenTelemetry", typeSkill: "Observability" },
-                    { isSkillActive: true, pathIconSkill: "./kubernetes.svg", nameSkill: "Datadog", typeSkill: "Monitoring" },
+                    { isSkillActive: true, nameSkill: "MCP / AI agents", typeSkill: "AI integration" },
+                    { isSkillActive: true, nameSkill: "AI APIs / Prompt Engineering", typeSkill: "Applied AI" },
+                ],
+            },
+            {
+                key: "observability",
+                title: t("observability"),
+                items: [
+                    { isSkillActive: true, nameSkill: "Datadog", typeSkill: "Monitoring" },
+                    { isSkillActive: false, nameSkill: "Dynatrace / New Relic", typeSkill: "APM" },
+                    { isSkillActive: false, nameSkill: "OpenTelemetry", typeSkill: "Instrumentation" },
+                    { isSkillActive: false, nameSkill: "Grafana / Prometheus", typeSkill: "Metrics / dashboards" },
+                    { isSkillActive: false, nameSkill: "Kibana / OpsGenie", typeSkill: "Logs / incident management" },
+                ],
+            },
+            {
+                key: "quality",
+                title: t("qualityAutomation"),
+                items: [
+                    { isSkillActive: false, nameSkill: "Selenium / Appium", typeSkill: "Web / mobile automation" },
+                    { isSkillActive: false, nameSkill: "JUnit / Cucumber / Mockito", typeSkill: "Java testing" },
+                    { isSkillActive: false, nameSkill: "Cypress / Postman", typeSkill: "End-to-end / API testing" },
+                    { isSkillActive: false, nameSkill: "SOAPUI / JMeter", typeSkill: "API / performance testing" },
+                    { isSkillActive: false, nameSkill: "TDD / BDD", typeSkill: "Engineering practices" },
+                    { isSkillActive: false, nameSkill: "Silk Central / Mobile Center", typeSkill: "Test management / devices" },
+                ],
+            },
+            {
+                key: "engineering-tools",
+                title: t("engineeringTools"),
+                items: [
+                    { isSkillActive: false, nameSkill: "Git / GitFlow / Bitbucket", typeSkill: "Version control" },
+                    { isSkillActive: false, nameSkill: "JIRA / Confluence", typeSkill: "Agile delivery" },
+                    { isSkillActive: false, nameSkill: "Bamboo / CI/CD", typeSkill: "Build and delivery" },
+                    { isSkillActive: false, nameSkill: "Unix / Shell Script / PuTTY", typeSkill: "Systems and scripting" },
+                    { isSkillActive: false, nameSkill: "Mainframe / XML", typeSkill: "Enterprise integrations" },
+                    { isSkillActive: false, nameSkill: "IoT / Scrum / Kanban", typeSkill: "Projects and methods" },
                 ],
             },
         ],
@@ -277,10 +341,8 @@ export const Skills = () => {
         return items.slice(0, MOBILE_SKILLS_LIMIT);
     };
 
-    const SkillsContainerElement = SkillsContainer as any;
-
     return (
-        <SkillsContainerElement ref={skillsRef} id="skills" data-reveal>
+        <SkillsContainer ref={skillsRef} id="skills" data-reveal>
             <div className="contentSkills">
                 <div className="titleSkills">
                     <p>{t("allTechnologies")}</p>
@@ -312,6 +374,6 @@ export const Skills = () => {
                     </div>
                 ))}
             </div>
-        </SkillsContainerElement>
+        </SkillsContainer>
     );
 };

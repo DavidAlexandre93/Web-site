@@ -1,6 +1,7 @@
+import type { ComponentPropsWithRef } from "react";
 import styled from "styled-components";
 
-export const PortfolioContainer = styled.section`
+export const PortfolioContainer = styled.section<ComponentPropsWithRef<"section">>`
     padding: clamp(6rem, 10vw, 10rem) 3rem;
     .content {
         width: min(110rem, 92%);
