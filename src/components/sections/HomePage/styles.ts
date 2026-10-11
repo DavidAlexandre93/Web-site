@@ -33,7 +33,7 @@ export const HomeContainer = styled.section<HomeContainerProps>`
     }
     .hero-copy { max-width: 75rem; }
     .eyebrow { display: flex; align-items: center; gap: 1rem; color: var(--accent); font-size: 1.25rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-    .eyebrow span, .status-dot { width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0.5rem var(--accent-soft); }
+    .eyebrow span { width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0.5rem var(--accent-soft); }
     h1 { max-width: 78rem; margin-top: 2rem; font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif; font-size: 8.4rem; font-weight: 500; line-height: 0.98; }
     .descriptionHome { max-width: 65rem; margin-top: 2.4rem; color: var(--text-secondary); font-size: clamp(1.7rem, 2.2vw, 2.2rem); line-height: 1.45; }
     .hero-lede { max-width: 57rem; margin-top: 1.6rem; color: var(--text-muted); font-size: 1.5rem; line-height: 1.7; }
@@ -44,11 +44,11 @@ export const HomeContainer = styled.section<HomeContainerProps>`
     .links .text-link { border: 0; color: var(--accent); padding-inline: 0.8rem; }
     .hero-signal { padding: 2.8rem; border: 1px solid var(--line); border-radius: 1.8rem; background: linear-gradient(145deg, rgba(23, 35, 38, 0.96), rgba(13, 21, 23, 0.96)); box-shadow: var(--shadow-md); }
     .hero-signal::before { content: ""; display: block; width: 4rem; height: 0.2rem; margin-bottom: 2.2rem; background: linear-gradient(90deg, var(--accent), var(--accent-warm)); }
-    .signal-top { display: flex; align-items: center; gap: 1.2rem; color: var(--text-secondary); font-size: 1.3rem; }
-    .signal-number { margin-top: 5rem; font-family: Georgia, "Times New Roman", serif; font-size: clamp(3.6rem, 6vw, 6.8rem); line-height: 1; letter-spacing: -0.04em; }
+    .signal-kicker { margin-top: 1.8rem; color: var(--accent); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+    .signal-number { max-width: 34rem; margin-top: 1.2rem; font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif; font-size: clamp(3.6rem, 5vw, 5.6rem); font-weight: 500; line-height: 1.02; }
     .signal-number span { color: var(--accent); }
-    .signal-copy { margin-top: 1.4rem; color: var(--text-secondary); line-height: 1.6; }
-    .signal-list { display: grid; gap: 1.1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); color: var(--text-secondary); font-size: 1.3rem; }
+    .signal-copy { max-width: 34rem; margin-top: 1.4rem; color: var(--text-secondary); line-height: 1.6; }
+    .signal-list { display: grid; gap: 1.2rem; margin-top: 2.4rem; padding-top: 1.8rem; border-top: 1px solid var(--line); color: var(--text-secondary); font-size: 1.3rem; }
     .signal-list span { display: flex; align-items: center; gap: 0.8rem; }
     .signal-list svg { color: var(--accent); }
     .hero-meta { display: flex; flex-wrap: wrap; gap: clamp(2rem, 8vw, 8rem); padding-top: 2rem; border-top: 1px solid var(--line); color: var(--text-muted); font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.08em; }
@@ -59,7 +59,7 @@ export const HomeContainer = styled.section<HomeContainerProps>`
         padding-top: 12rem;
         .hero-grid { grid-template-columns: 1fr; gap: 4rem; }
         h1 { font-size: 5.8rem; }
-        .signal-number { margin-top: 3rem; }
+        .signal-number { max-width: 100%; }
         .links { align-items: stretch; flex-direction: column; }
         .links .text-link, .links button { width: 100%; }
         .hero-meta { gap: 2rem; justify-content: space-between; }

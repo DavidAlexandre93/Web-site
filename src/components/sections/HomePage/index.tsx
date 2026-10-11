@@ -32,14 +32,16 @@ export const HomePage = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="hero-signal" aria-label={t("heroSignalLabel")}>
-                    <div className="signal-top"><span className="status-dot" /> {t("heroAvailable")}</div>
-                    <p className="signal-number">AI-native<span>.</span></p>
+                <div className="hero-signal" aria-labelledby="hero-signal-title">
+                    <p className="signal-kicker">{t("heroSignalLabel")}</p>
+                    <h2 className="signal-number" id="hero-signal-title">
+                        {t("heroSignalTitle")}<span>.</span>
+                    </h2>
                     <p className="signal-copy">{t("heroSignalCopy")}</p>
                     <div className="signal-list">
-                        <span><FiCpu aria-hidden="true" /> {t("heroSignalOne")}</span>
-                        <span><FiLayers aria-hidden="true" /> {t("heroSignalTwo")}</span>
-                        <span><FiShield aria-hidden="true" /> {t("heroSignalThree")}</span>
+                        <span><FiLayers aria-hidden="true" /> {t("heroSignalOne")}</span>
+                        <span><FiShield aria-hidden="true" /> {t("heroSignalTwo")}</span>
+                        <span><FiCpu aria-hidden="true" /> {t("heroSignalThree")}</span>
                     </div>
                 </div>
             </div>
